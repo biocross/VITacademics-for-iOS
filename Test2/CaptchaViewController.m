@@ -8,6 +8,7 @@
 
 #import "CaptchaViewController.h"
 #import "VITxAPI.h"
+#import "MasterViewController.h"
 
 @interface CaptchaViewController ()
 
@@ -45,6 +46,8 @@
 }
 
 - (IBAction)verifyCaptcha:(id)sender {
+    
+    
     VITxAPI *handler = [[VITxAPI alloc] init];
     
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
@@ -67,19 +70,24 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [alert dismissWithClickedButtonIndex:0 animated:YES];
             if([result rangeOfString:@"timedout"].location != NSNotFound){
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Sorry, Wrong Captcha" delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:nil, nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Sorry, Please Check your captcha and/or Details" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
                 [alert show];
             }
             else if([result rangeOfString:@"success"].location != NSNotFound){
-                //go ahead and load attendnace;
                 NSLog(@"We're In!");
+                
+                //DONT KNOW WHAT TO DOooooo
+                NSString *notificationName = @"captchaDidVerify";
+                [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:nil];
             }
             
             
         });
     });//end of GCD
     
-    
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    
+    
+    
 }
 @end

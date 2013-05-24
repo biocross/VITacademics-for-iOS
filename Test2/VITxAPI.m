@@ -23,30 +23,13 @@
     //NSData* text = [NSData dataWithContentsOfURL:url];
     if( text )
     {
-        
-        //printing the attendance array
-        /*
-        NSError *e = nil;
-        NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: text options: NSJSONReadingMutableContainers error: &e];
-        
-        if (!jsonArray) {
-            NSLog(@"Error parsing JSON: %@", e);
-        } else {
-            for(NSDictionary *item in jsonArray) {
-                //NSLog(@"Item: %@", item);
-                NSLog([item valueForKey:@"title"]);
-            }
-        }
-        
-        //end of inside att array printer
-         */
-        
+        return text;
     }
     else
     {
         NSLog(@"Error = %@", error);
+        return @"Error";
     }
-    return text;
 }
 
 

@@ -87,6 +87,12 @@
     return YES;
 }
 
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)dateOfBirth{
+    [_dateOfBirth resignFirstResponder];
+    return YES;
+}
+
+
 
 
 @end

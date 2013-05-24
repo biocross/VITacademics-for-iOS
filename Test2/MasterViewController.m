@@ -13,6 +13,8 @@
 #import "VITxAPI.h"
 #import "CaptchaViewController.h"
 
+
+
 @interface MasterViewController () {
     NSMutableArray *_objects;
 }
@@ -36,23 +38,25 @@ return _subjects;
         self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
     }
     [super awakeFromNib];
+    
 }
 
 - (void)viewDidLoad
 {
-
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    /*
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(insertNewObject:)];
-    self.navigationItem.leftBarButtonItem = settingsButton;
-    
-    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = refreshButton;
-    */
-    
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    NSString *notificationName = @"captchaDidVerify";
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(startLoadingAttendance:)
+     name:notificationName
+     object:nil];
+    
+    NSLog(@"%lu", (unsigned long)[self.subjects.privateListOfSubjects count]);
 }
 
 - (void)didReceiveMemoryWarning
@@ -127,33 +131,26 @@ return _subjects;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-   
- 
-
-    
-
+    //handled by Storyboards
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
         DetailViewController *detailViewController = [segue destinationViewController];
         detailViewController.subject = self.subjects[selectedRowIndex.row];
     }
-    
 }
 
 - (IBAction)openSettings:(id)sender {
     //handled by Storyboards
 }
 
-- (IBAction)refreshThisShit:(id)sender {
+- (void)startLoadingAttendance:(id)sender {
     
     UIAlertView *alert;
-    alert = [[UIAlertView alloc] initWithTitle:@"Refeshing...\n" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: nil];
+    alert = [[UIAlertView alloc] initWithTitle:@"Loading Attendance...\n" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: nil];
     [alert show];
     
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -187,7 +184,37 @@ return _subjects;
 }
 
 -(void)competedProcess{
-//got the attendnace string at self.attendanceStringCache;
+
+     NSError *e = nil;
+     NSString *newString = [self.attendanceCacheString stringByReplacingOccurrencesOfString:@"valid%" withString:@""];
+     NSData *attendanceDataFromString = [newString dataUsingEncoding:NSUTF8StringEncoding];
+     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: attendanceDataFromString options: NSJSONReadingMutableContainers error: &e];
+     
+     if (!jsonArray) {
+         NSLog(@"Error parsing JSON: %@", e);
+        }
+     else {
+         NSMutableArray *refreshedArray = [[NSMutableArray alloc] init];
+         for(NSDictionary *item in jsonArray) {
+             //NSLog(@"Item: %@", item);
+             //NSLog([item valueForKey:@"title"]);
+             
+             Subject *x = [[Subject alloc] initWithSubject:[item valueForKey:@"code"] title:[item valueForKey:@"title"] slot:[item valueForKey:@"slot"] attended:[[item valueForKey:@"attended"] integerValue] conducted:[[item valueForKey:@"conducted"] integerValue] number:[[item valueForKey:@"sl_no"] integerValue] type:[item valueForKey:@"type"]];
+             
+             [refreshedArray addObject:x];
+             NSLog(@"inserted %@", [item valueForKey:@"title"]);
+             
+        } //end of for
+         NSLog(@"Rreached here");
+         NSLog(@"%d", [self.subjects.privateListOfSubjects count]);
+         NSLog(@"ref array cintains %d", refreshedArray.count);
+         [self.subjects setArray:refreshedArray];
+         [self.tableView reloadData];
+         NSLog(@"done hre");
+         
+     } //end of else
+    
+
 }
 
 @end

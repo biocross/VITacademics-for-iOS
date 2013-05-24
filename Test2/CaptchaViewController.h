@@ -7,12 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MasterViewController.h"
 
-@interface CaptchaViewController : UIViewController
+
+
+
+@interface CaptchaViewController : UIViewController 
 
 - (IBAction)cancelrefresh:(id)sender;
 - (IBAction)verifyCaptcha:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *captchaImage;
 @property (weak, nonatomic) IBOutlet UITextField *captchaText;
+
 
 @end

@@ -14,9 +14,6 @@
 -(NSString *)loadAttendanceWithRegistrationNumber: (NSString *)registrationNumber andDateOfBirth: (NSString *) dateOfBirth;
 -(void)loadCaptchaIntoImageView: (UIImageView *)imageView;
 -(NSString *)verifyCaptchaWithRegistrationNumber: (NSString *)registrationNumber andDateOfBirth: (NSString *)dateOfBirth andCaptcha:(NSString *)captcha;
--(NSString *)returnVerifyCaptchaResult;
-
-@property (weak) NSString *verifyCaptchaResult;
 
 @end
 

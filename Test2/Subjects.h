@@ -10,7 +10,7 @@
 
 @interface Subjects : NSObject
 
-@property (copy, nonatomic) NSArray *privateListOfSubjects;
+@property (nonatomic, copy) NSMutableArray *privateListOfSubjects;
 @property (nonatomic) NSInteger subjectNumber;
 @property (copy, nonatomic) NSString *subjectTitle;
 
@@ -23,4 +23,5 @@
 
 -(NSUInteger)count;
 -(Subjects *)objectAtIndexedSubscript:(NSInteger)subjectNumber;
+- (void)setArray:(NSArray *)newArray;
 @end

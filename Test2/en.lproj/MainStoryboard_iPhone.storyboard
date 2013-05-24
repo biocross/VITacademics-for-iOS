@@ -94,16 +94,18 @@
                                     <outlet property="delegate" destination="sgQ-su-5YJ" id="PZ1-fm-gqH"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Date Of Birth" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lu2-8r-NCs">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Date Of Birth" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lu2-8r-NCs">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="QZO-TZ-xMr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="sgQ-su-5YJ" id="5g1-kV-gIk"/>
+                                </connections>
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4fZ-dk-KGK">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="6x1-hi-NFG"/>
                                     <constraint firstAttribute="height" constant="216" id="92J-Mp-IQ3"/>
                                 </constraints>
                                 <date key="date" timeIntervalSinceReferenceDate="390709107.57445401">
@@ -155,17 +157,18 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="4fZ-dk-KGK" firstAttribute="leading" secondItem="Wg8-XH-h8y" secondAttribute="leading" type="default" id="0Qc-Xa-M0J"/>
                             <constraint firstItem="nm8-d1-6CW" firstAttribute="centerX" secondItem="175-QX-dfO" secondAttribute="centerX" type="default" id="1kk-nR-a3H"/>
-                            <constraint firstItem="aW8-FT-HRZ" firstAttribute="top" secondItem="Wg8-XH-h8y" secondAttribute="top" constant="159" id="8vK-jk-GjY"/>
                             <constraint firstItem="lu2-8r-NCs" firstAttribute="top" secondItem="Wg8-XH-h8y" secondAttribute="top" constant="106" id="LHV-N5-qKT"/>
+                            <constraint firstItem="aW8-FT-HRZ" firstAttribute="top" secondItem="Wg8-XH-h8y" secondAttribute="top" constant="161" id="Lr1-no-1uf"/>
                             <constraint firstItem="175-QX-dfO" firstAttribute="trailing" secondItem="lu2-8r-NCs" secondAttribute="trailing" type="default" id="NMw-ed-uBX"/>
+                            <constraint firstItem="4fZ-dk-KGK" firstAttribute="centerX" secondItem="lu2-8r-NCs" secondAttribute="centerX" type="default" id="Yq9-XI-Yoo"/>
                             <constraint firstItem="175-QX-dfO" firstAttribute="top" secondItem="Wg8-XH-h8y" secondAttribute="top" constant="56" id="b9V-9s-3Wt"/>
+                            <constraint firstItem="4fZ-dk-KGK" firstAttribute="trailing" secondItem="Wg8-XH-h8y" secondAttribute="trailing" type="default" id="bBB-Q2-zWp"/>
                             <constraint firstItem="nm8-d1-6CW" firstAttribute="top" secondItem="Wg8-XH-h8y" secondAttribute="top" constant="15" id="gYq-Eg-Zdz"/>
-                            <constraint firstItem="nm8-d1-6CW" firstAttribute="centerX" secondItem="Wg8-XH-h8y" secondAttribute="centerX" type="default" id="kWR-gL-XMe"/>
-                            <constraint firstItem="4fZ-dk-KGK" firstAttribute="leading" secondItem="Wg8-XH-h8y" secondAttribute="leading" constant="1" id="l1g-Zb-p5d"/>
                             <constraint firstItem="4fZ-dk-KGK" firstAttribute="bottom" secondItem="Wg8-XH-h8y" secondAttribute="bottom" type="default" id="lSG-ZV-NOH"/>
-                            <constraint firstItem="aW8-FT-HRZ" firstAttribute="centerX" secondItem="4fZ-dk-KGK" secondAttribute="centerX" type="default" id="oGu-Bh-axG"/>
                             <constraint firstItem="lu2-8r-NCs" firstAttribute="leading" secondItem="175-QX-dfO" secondAttribute="leading" type="default" id="r6z-JR-NWd"/>
+                            <constraint firstItem="aW8-FT-HRZ" firstAttribute="centerX" secondItem="lu2-8r-NCs" secondAttribute="centerX" type="default" id="vEd-kv-HxO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="yfc-Am-AjU">
@@ -188,7 +191,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qD6-jA-C9O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1220" y="550"/>
+            <point key="canvasLocation" x="4" y="776"/>
         </scene>
         <!--Detail View Controller - Detail-->
         <scene sceneID="24">
@@ -337,7 +340,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="23" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="398" y="-52"/>
+            <point key="canvasLocation" x="506" y="-46"/>
         </scene>
         <!--CaptchaView-->
         <scene sceneID="Bcf-HM-GEs">
@@ -349,11 +352,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4M6-mi-3eq">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="2cJ-9Y-o8b"/>
-                                    <constraint firstAttribute="width" constant="124" id="LJa-nP-vVX"/>
+                                    <constraint firstAttribute="width" constant="130" id="Im9-CT-xSy"/>
+                                    <constraint firstAttribute="height" constant="25" id="kCd-iR-Q2x"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CAPTCHA" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cHz-x5-0M6">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="CAPTCHA" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cHz-x5-0M6">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="XQD-3D-wkS"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                 <connections>
@@ -371,13 +377,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cHz-x5-0M6" firstAttribute="top" secondItem="SzB-71-VsO" secondAttribute="top" constant="146" id="2S7-0O-t5y"/>
-                            <constraint firstItem="Aga-4W-l14" firstAttribute="centerX" secondItem="4M6-mi-3eq" secondAttribute="centerX" type="default" id="7bH-ka-Fav"/>
+                            <constraint firstItem="4M6-mi-3eq" firstAttribute="top" secondItem="SzB-71-VsO" secondAttribute="top" constant="76" id="7bh-h1-35a"/>
+                            <constraint firstItem="cHz-x5-0M6" firstAttribute="centerX" secondItem="SzB-71-VsO" secondAttribute="centerX" type="default" id="Ckg-Bu-jkD"/>
                             <constraint firstItem="Aga-4W-l14" firstAttribute="leading" secondItem="cHz-x5-0M6" secondAttribute="leading" type="default" id="bcQ-Cf-Y5x"/>
-                            <constraint firstItem="cHz-x5-0M6" firstAttribute="centerX" secondItem="SzB-71-VsO" secondAttribute="centerX" type="default" id="gub-Aq-zog"/>
+                            <constraint firstItem="cHz-x5-0M6" firstAttribute="top" secondItem="SzB-71-VsO" secondAttribute="top" constant="148" id="e92-Gd-R5C"/>
                             <constraint firstItem="cHz-x5-0M6" firstAttribute="trailing" secondItem="Aga-4W-l14" secondAttribute="trailing" type="default" id="jp5-ME-A9E"/>
+                            <constraint firstItem="4M6-mi-3eq" firstAttribute="centerX" secondItem="Aga-4W-l14" secondAttribute="centerX" type="default" id="pNa-8C-UxS"/>
                             <constraint firstItem="Aga-4W-l14" firstAttribute="top" secondItem="SzB-71-VsO" secondAttribute="top" constant="20" symbolic="YES" type="default" id="y2d-3m-dcR"/>
-                            <constraint firstItem="4M6-mi-3eq" firstAttribute="top" secondItem="SzB-71-VsO" secondAttribute="top" constant="68" id="yZn-80-dzt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Captcha" id="ymO-hd-kT2">
@@ -399,7 +405,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uAe-Z8-YbC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="761" y="579"/>
+            <point key="canvasLocation" x="931" y="573"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cAJ-dn-EMW">
@@ -435,9 +441,53 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hsr-bu-cqY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="235" y="579"/>
+            <point key="canvasLocation" x="563" y="573"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="CaptchaViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CaptchaViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelrefresh:"/>
+                <relationship kind="action" name="verifyCaptcha:"/>
+                <relationship kind="outlet" name="captchaImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="captchaText" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="DetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="progressBar" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="subjectAttended" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="subjectCode" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="subjectConducted" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="subjectName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="subjectPercentage" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="subjectSlot" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="subjectType" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MasterViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="openSettings:"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="NewSettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelButton:"/>
+                <relationship kind="action" name="saveButton:"/>
+                <relationship kind="action" name="setDOBfromPicker:"/>
+                <relationship kind="outlet" name="dateOfBirth" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="registrationNumber" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

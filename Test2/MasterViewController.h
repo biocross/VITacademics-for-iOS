@@ -7,18 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CaptchaViewController.h"
+
+
 
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController
+
+
+@interface MasterViewController : UITableViewController 
+
+
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 
 - (IBAction)openSettings:(id)sender;
-- (IBAction)refreshThisShit:(id)sender;
+- (void)startLoadingAttendance:(id)sender;
 - (void)competedProcess;
 
 @property NSString *attendanceCacheString;
+
+
 
 
 @end
