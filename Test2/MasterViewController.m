@@ -12,6 +12,7 @@
 #import "DetailViewController.h"
 #import "VITxAPI.h"
 #import "CaptchaViewController.h"
+#import "MBProgressHUD.h"
 
 
 
@@ -55,8 +56,6 @@ return _subjects;
      selector:@selector(startLoadingAttendance:)
      name:notificationName
      object:nil];
-    
-    NSLog(@"%lu", (unsigned long)[self.subjects.privateListOfSubjects count]);
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,17 +83,25 @@ return _subjects;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.subjects count];
+    return [self.subjects count]+1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SubjectCell" forIndexPath:indexPath];
-    NSString *subjectName = self.subjects[indexPath.row].subjectTitle;
-    cell.textLabel.text = [NSString stringWithString:subjectName];
+    
+    if(indexPath.row < [self.subjects count]){
+    cell.textLabel.text = [NSString stringWithString:self.subjects[indexPath.row].subjectCode];
+    cell.detailTextLabel.text = [NSString stringWithString:self.subjects[indexPath.row].subjectTitle];
+    }
+    else{
+        cell.textLabel.text = @"VITacademics";
+        cell.detailTextLabel.text = @"Siddharth Gupta";
+    }
+    
     return cell;
     
-    [self.tableView setEditing:NO];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -132,6 +139,9 @@ return _subjects;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //handled by Storyboards
+    if(indexPath.row >= [self.subjects count]){
+        [self performSegueWithIdentifier:@"CaptchaView" sender:self];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -149,16 +159,12 @@ return _subjects;
 
 - (void)startLoadingAttendance:(id)sender {
     
-    UIAlertView *alert;
-    alert = [[UIAlertView alloc] initWithTitle:@"Loading Attendance...\n" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: nil];
-    [alert show];
-    
-    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    
-    // Adjust the indicator so it is up a few pixels from the bottom of the alert
-    indicator.center = CGPointMake(alert.bounds.size.width / 2, alert.bounds.size.height - 50);
-    [indicator startAnimating];
-    [alert addSubview:indicator];
+    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:HUD];
+    HUD.delegate = self;
+    HUD.labelText = @"Loading";
+    HUD.detailsLabelText = @"Downloading Attendance";
+    [HUD showUsingAnimation:YES];
     
     //getting the regno, dob from preferences.
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
@@ -174,7 +180,8 @@ return _subjects;
          NSString *result = [attendanceManager loadAttendanceWithRegistrationNumber:registrationNumber andDateOfBirth:dateOfBirth];
         dispatch_async(dispatch_get_main_queue(), ^{
            //update table here!
-            [alert dismissWithClickedButtonIndex:0 animated:YES];
+            //[alert dismissWithClickedButtonIndex:0 animated:YES];
+            [HUD hideUsingAnimation:YES];
             self.attendanceCacheString = result;
             [self competedProcess];
         });
@@ -205,13 +212,10 @@ return _subjects;
              NSLog(@"inserted %@", [item valueForKey:@"title"]);
              
         } //end of for
-         NSLog(@"Rreached here");
          NSLog(@"%d", [self.subjects.privateListOfSubjects count]);
          NSLog(@"ref array cintains %d", refreshedArray.count);
          [self.subjects setArray:refreshedArray];
          [self.tableView reloadData];
-         NSLog(@"done hre");
-         
      } //end of else
     
 

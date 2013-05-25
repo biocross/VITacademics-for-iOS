@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		166E4D55175062930068EFB1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 166E4D54175062890068EFB1 /* MBProgressHUD.m */; };
 		16888CC8173856D700BEEA71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16888CC7173856D700BEEA71 /* UIKit.framework */; };
 		16888CCA173856D700BEEA71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16888CC9173856D700BEEA71 /* Foundation.framework */; };
 		16888CCC173856D700BEEA71 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16888CCB173856D700BEEA71 /* CoreGraphics.framework */; };
@@ -28,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		166E4D53175062890068EFB1 /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		166E4D54175062890068EFB1 /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		16888CC4173856D700BEEA71 /* Test2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16888CC7173856D700BEEA71 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		16888CC9173856D700BEEA71 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -103,6 +106,8 @@
 		16888CCD173856D700BEEA71 /* Test2 */ = {
 			isa = PBXGroup;
 			children = (
+				166E4D53175062890068EFB1 /* MBProgressHUD.h */,
+				166E4D54175062890068EFB1 /* MBProgressHUD.m */,
 				16888CD6173856D700BEEA71 /* AppDelegate.h */,
 				16888CD7173856D700BEEA71 /* AppDelegate.m */,
 				16888CDF173856D800BEEA71 /* MainStoryboard_iPhone.storyboard */,
@@ -224,6 +229,7 @@
 				16EF8A5D1749BE5B00368179 /* NewSettingsViewController.m in Sources */,
 				169C0A30174ADCA8005B16ED /* VITxAPI.m in Sources */,
 				169C0A33174B125E005B16ED /* CaptchaViewController.m in Sources */,
+				166E4D55175062930068EFB1 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

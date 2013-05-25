@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Test2/MasterViewController.m"
-         timestampString = "391065799.284798"
+         timestampString = "391144110.170778"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "30"
-         endingLineNumber = "30"
+         startingLineNumber = "32"
+         endingLineNumber = "32"
          landmarkName = "-subjects"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,24 +21,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Test2/MasterViewController.m"
-         timestampString = "391080204.484314"
+         timestampString = "391144110.170778"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "93"
-         endingLineNumber = "93"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
-         landmarkType = "5">
+         startingLineNumber = "106"
+         endingLineNumber = "106"
+         landmarkName = "@implementation MasterViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Test2/Subjects.h"
-         timestampString = "391080633.609113"
+         timestampString = "391110425.987215"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "27"
-         endingLineNumber = "27"
+         startingLineNumber = "28"
+         endingLineNumber = "28"
          landmarkName = "@interface Subjects"
          landmarkType = "2">
       </FileBreakpoint>
@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Test2/Subjects.m"
-         timestampString = "391080401.634662"
+         timestampString = "391108948.572735"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "24"
-         endingLineNumber = "24"
+         startingLineNumber = "23"
+         endingLineNumber = "23"
          landmarkName = "-privateListOfSubjects"
          landmarkType = "5">
       </FileBreakpoint>
@@ -66,19 +66,6 @@
          startingLineNumber = "13"
          endingLineNumber = "13"
          landmarkName = "-initWithSubject:title:slot:attended:conducted:number:type:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Test2/Subjects.m"
-         timestampString = "391080401.634662"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "22"
-         endingLineNumber = "22"
-         landmarkName = "-privateListOfSubjects"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -214,33 +201,29 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Test2/MasterViewController.m"
-         timestampString = "391080633.609113"
+         timestampString = "391144875.752263"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "204"
-         endingLineNumber = "204"
-         landmarkName = "-competedProcess"
-         landmarkType = "5">
+         startingLineNumber = "250"
+         endingLineNumber = "250">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Test2/MasterViewController.m"
-         timestampString = "391080633.609113"
+         timestampString = "391144875.752263"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "205"
-         endingLineNumber = "205"
-         landmarkName = "-competedProcess"
-         landmarkType = "5">
+         startingLineNumber = "251"
+         endingLineNumber = "251">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Test2/MasterViewController.m"
-         timestampString = "391080198.240328"
+         timestampString = "391144110.170778"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "59"
@@ -249,7 +232,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Test2/Subjects.m"
@@ -262,7 +245,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Test2/Subjects.m"

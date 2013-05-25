@@ -17,10 +17,9 @@
     if(!_privateListOfSubjects){
        _privateListOfSubjects = @[
                                 
-                                [[Subject alloc] initWithSubject:@"ECE101" title:@"Please click" slot:@"S2+TS2" attended:18 conducted:20 number:1 type:@"Sample"],
-                                [[Subject alloc] initWithSubject:@"GEN201" title:@"the refresh button" slot:@"S2+TS2" attended:18 conducted:20 number:2 type:@"Sample"],
-                                [[Subject alloc] initWithSubject:@"GEN301" title:@"on the top right" slot:@"S2+TS2" attended:18 conducted:20 number:3 type:@"Sample"],
-                                [[Subject alloc] initWithSubject:@"GEN401" title:@"to begin" slot:@"S2+TS2" attended:18 conducted:20 number:4 type:@"Sample"]
+                                [[Subject alloc] initWithSubject:@"" title:@"Please click the refresh button to begin!" slot:@"S2+TS2" attended:18 conducted:20 number:1 type:@"Sample"],
+ 
+
                                    
                                    ]; 
         
@@ -30,6 +29,15 @@
 
 -(NSUInteger)count{
     return [self.privateListOfSubjects count];
+}
+
+-(NSString *)percentage{
+    
+    float calculatedPercentage =(float) self.attendedClasses /self.conductedClasses;
+    float displayPercentageInteger = calculatedPercentage * 100;
+    NSString *displayPercentage = [NSString stringWithFormat:@"%1.0f",displayPercentageInteger];
+    
+    return displayPercentage;
 }
 
 -(Subjects *)objectAtIndexedSubscript:(NSInteger)subjectNumber{

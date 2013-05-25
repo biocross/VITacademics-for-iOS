@@ -24,4 +24,5 @@
 -(NSUInteger)count;
 -(Subjects *)objectAtIndexedSubscript:(NSInteger)subjectNumber;
 - (void)setArray:(NSArray *)newArray;
+- (NSString *)percentage;
 @end
