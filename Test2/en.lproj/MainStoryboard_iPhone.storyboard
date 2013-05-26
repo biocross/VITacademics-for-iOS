@@ -355,7 +355,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4M6-mi-3eq">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="Im9-CT-xSy"/>
                                     <constraint firstAttribute="height" constant="25" id="kCd-iR-Q2x"/>
                                 </constraints>
                             </imageView>
@@ -377,15 +376,30 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Loading captcha..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqD-f3-2tL">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="7FA-84-pm3"/>
+                                    <constraint firstAttribute="width" constant="139" id="qov-SM-Z1t"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="tCp-OH-Gpk"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="cHz-x5-0M6" firstAttribute="trailing" secondItem="Aga-4W-l14" secondAttribute="trailing" type="default" id="2Xu-QQ-1XL"/>
                             <constraint firstItem="4M6-mi-3eq" firstAttribute="top" secondItem="SzB-71-VsO" secondAttribute="top" constant="76" id="7bh-h1-35a"/>
-                            <constraint firstItem="cHz-x5-0M6" firstAttribute="centerX" secondItem="SzB-71-VsO" secondAttribute="centerX" type="default" id="Ckg-Bu-jkD"/>
-                            <constraint firstItem="Aga-4W-l14" firstAttribute="leading" secondItem="cHz-x5-0M6" secondAttribute="leading" type="default" id="bcQ-Cf-Y5x"/>
+                            <constraint firstItem="tCp-OH-Gpk" firstAttribute="bottom" secondItem="PqD-f3-2tL" secondAttribute="bottom" type="default" id="9Ts-U4-s05"/>
+                            <constraint firstItem="Aga-4W-l14" firstAttribute="centerX" secondItem="4M6-mi-3eq" secondAttribute="centerX" type="default" id="LGR-88-Fyl"/>
+                            <constraint firstItem="tCp-OH-Gpk" firstAttribute="leading" secondItem="SzB-71-VsO" secondAttribute="leading" constant="95" id="QQM-bc-S9B"/>
                             <constraint firstItem="cHz-x5-0M6" firstAttribute="top" secondItem="SzB-71-VsO" secondAttribute="top" constant="148" id="e92-Gd-R5C"/>
-                            <constraint firstItem="cHz-x5-0M6" firstAttribute="trailing" secondItem="Aga-4W-l14" secondAttribute="trailing" type="default" id="jp5-ME-A9E"/>
-                            <constraint firstItem="4M6-mi-3eq" firstAttribute="centerX" secondItem="Aga-4W-l14" secondAttribute="centerX" type="default" id="pNa-8C-UxS"/>
+                            <constraint firstItem="Aga-4W-l14" firstAttribute="centerX" secondItem="SzB-71-VsO" secondAttribute="centerX" type="default" id="fkU-DU-O3j"/>
+                            <constraint firstItem="tCp-OH-Gpk" firstAttribute="leading" secondItem="4M6-mi-3eq" secondAttribute="leading" type="default" id="k9b-Bg-sXL"/>
+                            <constraint firstItem="PqD-f3-2tL" firstAttribute="leading" secondItem="tCp-OH-Gpk" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="lHI-5Q-V8W"/>
+                            <constraint firstItem="PqD-f3-2tL" firstAttribute="top" secondItem="4M6-mi-3eq" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="mDy-or-3my"/>
+                            <constraint firstItem="cHz-x5-0M6" firstAttribute="leading" secondItem="Aga-4W-l14" secondAttribute="leading" type="default" id="ohC-2u-7ur"/>
                             <constraint firstItem="Aga-4W-l14" firstAttribute="top" secondItem="SzB-71-VsO" secondAttribute="top" constant="20" symbolic="YES" type="default" id="y2d-3m-dcR"/>
                         </constraints>
                     </view>
@@ -404,6 +418,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <connections>
                         <outlet property="captchaImage" destination="4M6-mi-3eq" id="2Nk-Ag-i6A"/>
                         <outlet property="captchaText" destination="cHz-x5-0M6" id="Mx3-qX-FkX"/>
+                        <outlet property="progressDot" destination="tCp-OH-Gpk" id="HvV-sc-bEq"/>
+                        <outlet property="progressLabel" destination="PqD-f3-2tL" id="A4t-UT-jfu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uAe-Z8-YbC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -447,50 +463,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <point key="canvasLocation" x="563" y="573"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="CaptchaViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CaptchaViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancelrefresh:"/>
-                <relationship kind="action" name="verifyCaptcha:"/>
-                <relationship kind="outlet" name="captchaImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="captchaText" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="DetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="progressBar" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="subjectAttended" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="subjectCode" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="subjectConducted" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="subjectName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="subjectPercentage" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="subjectSlot" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="subjectType" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MasterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="openSettings:"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="NewSettingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewSettingsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancelButton:"/>
-                <relationship kind="action" name="saveButton:"/>
-                <relationship kind="action" name="setDOBfromPicker:"/>
-                <relationship kind="outlet" name="dateOfBirth" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
-                <relationship kind="outlet" name="registrationNumber" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

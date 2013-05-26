@@ -30,9 +30,20 @@
 {
     [super viewDidLoad];
 	// load the captcha here
-    VITxAPI *handler = [[VITxAPI alloc] init];
-    [handler loadCaptchaIntoImageView:_captchaImage];
+    [_progressDot startAnimating];
     
+    VITxAPI *handler = [[VITxAPI alloc] init];
+
+    dispatch_queue_t downloadQueue = dispatch_queue_create("captcha", nil);
+    dispatch_async(downloadQueue, ^{
+        UIImage *img = [handler loadCaptchaIntoImageView];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_captchaImage setImage:img];
+            [_progressDot stopAnimating];
+            [_progressLabel setAlpha:0];
+            [_progressDot setAlpha:0];
+        });
+    });//end of GCD
     
 }
 

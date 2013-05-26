@@ -33,22 +33,17 @@
 }
 
 
--(void)loadCaptchaIntoImageView: (UIImageView *)imageView{
+-(UIImage *)loadCaptchaIntoImageView{
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     NSString *registrationNumber = [preferences stringForKey:@"registrationNumber"];
     //get the image
     id path =@"http://vitacademicsrel.appspot.com/captcha/";
     NSString *finalURL = [path stringByAppendingString:registrationNumber];
     NSURL * url= [NSURL URLWithString:finalURL];
-    dispatch_queue_t downloadQueue = dispatch_queue_create("attendanceLoader", nil);
-    dispatch_async(downloadQueue, ^{
-            NSData * data = [NSData dataWithContentsOfURL:url];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            UIImage * img = [[UIImage alloc] initWithData:data];
-            [imageView setImage:img];
-        });
-        
-    });//end of GCD
+    NSData * data = [NSData dataWithContentsOfURL:url];
+    UIImage * img = [[UIImage alloc] initWithData:data];
+    return img;
+
     
     
 

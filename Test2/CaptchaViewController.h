@@ -18,6 +18,8 @@
 - (IBAction)verifyCaptcha:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *captchaImage;
 @property (weak, nonatomic) IBOutlet UITextField *captchaText;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *progressDot;
+@property (weak, nonatomic) IBOutlet UILabel *progressLabel;
 
 
 @end

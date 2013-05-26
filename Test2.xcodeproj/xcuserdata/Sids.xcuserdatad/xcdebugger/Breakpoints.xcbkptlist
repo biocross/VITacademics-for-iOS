@@ -162,11 +162,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Test2/VITxAPI.m"
-         timestampString = "390913470.349649"
+         timestampString = "391261234.91107"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "65"
-         endingLineNumber = "65"
+         startingLineNumber = "60"
+         endingLineNumber = "60"
          landmarkName = "-verifyCaptchaWithRegistrationNumber:andDateOfBirth:andCaptcha:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -175,11 +175,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Test2/VITxAPI.m"
-         timestampString = "390913470.349649"
+         timestampString = "391261234.91107"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "64"
-         endingLineNumber = "64"
+         startingLineNumber = "59"
+         endingLineNumber = "59"
          landmarkName = "-verifyCaptchaWithRegistrationNumber:andDateOfBirth:andCaptcha:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -188,11 +188,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Test2/VITxAPI.m"
-         timestampString = "390913470.349649"
+         timestampString = "391261234.91107"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "66"
-         endingLineNumber = "66"
+         startingLineNumber = "61"
+         endingLineNumber = "61"
          landmarkName = "-verifyCaptchaWithRegistrationNumber:andDateOfBirth:andCaptcha:"
          landmarkType = "5">
       </FileBreakpoint>

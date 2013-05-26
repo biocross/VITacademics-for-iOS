@@ -12,7 +12,7 @@
 }
 
 -(NSString *)loadAttendanceWithRegistrationNumber: (NSString *)registrationNumber andDateOfBirth: (NSString *) dateOfBirth;
--(void)loadCaptchaIntoImageView: (UIImageView *)imageView;
+-(UIImage *)loadCaptchaIntoImageView;
 -(NSString *)verifyCaptchaWithRegistrationNumber: (NSString *)registrationNumber andDateOfBirth: (NSString *)dateOfBirth andCaptcha:(NSString *)captcha;
 
 @end
