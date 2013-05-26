@@ -56,7 +56,11 @@
 }
 
 - (IBAction)cancelButton:(id)sender {
+
+    //EDIT HERE FOR IPHONE AND IPAD IMPORTANT
+    [self.navigationController popViewControllerAnimated:YES];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 - (IBAction)saveButton:(id)sender {
@@ -68,6 +72,7 @@
     [preferences setObject:_registrationNumber.text forKey:@"registrationNumber"];
     [preferences setObject:_dateOfBirth.text forKey:@"dateOfBirth"];
     
+    [self.navigationController popViewControllerAnimated:YES];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 

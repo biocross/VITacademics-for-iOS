@@ -17,7 +17,7 @@
     if(!_privateListOfSubjects){
        _privateListOfSubjects = @[
                                 
-                                [[Subject alloc] initWithSubject:@"" title:@"Please click the refresh button to begin!" slot:@"S2+TS2" attended:18 conducted:20 number:1 type:@"Sample"],
+                                [[Subject alloc] initWithSubject:@"" title:@"Please click the refresh button to begin!" slot:@"-" attended:0 conducted:0 number:1 type:@"-"],
  
 
                                    

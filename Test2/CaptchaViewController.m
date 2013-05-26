@@ -42,6 +42,7 @@
             [_progressDot stopAnimating];
             [_progressLabel setAlpha:0];
             [_progressDot setAlpha:0];
+            [_captchaText becomeFirstResponder];
         });
     });//end of GCD
     
@@ -61,6 +62,7 @@
 }
 
 - (IBAction)cancelrefresh:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -102,6 +104,8 @@
                 [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:nil];
             }
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        [self.navigationController popViewControllerAnimated:YES];
+
         });
     });//end of GCD
     
