@@ -13,7 +13,7 @@
 #import "VITxAPI.h"
 #import "CaptchaViewController.h"
 #import "MBProgressHUD.h"
-
+#import "TDBadgedCell.h"
 
 
 @interface MasterViewController () {
@@ -23,6 +23,16 @@
 @end
 
 @implementation MasterViewController
+
+//core data
+- (NSManagedObjectContext *)managedObjectContext {
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
+}
 
 -(Subjects *)subjects {
     if(! _subjects){
@@ -83,17 +93,28 @@ return _subjects;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.subjects count]+1;
+    return [self.subjects count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SubjectCell" forIndexPath:indexPath];
+    TDBadgedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SubjectCell" forIndexPath:indexPath];
     
     if(indexPath.row < [self.subjects count]){
     cell.textLabel.text = [NSString stringWithString:self.subjects[indexPath.row].subjectCode];
     cell.detailTextLabel.text = [NSString stringWithString:self.subjects[indexPath.row].subjectTitle];
+        
+    cell.badgeColor = [UIColor colorWithRed:0.197 green:0.592 blue:0.219 alpha:1.000];
+    cell.badge.radius = 8;
+    cell.badge.fontSize = 12;
+
+    float calculatedPercentage =(float) self.subjects[indexPath.row].attendedClasses / self.subjects[indexPath.row].conductedClasses;
+    float displayPercentageInteger = calculatedPercentage * 100;
+    NSString *displayPercentage = [NSString stringWithFormat:@"%1.0f",displayPercentageInteger];
+    cell.badgeString = [displayPercentage stringByAppendingString:@"%"];
+    
+        
     }
     else{
         cell.textLabel.text = @"VITacademics";
@@ -203,14 +224,28 @@ return _subjects;
      else {
          NSMutableArray *refreshedArray = [[NSMutableArray alloc] init];
          for(NSDictionary *item in jsonArray) {
-             //NSLog(@"Item: %@", item);
-             //NSLog([item valueForKey:@"title"]);
              
              Subject *x = [[Subject alloc] initWithSubject:[item valueForKey:@"code"] title:[item valueForKey:@"title"] slot:[item valueForKey:@"slot"] attended:[[item valueForKey:@"attended"] integerValue] conducted:[[item valueForKey:@"conducted"] integerValue] number:[[item valueForKey:@"sl_no"] integerValue] type:[item valueForKey:@"type"]];
              
              [refreshedArray addObject:x];
-             NSLog(@"inserted %@", [item valueForKey:@"title"]);
              
+             /*
+             NSManagedObjectContext *context = [self managedObjectContext];
+             NSManagedObject *subject = [NSEntityDescription insertNewObjectForEntityForName:@"Subject" inManagedObjectContext:context];
+             [subject setValue:[item valueForKey:@"code"] forKey:@"code"];
+             [subject setValue:[item valueForKey:@"title"] forKey:@"title"];
+             [subject setValue:[item valueForKey:@"slot"] forKey:@"slot"];
+             [subject setValue:[item valueForKey:@"attended"] forKey:@"attendedClasses"];
+             [subject setValue:[item valueForKey:@"conducted"] forKey:@"conductedClasses"];
+             [subject setValue:[item valueForKey:@"sl_no"] forKey:@"number"];
+             [subject setValue:[item valueForKey:@"type"] forKey:@"type"];
+             
+             NSError *error = nil;
+             // Save the object to persistent store
+             if (![context save:&error]) {
+                 NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+             }
+             */
         } //end of for
          NSLog(@"%d", [self.subjects.privateListOfSubjects count]);
          NSLog(@"ref array cintains %d", refreshedArray.count);

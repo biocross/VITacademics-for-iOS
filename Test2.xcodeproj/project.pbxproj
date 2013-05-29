@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1668E3EE1752433400C0C58B /* Attendance.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1668E3EC1752433400C0C58B /* Attendance.xcdatamodeld */; };
+		1668E3F01752435100C0C58B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1668E3EF1752435100C0C58B /* CoreData.framework */; };
 		166E4D55175062930068EFB1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 166E4D54175062890068EFB1 /* MBProgressHUD.m */; };
 		16888CC8173856D700BEEA71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16888CC7173856D700BEEA71 /* UIKit.framework */; };
 		16888CCA173856D700BEEA71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16888CC9173856D700BEEA71 /* Foundation.framework */; };
@@ -25,10 +27,14 @@
 		16888CF5173859E900BEEA71 /* Subjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 16888CF4173859E900BEEA71 /* Subjects.m */; };
 		169C0A30174ADCA8005B16ED /* VITxAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 169C0A2F174ADCA8005B16ED /* VITxAPI.m */; };
 		169C0A33174B125E005B16ED /* CaptchaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 169C0A32174B125E005B16ED /* CaptchaViewController.m */; };
+		16D66A2A1755EFB30015FDD7 /* TDBadgedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D66A291755EFB30015FDD7 /* TDBadgedCell.m */; };
+		16D66A2C1755EFC40015FDD7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D66A2B1755EFC40015FDD7 /* QuartzCore.framework */; };
 		16EF8A5D1749BE5B00368179 /* NewSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EF8A5C1749BE5B00368179 /* NewSettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1668E3ED1752433400C0C58B /* Attendance.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Attendance.xcdatamodel; sourceTree = "<group>"; };
+		1668E3EF1752435100C0C58B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		166E4D53175062890068EFB1 /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		166E4D54175062890068EFB1 /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		16888CC4173856D700BEEA71 /* Test2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +64,9 @@
 		169C0A2F174ADCA8005B16ED /* VITxAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VITxAPI.m; sourceTree = "<group>"; };
 		169C0A31174B125E005B16ED /* CaptchaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptchaViewController.h; sourceTree = "<group>"; };
 		169C0A32174B125E005B16ED /* CaptchaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptchaViewController.m; sourceTree = "<group>"; };
+		16D66A281755EFB30015FDD7 /* TDBadgedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDBadgedCell.h; sourceTree = "<group>"; };
+		16D66A291755EFB30015FDD7 /* TDBadgedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDBadgedCell.m; sourceTree = "<group>"; };
+		16D66A2B1755EFC40015FDD7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		16EF8A5B1749BE5B00368179 /* NewSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSettingsViewController.h; sourceTree = "<group>"; };
 		16EF8A5C1749BE5B00368179 /* NewSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +76,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16D66A2C1755EFC40015FDD7 /* QuartzCore.framework in Frameworks */,
+				1668E3F01752435100C0C58B /* CoreData.framework in Frameworks */,
 				16888CC8173856D700BEEA71 /* UIKit.framework in Frameworks */,
 				16888CCA173856D700BEEA71 /* Foundation.framework in Frameworks */,
 				16888CCC173856D700BEEA71 /* CoreGraphics.framework in Frameworks */,
@@ -79,6 +90,9 @@
 		16888CBB173856D700BEEA71 = {
 			isa = PBXGroup;
 			children = (
+				16D66A2B1755EFC40015FDD7 /* QuartzCore.framework */,
+				1668E3EF1752435100C0C58B /* CoreData.framework */,
+				1668E3EC1752433400C0C58B /* Attendance.xcdatamodeld */,
 				16888CCD173856D700BEEA71 /* Test2 */,
 				16888CC6173856D700BEEA71 /* Frameworks */,
 				16888CC5173856D700BEEA71 /* Products */,
@@ -106,6 +120,8 @@
 		16888CCD173856D700BEEA71 /* Test2 */ = {
 			isa = PBXGroup;
 			children = (
+				16D66A281755EFB30015FDD7 /* TDBadgedCell.h */,
+				16D66A291755EFB30015FDD7 /* TDBadgedCell.m */,
 				166E4D53175062890068EFB1 /* MBProgressHUD.h */,
 				166E4D54175062890068EFB1 /* MBProgressHUD.m */,
 				16888CD6173856D700BEEA71 /* AppDelegate.h */,
@@ -230,6 +246,8 @@
 				169C0A30174ADCA8005B16ED /* VITxAPI.m in Sources */,
 				169C0A33174B125E005B16ED /* CaptchaViewController.m in Sources */,
 				166E4D55175062930068EFB1 /* MBProgressHUD.m in Sources */,
+				1668E3EE1752433400C0C58B /* Attendance.xcdatamodeld in Sources */,
+				16D66A2A1755EFB30015FDD7 /* TDBadgedCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +387,19 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1668E3EC1752433400C0C58B /* Attendance.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1668E3ED1752433400C0C58B /* Attendance.xcdatamodel */,
+			);
+			currentVersion = 1668E3ED1752433400C0C58B /* Attendance.xcdatamodel */;
+			path = Attendance.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 16888CBC173856D700BEEA71 /* Project object */;
 }

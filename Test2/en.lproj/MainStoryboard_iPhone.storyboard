@@ -28,7 +28,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" horizontalCompressionResistancePriority="711" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubjectCell" textLabel="0k2-Ap-XAz" detailTextLabel="2Nt-im-3KN" style="IBUITableViewCellStyleSubtitle" id="lJ0-d7-vTF">
+                            <tableViewCell contentMode="scaleToFill" horizontalCompressionResistancePriority="711" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubjectCell" textLabel="0k2-Ap-XAz" detailTextLabel="2Nt-im-3KN" style="IBUITableViewCellStyleSubtitle" id="lJ0-d7-vTF" customClass="TDBadgedCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -463,6 +463,55 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <point key="canvasLocation" x="563" y="573"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="CaptchaViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CaptchaViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelrefresh:"/>
+                <relationship kind="action" name="verifyCaptcha:"/>
+                <relationship kind="outlet" name="captchaImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="captchaText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="progressDot" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="progressLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="DetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="progressBar" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="subjectAttended" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="subjectCode" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="subjectConducted" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="subjectName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="subjectPercentage" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="subjectSlot" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="subjectType" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MasterViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="openSettings:"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="NewSettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelButton:"/>
+                <relationship kind="action" name="saveButton:"/>
+                <relationship kind="action" name="setDOBfromPicker:"/>
+                <relationship kind="outlet" name="dateOfBirth" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="registrationNumber" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="TDBadgedCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TDBadgedCell.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
