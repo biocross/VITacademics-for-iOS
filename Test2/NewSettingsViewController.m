@@ -29,6 +29,8 @@
     NSDate *now = [NSDate date];
 	[_datePicker setDate:now animated:YES];
     
+    [_dateOfBirth setInputView:_datePicker];
+    
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
 
     //set the currently saved values.
@@ -43,6 +45,8 @@
         NSDate *anyDate = [dateFormat dateFromString:[preferences stringForKey:@"dateOfBirth"]];
         [_datePicker setDate:anyDate];
     }
+    
+    [_datePicker setAlpha:0];
     
         
         
@@ -89,11 +93,15 @@
     if (_registrationNumber == self.registrationNumber) {
         [_registrationNumber resignFirstResponder];
     }
+    if(_dateOfBirth == self.dateOfBirth){
+        [_datePicker setAlpha:0];
+    }
     return YES;
 }
 
+
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)dateOfBirth{
-    [_dateOfBirth resignFirstResponder];
+        [_datePicker setAlpha:1];
     return YES;
 }
 

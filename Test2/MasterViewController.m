@@ -159,9 +159,10 @@ return _subjects;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //handled by Storyboards
-    if(indexPath.row >= [self.subjects count]){
-        [self performSegueWithIdentifier:@"CaptchaView" sender:self];
+    // Handled by Storyboards for iPhone
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        [self.detailViewController setDetailItem:self.subjects[indexPath.row]];
     }
 }
 

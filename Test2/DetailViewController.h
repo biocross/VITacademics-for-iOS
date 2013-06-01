@@ -13,7 +13,9 @@
 @interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
 
 @property (strong, nonatomic) id detailItem;
-@property (strong, retain) Subjects *subject;
+@property (strong, nonatomic) Subjects *subject;
+
+- (void)setDetailItem:(id)newDetailItem;
 
 @property (weak, nonatomic) IBOutlet UILabel *subjectCode;
 @property (weak, nonatomic) IBOutlet UILabel *subjectName;
