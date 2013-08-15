@@ -30,6 +30,8 @@
 		16D66A2A1755EFB30015FDD7 /* TDBadgedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D66A291755EFB30015FDD7 /* TDBadgedCell.m */; };
 		16D66A2C1755EFC40015FDD7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D66A2B1755EFC40015FDD7 /* QuartzCore.framework */; };
 		16EF8A5D1749BE5B00368179 /* NewSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EF8A5C1749BE5B00368179 /* NewSettingsViewController.m */; };
+		519BE3D617B506D9004B1843 /* TimeTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 519BE3D517B506D9004B1843 /* TimeTable.m */; };
+		519BE3D917B5461E004B1843 /* TimeTableManipulations.m in Sources */ = {isa = PBXBuildFile; fileRef = 519BE3D817B5461E004B1843 /* TimeTableManipulations.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +71,10 @@
 		16D66A2B1755EFC40015FDD7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		16EF8A5B1749BE5B00368179 /* NewSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSettingsViewController.h; sourceTree = "<group>"; };
 		16EF8A5C1749BE5B00368179 /* NewSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSettingsViewController.m; sourceTree = "<group>"; };
+		519BE3D417B506D9004B1843 /* TimeTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTable.h; sourceTree = "<group>"; };
+		519BE3D517B506D9004B1843 /* TimeTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTable.m; sourceTree = "<group>"; };
+		519BE3D717B5461E004B1843 /* TimeTableManipulations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTableManipulations.h; sourceTree = "<group>"; };
+		519BE3D817B5461E004B1843 /* TimeTableManipulations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTableManipulations.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +146,10 @@
 				16888CF717385A0A00BEEA71 /* Model */,
 				169C0A2E174ADCA8005B16ED /* VITxAPI.h */,
 				169C0A2F174ADCA8005B16ED /* VITxAPI.m */,
+				519BE3D417B506D9004B1843 /* TimeTable.h */,
+				519BE3D517B506D9004B1843 /* TimeTable.m */,
+				519BE3D717B5461E004B1843 /* TimeTableManipulations.h */,
+				519BE3D817B5461E004B1843 /* TimeTableManipulations.m */,
 			);
 			path = Test2;
 			sourceTree = "<group>";
@@ -248,6 +258,8 @@
 				166E4D55175062930068EFB1 /* MBProgressHUD.m in Sources */,
 				1668E3EE1752433400C0C58B /* Attendance.xcdatamodeld in Sources */,
 				16D66A2A1755EFB30015FDD7 /* TDBadgedCell.m in Sources */,
+				519BE3D617B506D9004B1843 /* TimeTable.m in Sources */,
+				519BE3D917B5461E004B1843 /* TimeTableManipulations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

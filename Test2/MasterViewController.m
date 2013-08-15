@@ -102,8 +102,8 @@ return _subjects;
     TDBadgedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SubjectCell" forIndexPath:indexPath];
     
     if(indexPath.row < [self.subjects count]){
-    cell.textLabel.text = [NSString stringWithString:self.subjects[indexPath.row].subjectCode];
-    cell.detailTextLabel.text = [NSString stringWithString:self.subjects[indexPath.row].subjectTitle];
+    cell.textLabel.text = [NSString stringWithString:self.subjects[indexPath.row].subjectTitle];
+    cell.detailTextLabel.text = [NSString stringWithString:self.subjects[indexPath.row].subjectCode];
         
     cell.badgeColor = [UIColor colorWithRed:0.197 green:0.592 blue:0.219 alpha:1.000];
     cell.badge.radius = 8;
