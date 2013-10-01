@@ -31,6 +31,7 @@
         // Update the view.
         [self configureView];
     
+    
 
     if (self.masterPopoverController != nil) {
         [self.masterPopoverController dismissPopoverAnimated:YES];
@@ -44,6 +45,7 @@
     
     if (self.subject) {
         self.subjectCode.text = _subject.subjectCode;
+        self.title = _subject.subjectCode;
         self.subjectName.text = _subject.subjectTitle;
         self.subjectSlot.text = _subject.subjectSlot;
         float calculatedPercentage =(float) _subject.attendedClasses / _subject.conductedClasses;

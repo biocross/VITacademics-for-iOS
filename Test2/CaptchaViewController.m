@@ -9,13 +9,17 @@
 #import "CaptchaViewController.h"
 #import "VITxAPI.h"
 #import "MasterViewController.h"
-#import "MBProgressHUD.h"
+#import "SJNotificationViewController.h"
 
 @interface CaptchaViewController ()
 
 @end
 
 @implementation CaptchaViewController
+
+-(void)hudWasHidden{
+    //protocol conformation
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,6 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _captchaText.returnKeyType = UIReturnKeyGo;
 	// load the captcha here
     [_progressDot startAnimating];
     
@@ -48,12 +53,24 @@
     
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)registrationNumber {
+- (BOOL)textFieldShouldReturn:(UITextField *)captchaText {
+    
     if (_captchaText == self.captchaText) {
         [_captchaText resignFirstResponder];
+        
+        if([_captchaText.text length] == 6){
+            [self verifyCaptcha:nil];
+        }
+        else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Please enter the complete captcha! (6 characters)" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+        
     }
     return YES;
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -77,25 +94,27 @@
     NSString *dateOfBirth = [preferences objectForKey:@"dateOfBirth"];
     
     //show progress
-    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:HUD];
-    HUD.delegate = self;
-    HUD.labelText = @"Verifying";
-    HUD.detailsLabelText = @"captcha";
-    [HUD showUsingAnimation:YES];
+    SJNotificationViewController *notificationController = [[SJNotificationViewController alloc] initWithNibName:@"SJNotificationViewController" bundle:nil];
+    [notificationController setParentView:self.view];
+    [notificationController setNotificationTitle:@"Submitting Captcha..."];
+    [notificationController setNotificationLevel:SJNotificationLevelMessage];
+    [notificationController setShowSpinner:YES];
+    [notificationController setNotificationPosition:SJNotificationPositionBottom];
+    [notificationController show];
+    
     
     //verify captcha in the background
     dispatch_queue_t downloadQueue = dispatch_queue_create("attendanceLoader", nil);
     dispatch_async(downloadQueue, ^{
         NSString *result = [handler verifyCaptchaWithRegistrationNumber:registrationNumber andDateOfBirth:dateOfBirth andCaptcha:_captchaText.text];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [HUD hideUsingAnimation:YES];
+            [notificationController hide];
             if([result rangeOfString:@"timedout"].location != NSNotFound){
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"Please check your Captcha and/or Details" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
                 [alert show];
             }
             else if([result rangeOfString:@"captchaerror"].location != NSNotFound){
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"Please check your Captcha and/or Details" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"Please check your captcha and/or details" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
                 [alert show];
             }
             else if([result rangeOfString:@"success"].location != NSNotFound){

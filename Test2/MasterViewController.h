@@ -23,7 +23,7 @@
 
 - (IBAction)openSettings:(id)sender;
 - (void)startLoadingAttendance:(id)sender;
-- (void)competedProcess;
+- (void)completedProcess;
 
 @property NSString *attendanceCacheString;
 

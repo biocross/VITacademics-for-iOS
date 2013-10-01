@@ -26,7 +26,7 @@
 }
 
 -(id)init{
-    return [self initWithSubject:@"SAM101" title:@"Sample Subject" slot:@"S1+TS1" attended:15 conducted:18 number:1 type:@"My Ass"];
+    return [self initWithSubject:@"SAM101" title:@"Sample Subject" slot:@"S1+TS1" attended:15 conducted:18 number:1 type:@"No Type"];
 }
 
 

@@ -12,8 +12,9 @@
 #import "DetailViewController.h"
 #import "VITxAPI.h"
 #import "CaptchaViewController.h"
-#import "MBProgressHUD.h"
 #import "TDBadgedCell.h"
+#import "SJNotificationViewController.h"
+#import "NSDate+TimeAgo.h"
 
 
 @interface MasterViewController () {
@@ -23,6 +24,10 @@
 @end
 
 @implementation MasterViewController
+
+-(void)hudWasHidden{
+    //nothing.
+}
 
 //core data
 - (NSManagedObjectContext *)managedObjectContext {
@@ -56,7 +61,24 @@ return _subjects;
 {
     
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    //Load Attendance from cache
+    
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+    if([preferences stringForKey:@"registrationNumber"]){
+        if([preferences stringForKey:[preferences stringForKey:@"registrationNumber"]]){
+            NSLog(@"Loading attendance from cache! Yay!");
+            self.attendanceCacheString = [preferences stringForKey:[preferences stringForKey:@"registrationNumber"]];
+            [self completedProcess];
+        }
+        else{
+            NSLog(@"Attendance is not cached currently for this user");
+        }
+    }
+    else{
+        //Show tutorial or open Setting View Controller
+    }
+    
     
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
@@ -103,23 +125,34 @@ return _subjects;
     
     if(indexPath.row < [self.subjects count]){
     cell.textLabel.text = [NSString stringWithString:self.subjects[indexPath.row].subjectTitle];
-    cell.detailTextLabel.text = [NSString stringWithString:self.subjects[indexPath.row].subjectCode];
-        
-    cell.badgeColor = [UIColor colorWithRed:0.197 green:0.592 blue:0.219 alpha:1.000];
+    cell.detailTextLabel.text = [NSString stringWithString:self.subjects[indexPath.row].subjectType];
+    
+    cell.badgeColor = [UIColor clearColor];
     cell.badge.radius = 8;
     cell.badge.fontSize = 12;
-
+        
     float calculatedPercentage =(float) self.subjects[indexPath.row].attendedClasses / self.subjects[indexPath.row].conductedClasses;
     float displayPercentageInteger = calculatedPercentage * 100;
     NSString *displayPercentage = [NSString stringWithFormat:@"%1.0f",displayPercentageInteger];
     cell.badgeString = [displayPercentage stringByAppendingString:@"%"];
+        
+        if(displayPercentageInteger < 75){
+            cell.badgeTextColor = [UIColor redColor];
+        }
+        else if (displayPercentageInteger > 75 && displayPercentageInteger < 80){
+            cell.badgeTextColor = [UIColor orangeColor];
+        }
+        else{
+            cell.badgeTextColor = [UIColor greenColor];
+        }
     
         
     }
+    /*
     else{
         cell.textLabel.text = @"VITacademics";
         cell.detailTextLabel.text = @"Siddharth Gupta";
-    }
+    }*/
     
     return cell;
     
@@ -179,14 +212,18 @@ return _subjects;
     //handled by Storyboards
 }
 
+
+#pragma mark - VITx API Calls
+
 - (void)startLoadingAttendance:(id)sender {
     
-    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:HUD];
-    HUD.delegate = self;
-    HUD.labelText = @"Loading";
-    HUD.detailsLabelText = @"Downloading Attendance";
-    [HUD showUsingAnimation:YES];
+    SJNotificationViewController *notificationController = [[SJNotificationViewController alloc] initWithNibName:@"SJNotificationViewController" bundle:nil];
+    [notificationController setParentView:self.view];
+    [notificationController setNotificationTitle:@"Loading Attendance..."];
+    [notificationController setNotificationLevel:SJNotificationLevelMessage];
+    [notificationController setShowSpinner:YES];
+    [notificationController setNotificationPosition:SJNotificationPositionTop];
+    [notificationController show];
     
     //getting the regno, dob from preferences.
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
@@ -203,16 +240,24 @@ return _subjects;
         dispatch_async(dispatch_get_main_queue(), ^{
            //update table here!
             //[alert dismissWithClickedButtonIndex:0 animated:YES];
-            [HUD hideUsingAnimation:YES];
+            [notificationController hide];
             self.attendanceCacheString = result;
-            [self competedProcess];
+            
+            NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+        
+            [preferences removeObjectForKey:[preferences objectForKey:@"registrationNumber"]];
+            [preferences setObject:result forKey:[preferences objectForKey:@"registrationNumber"]];
+            NSDate *date = [[NSDate alloc] init];
+            [preferences setObject:date forKey:@"lastUpdated"];
+            
+            [self completedProcess];
         });
         
     });//end of GCD    
         
 }
 
--(void)competedProcess{
+-(void)completedProcess{
 
      NSError *e = nil;
      NSString *newString = [self.attendanceCacheString stringByReplacingOccurrencesOfString:@"valid%" withString:@""];
@@ -230,28 +275,24 @@ return _subjects;
              
              [refreshedArray addObject:x];
              
-             /*
-             NSManagedObjectContext *context = [self managedObjectContext];
-             NSManagedObject *subject = [NSEntityDescription insertNewObjectForEntityForName:@"Subject" inManagedObjectContext:context];
-             [subject setValue:[item valueForKey:@"code"] forKey:@"code"];
-             [subject setValue:[item valueForKey:@"title"] forKey:@"title"];
-             [subject setValue:[item valueForKey:@"slot"] forKey:@"slot"];
-             [subject setValue:[item valueForKey:@"attended"] forKey:@"attendedClasses"];
-             [subject setValue:[item valueForKey:@"conducted"] forKey:@"conductedClasses"];
-             [subject setValue:[item valueForKey:@"sl_no"] forKey:@"number"];
-             [subject setValue:[item valueForKey:@"type"] forKey:@"type"];
-             
-             NSError *error = nil;
-             // Save the object to persistent store
-             if (![context save:&error]) {
-                 NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
-             }
-             */
         } //end of for
          NSLog(@"%d", [self.subjects.privateListOfSubjects count]);
          NSLog(@"ref array cintains %d", refreshedArray.count);
          [self.subjects setArray:refreshedArray];
          [self.tableView reloadData];
+         
+         
+         NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+         if([preferences objectForKey:@"lastUpdated"]){
+             NSDate *lastUpdated = [preferences objectForKey:@"lastUpdated"];
+             
+             SJNotificationViewController *notificationController = [[SJNotificationViewController alloc] initWithNibName:@"SJNotificationViewController" bundle:nil];
+             [notificationController setParentView:self.view];
+             [notificationController setNotificationTitle:[@"Last Updated: " stringByAppendingString:[lastUpdated timeAgo]]];
+             [notificationController setNotificationLevel:SJNotificationLevelMessage];
+             [notificationController setNotificationPosition:SJNotificationPositionTop];
+             [notificationController showFor:2];
+         }
      } //end of else
     
 
