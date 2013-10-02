@@ -15,13 +15,13 @@
 
 - (NSMutableArray *)privateListOfSubjects {
     if(!_privateListOfSubjects){
-       _privateListOfSubjects = @[
+       _privateListOfSubjects = [[NSMutableArray alloc] initWithArray:@[
                                 
                                 [[Subject alloc] initWithSubject:@"" title:@"Please click" slot:@"-" attended:0 conducted:0 number:1 type:@"on the refresh button to begin!"],
  
 
                                    
-                                   ]; 
+                                   ]];
         
     }
             return _privateListOfSubjects;

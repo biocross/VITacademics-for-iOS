@@ -18,7 +18,7 @@
 
 - (IBAction)setDOBfromPicker:(id)sender;
 
--(BOOL)textFieldShouldBeginEditing:(UITextField *)dateOfBirth;
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)dateOfBirth;
 
 
 @end

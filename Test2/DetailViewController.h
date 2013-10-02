@@ -15,7 +15,8 @@
 @property (strong, nonatomic) id detailItem;
 @property (strong, nonatomic) Subjects *subject;
 
-- (void)setDetailItem:(id)newDetailItem;
+- (void) setDetailItem:(id)newDetailItem;
+- (void) recalculateAttendance;
 
 @property (weak, nonatomic) IBOutlet UILabel *subjectCode;
 @property (weak, nonatomic) IBOutlet UILabel *subjectName;
@@ -26,7 +27,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *subjectConducted;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 
-
+- (IBAction)missPlus:(id)sender;
+- (IBAction)missMinus:(id)sender;
+- (IBAction)attendPlus:(id)sender;
+- (IBAction)attendMinus:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *missLabel;
+@property (weak, nonatomic) IBOutlet UILabel *attendLabel;
 
 
 @end

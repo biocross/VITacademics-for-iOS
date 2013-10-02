@@ -48,15 +48,36 @@
         self.title = _subject.subjectCode;
         self.subjectName.text = _subject.subjectTitle;
         self.subjectSlot.text = _subject.subjectSlot;
-        float calculatedPercentage =(float) _subject.attendedClasses / _subject.conductedClasses;
-        float displayPercentageInteger = calculatedPercentage * 100;
-        NSString *displayPercentage = [NSString stringWithFormat:@"%1.0f",displayPercentageInteger];
-        self.subjectPercentage.text = [displayPercentage stringByAppendingString:@"%"];
+        self.subjectType.text = _subject.subjectType;
         self.subjectAttended.text = [NSString stringWithFormat:@"%d",_subject.attendedClasses];
         self.subjectConducted.text = [NSString stringWithFormat:@"%d",_subject.conductedClasses];
-        self.subjectType.text = _subject.subjectType;
-        [self.progressBar setProgress:calculatedPercentage];
         
+        [self recalculateAttendance];
+        
+        
+        
+    }
+    
+}
+
+- (void)recalculateAttendance{
+    float calculatedPercentage =(float) [self.subjectAttended.text intValue] / [self.subjectConducted.text intValue];
+    float displayPercentageInteger = calculatedPercentage * 100;
+    NSString *displayPercentage = [NSString stringWithFormat:@"%1.0f",displayPercentageInteger];
+    self.subjectPercentage.text = [displayPercentage stringByAppendingString:@"%"];
+    [self.progressBar setProgress:calculatedPercentage animated:YES];
+    
+    if(displayPercentageInteger >= 80){
+        [self.subjectPercentage setTextColor:[UIColor greenColor]];
+        [self.progressBar setProgressTintColor:[UIColor greenColor]];
+    }
+    else if(displayPercentageInteger >= 75 && displayPercentageInteger < 80){
+        [self.subjectPercentage setTextColor:[UIColor orangeColor]];
+        [self.progressBar setProgressTintColor:[UIColor orangeColor]];
+    }
+    else{
+        [self.subjectPercentage setTextColor:[UIColor redColor]];
+        [self.progressBar setProgressTintColor:[UIColor redColor]];
     }
     
 }
@@ -64,7 +85,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
     
 }
@@ -92,4 +112,90 @@
 }
 
 
+- (IBAction)missPlus:(id)sender {
+    int missPlusLabel = [_missLabel.text intValue] + 1;
+    [_missLabel setText:[NSString stringWithFormat:@"%d", missPlusLabel]];
+    
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"L" options:NSRegularExpressionCaseInsensitive error:&error];
+    NSUInteger numberOfMatches = [regex numberOfMatchesInString:self.subjectSlot.text options:0 range:NSMakeRange(0, [self.subjectSlot.text length])];
+    
+    int numberOfSlots = 1;
+    if(numberOfMatches){
+        numberOfSlots = numberOfMatches;
+    }
+
+    
+    int currentSubjectConducted = [self.subjectConducted.text intValue];
+    [self.subjectConducted setText:[NSString stringWithFormat:@"%d", currentSubjectConducted + numberOfSlots ]];
+    [self recalculateAttendance];
+    
+}
+
+- (IBAction)missMinus:(id)sender {
+    int missPlusLabel = [_missLabel.text intValue];
+    if(missPlusLabel > 0){
+        [_missLabel setText:[NSString stringWithFormat:@"%d", missPlusLabel - 1 ]];
+        
+        NSError *error = NULL;
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"L" options:NSRegularExpressionCaseInsensitive error:&error];
+        NSUInteger numberOfMatches = [regex numberOfMatchesInString:self.subjectSlot.text options:0 range:NSMakeRange(0, [self.subjectSlot.text length])];
+        
+        int numberOfSlots = 1;
+        if(numberOfMatches){
+            numberOfSlots = numberOfMatches;
+        }
+        
+        int currentSubjectConducted = [self.subjectConducted.text intValue];
+        [self.subjectConducted setText:[NSString stringWithFormat:@"%d", currentSubjectConducted - numberOfSlots ]];
+        [self recalculateAttendance];
+    }
+}
+
+- (IBAction)attendPlus:(id)sender {
+    int attendPlusLabel = [_attendLabel.text intValue];
+    [_attendLabel setText:[NSString stringWithFormat:@"%d", attendPlusLabel + 1 ]];
+    
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"L" options:NSRegularExpressionCaseInsensitive error:&error];
+    NSUInteger numberOfMatches = [regex numberOfMatchesInString:self.subjectSlot.text options:0 range:NSMakeRange(0, [self.subjectSlot.text length])];
+    
+    int numberOfSlots = 1;
+    if(numberOfMatches){
+        numberOfSlots = numberOfMatches;
+    }
+    
+    int currentSubjectAttended = [self.subjectAttended.text intValue];
+    [self.subjectAttended setText:[NSString stringWithFormat:@"%d", currentSubjectAttended + numberOfSlots]];
+    
+    int currentSubjectConducted = [self.subjectConducted.text intValue];
+    [self.subjectConducted setText:[NSString stringWithFormat:@"%d", currentSubjectConducted + numberOfSlots ]];
+    
+    [self recalculateAttendance];
+    
+}
+
+- (IBAction)attendMinus:(id)sender {
+    int attendPlusLabel = [_attendLabel.text intValue];
+    if(attendPlusLabel > 0){
+        [_attendLabel setText:[NSString stringWithFormat:@"%d", attendPlusLabel - 1 ]];
+        
+        NSError *error = NULL;
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"L" options:NSRegularExpressionCaseInsensitive error:&error];
+        NSUInteger numberOfMatches = [regex numberOfMatchesInString:self.subjectSlot.text options:0 range:NSMakeRange(0, [self.subjectSlot.text length])];
+        
+        int numberOfSlots = 1;
+        if(numberOfMatches){
+            numberOfSlots = numberOfMatches;
+        }
+        
+        int currentSubjectAttended = [self.subjectAttended.text intValue];
+        [self.subjectAttended setText:[NSString stringWithFormat:@"%d", currentSubjectAttended - numberOfSlots]];
+        
+        int currentSubjectConducted = [self.subjectConducted.text intValue];
+        [self.subjectConducted setText:[NSString stringWithFormat:@"%d", currentSubjectConducted - numberOfSlots]];
+        
+        [self recalculateAttendance];
+    }
+}
 @end
