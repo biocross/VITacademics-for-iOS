@@ -17,8 +17,9 @@
 @property (nonatomic) NSInteger conductedClasses;
 @property (nonatomic) NSInteger attendedClasses;
 @property (copy, nonatomic) NSString *subjectType;
+@property (nonatomic) NSArray *subjectDetails;
 
--(id)initWithSubject:(NSString *)subjectCode title:(NSString *)subjectTitle slot:(NSString *)subjectSlot attended:(NSInteger)attendedClasses conducted:(NSInteger)conductedClasses number:(NSInteger)subjectNumber type:(NSString *)subjectType;
+-(id)initWithSubject:(NSString *)subjectCode title:(NSString *)subjectTitle slot:(NSString *)subjectSlot attended:(NSInteger)attendedClasses conducted:(NSInteger)conductedClasses number:(NSInteger)subjectNumber type:(NSString *)subjectType details:(NSArray *)subjectDetails;
 
 
 

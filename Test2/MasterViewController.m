@@ -25,19 +25,6 @@
 
 @implementation MasterViewController
 
--(void)hudWasHidden{
-    //nothing.
-}
-
-//core data
-- (NSManagedObjectContext *)managedObjectContext {
-    NSManagedObjectContext *context = nil;
-    id delegate = [[UIApplication sharedApplication] delegate];
-    if ([delegate performSelector:@selector(managedObjectContext)]) {
-        context = [delegate managedObjectContext];
-    }
-    return context;
-}
 
 -(Subjects *)subjects {
     if(! _subjects){
@@ -61,6 +48,7 @@ return _subjects;
 {
     
     [super viewDidLoad];
+    //[[UINavigationBar appearance] setBarTintColor:[UIColor blueColor]];
     
     //Load Attendance from cache
     
@@ -76,7 +64,7 @@ return _subjects;
         }
     }
     else{
-        //Show tutorial or open Setting View Controller
+        //Show tutorial or open Settings View Controller
     }
     
     
@@ -271,13 +259,11 @@ return _subjects;
          NSMutableArray *refreshedArray = [[NSMutableArray alloc] init];
          for(NSDictionary *item in jsonArray) {
              
-             Subject *x = [[Subject alloc] initWithSubject:[item valueForKey:@"code"] title:[item valueForKey:@"title"] slot:[item valueForKey:@"slot"] attended:[[item valueForKey:@"attended"] integerValue] conducted:[[item valueForKey:@"conducted"] integerValue] number:[[item valueForKey:@"sl_no"] integerValue] type:[item valueForKey:@"type"]];
+             Subject *x = [[Subject alloc] initWithSubject:[item valueForKey:@"code"] title:[item valueForKey:@"title"] slot:[item valueForKey:@"slot"] attended:[[item valueForKey:@"attended"] integerValue] conducted:[[item valueForKey:@"conducted"] integerValue] number:[[item valueForKey:@"sl_no"] integerValue] type:[item valueForKey:@"type"] details:[item valueForKey:@"details"]];
              
              [refreshedArray addObject:x];
              
         } //end of for
-         NSLog(@"%d", [self.subjects.privateListOfSubjects count]);
-         NSLog(@"ref array cintains %d", refreshedArray.count);
          [self.subjects setArray:refreshedArray];
          [self.tableView reloadData];
          

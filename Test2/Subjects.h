@@ -20,6 +20,7 @@
 @property (nonatomic) NSInteger conductedClasses;
 @property (nonatomic) NSInteger attendedClasses;
 @property (copy, nonatomic) NSString *subjectType;
+@property (nonatomic) NSArray *subjectDetails;
 
 -(NSUInteger)count;
 -(Subjects *)objectAtIndexedSubscript:(NSInteger)subjectNumber;

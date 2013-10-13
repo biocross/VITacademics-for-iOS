@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "SubjectDetailsViewController.h"
 #import "Subject.h"
 
 @interface DetailViewController ()
@@ -45,7 +46,7 @@
     
     if (self.subject) {
         self.subjectCode.text = _subject.subjectCode;
-        self.title = _subject.subjectCode;
+        self.title = @"";
         self.subjectName.text = _subject.subjectTitle;
         self.subjectSlot.text = _subject.subjectSlot;
         self.subjectType.text = _subject.subjectType;
@@ -53,9 +54,6 @@
         self.subjectConducted.text = [NSString stringWithFormat:@"%d",_subject.conductedClasses];
         
         [self recalculateAttendance];
-        
-        
-        
     }
     
 }
@@ -79,6 +77,15 @@
         [self.subjectPercentage setTextColor:[UIColor redColor]];
         [self.progressBar setProgressTintColor:[UIColor redColor]];
     }
+    
+    int length = [_subject.subjectDetails count];
+    if([[_subject.subjectDetails lastObject] isEqualToString:@"Absent"]){
+        [self.lastUpdatedLabel setTextColor:[UIColor redColor]];
+    }
+    else{
+        [self.lastUpdatedLabel setTextColor:[UIColor colorWithRed:0.05 green:0.52 blue:0.99 alpha:1]];
+    }
+    self.lastUpdatedLabel.text = [_subject.subjectDetails objectAtIndex:length - 2];
     
 }
 
@@ -111,6 +118,7 @@
     self.masterPopoverController = nil;
 }
 
+#pragma mark - Attendance Manipulations
 
 - (IBAction)missPlus:(id)sender {
     int missPlusLabel = [_missLabel.text intValue] + 1;
@@ -198,4 +206,55 @@
         [self recalculateAttendance];
     }
 }
+
+
+/*
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"detailsSegue"]) {
+        SubjectDetailsViewController *toController = [segue destinationViewController] ;
+        //toController.detailsArray = _subject.subjectDetails;
+    }
+}*/
+
+
+
+
+
+
+/*
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [_subject.subjectDetails count]/2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailCell" forIndexPath:indexPath];
+    cell.detailTextLabel.text = @"Present";
+    cell.textLabel.text = @"24-Jan-2013";
+    
+    return cell;
+}
+ */
+
+
+
+
+- (IBAction)subjectDetailsButton:(id)sender {
+    SubjectDetailsViewController *forThisSubject = [[SubjectDetailsViewController alloc] init];
+    NSLog(@"Sending Array with %d elements", [_subject.subjectDetails count]);
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:forThisSubject];
+    [self presentViewController:nav animated:YES completion:nil];
+    [forThisSubject setDetailsArray:_subject.subjectDetails];
+
+    
+}
+
 @end

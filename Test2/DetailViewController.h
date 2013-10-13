@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) id detailItem;
 @property (strong, nonatomic) Subjects *subject;
+@property (weak, nonatomic) IBOutlet UILabel *lastUpdatedLabel;
 
 - (void) setDetailItem:(id)newDetailItem;
 - (void) recalculateAttendance;
@@ -31,8 +32,10 @@
 - (IBAction)missMinus:(id)sender;
 - (IBAction)attendPlus:(id)sender;
 - (IBAction)attendMinus:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UILabel *missLabel;
 @property (weak, nonatomic) IBOutlet UILabel *attendLabel;
 
+- (IBAction)subjectDetailsButton:(id)sender;
 
 @end

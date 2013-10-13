@@ -17,7 +17,7 @@
     if(!_privateListOfSubjects){
        _privateListOfSubjects = [[NSMutableArray alloc] initWithArray:@[
                                 
-                                [[Subject alloc] initWithSubject:@"" title:@"Please click" slot:@"-" attended:0 conducted:0 number:1 type:@"on the refresh button to begin!"],
+                                [[Subject alloc] initWithSubject:@"" title:@"Please click" slot:@"-" attended:0 conducted:0 number:1 type:@"on the refresh button to begin!" details:@[@"Yay"]],
  
 
                                    
@@ -47,16 +47,14 @@
 - (void)setArray:(NSArray *)newArray {
     
     if ( _privateListOfSubjects != newArray ) {
-       // [_privateListOfSubjects release];
         NSLog(@"Before: %d", _privateListOfSubjects.count);
         _privateListOfSubjects = nil;
         _privateListOfSubjects = [newArray mutableCopy];
         NSLog(@"After: %d", _privateListOfSubjects.count);
 
-        //      [array retain]; // unnecessary as noted by Georg Fritzsche
     }
     
-    return;
+    return ;
 }
 
 
