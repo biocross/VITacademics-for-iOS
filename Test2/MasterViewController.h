@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CaptchaViewController.h"
+#import "Subjects.h"
 
 
 
@@ -15,9 +16,7 @@
 
 
 
-@interface MasterViewController : UITableViewController 
-
-
+@interface MasterViewController : UITableViewController <UIAlertViewDelegate>
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 
@@ -27,7 +26,7 @@
 
 @property NSString *attendanceCacheString;
 
-
-
+@property (nonatomic, strong) Subjects *theorySubjects;
+@property (nonatomic, strong) Subjects *labSubjects;
 
 @end

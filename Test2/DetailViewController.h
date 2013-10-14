@@ -16,8 +16,8 @@
 @property (strong, nonatomic) Subjects *subject;
 @property (weak, nonatomic) IBOutlet UILabel *lastUpdatedLabel;
 
-- (void) setDetailItem:(id)newDetailItem;
-- (void) recalculateAttendance;
+- (void)setDetailItem:(id)newDetailItem;
+- (void)recalculateAttendance;
 
 @property (weak, nonatomic) IBOutlet UILabel *subjectCode;
 @property (weak, nonatomic) IBOutlet UILabel *subjectName;

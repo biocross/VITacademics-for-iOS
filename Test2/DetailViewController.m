@@ -207,46 +207,6 @@
     }
 }
 
-
-/*
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"detailsSegue"]) {
-        SubjectDetailsViewController *toController = [segue destinationViewController] ;
-        //toController.detailsArray = _subject.subjectDetails;
-    }
-}*/
-
-
-
-
-
-
-/*
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [_subject.subjectDetails count]/2;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailCell" forIndexPath:indexPath];
-    cell.detailTextLabel.text = @"Present";
-    cell.textLabel.text = @"24-Jan-2013";
-    
-    return cell;
-}
- */
-
-
-
-
 - (IBAction)subjectDetailsButton:(id)sender {
     SubjectDetailsViewController *forThisSubject = [[SubjectDetailsViewController alloc] init];
     NSLog(@"Sending Array with %d elements", [_subject.subjectDetails count]);

@@ -26,6 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [_registrationNumber becomeFirstResponder];
+    
     NSDate *now = [NSDate date];
 	[_datePicker setDate:now animated:YES];
     
@@ -75,6 +78,9 @@
     [preferences removeObjectForKey:@"dateOfBirth"];
     [preferences setObject:_registrationNumber.text forKey:@"registrationNumber"];
     [preferences setObject:_dateOfBirth.text forKey:@"dateOfBirth"];
+    
+    NSString *notificationName = @"settingsDidChange";
+    [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:nil];
     
     [self.navigationController popViewControllerAnimated:YES];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];

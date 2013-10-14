@@ -20,7 +20,6 @@
     NSURL * url= [NSURL URLWithString:buildingUrl];
     NSError* error = nil;
     NSString *text = [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
-    //NSData* text = [NSData dataWithContentsOfURL:url];
     if( text )
     {
         return text;

@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		1627657317FB0E3300A18AB2 /* NSDateTimeAgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1627657217FB0E3300A18AB2 /* NSDateTimeAgo.bundle */; };
 		163E584017F9E18200FCB8A1 /* TDBadgedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 163E583F17F9E18200FCB8A1 /* TDBadgedCell.m */; };
-		1668E3EE1752433400C0C58B /* Attendance.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1668E3EC1752433400C0C58B /* Attendance.xcdatamodeld */; };
-		1668E3F01752435100C0C58B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1668E3EF1752435100C0C58B /* CoreData.framework */; };
 		1677629017FAF6A000727568 /* SJNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677628E17FAF6A000727568 /* SJNotificationViewController.m */; };
 		1677629117FAF6A000727568 /* SJNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1677628F17FAF6A000727568 /* SJNotificationViewController.xib */; };
 		1677629417FAFCB700727568 /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677629317FAFCB700727568 /* NSDate+TimeAgo.m */; };
@@ -40,8 +38,6 @@
 		1627657217FB0E3300A18AB2 /* NSDateTimeAgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NSDateTimeAgo.bundle; sourceTree = "<group>"; };
 		163E583E17F9E18200FCB8A1 /* TDBadgedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDBadgedCell.h; sourceTree = "<group>"; };
 		163E583F17F9E18200FCB8A1 /* TDBadgedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDBadgedCell.m; sourceTree = "<group>"; };
-		1668E3ED1752433400C0C58B /* Attendance.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Attendance.xcdatamodel; sourceTree = "<group>"; };
-		1668E3EF1752435100C0C58B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1677628D17FAF6A000727568 /* SJNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJNotificationViewController.h; sourceTree = "<group>"; };
 		1677628E17FAF6A000727568 /* SJNotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJNotificationViewController.m; sourceTree = "<group>"; };
 		1677628F17FAF6A000727568 /* SJNotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SJNotificationViewController.xib; sourceTree = "<group>"; };
@@ -87,7 +83,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				16D66A2C1755EFC40015FDD7 /* QuartzCore.framework in Frameworks */,
-				1668E3F01752435100C0C58B /* CoreData.framework in Frameworks */,
 				16888CC8173856D700BEEA71 /* UIKit.framework in Frameworks */,
 				16888CCA173856D700BEEA71 /* Foundation.framework in Frameworks */,
 				16888CCC173856D700BEEA71 /* CoreGraphics.framework in Frameworks */,
@@ -116,8 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				16D66A2B1755EFC40015FDD7 /* QuartzCore.framework */,
-				1668E3EF1752435100C0C58B /* CoreData.framework */,
-				1668E3EC1752433400C0C58B /* Attendance.xcdatamodeld */,
 				16888CCD173856D700BEEA71 /* Test2 */,
 				16888CC6173856D700BEEA71 /* Frameworks */,
 				16888CC5173856D700BEEA71 /* Products */,
@@ -149,7 +142,6 @@
 				16888CD6173856D700BEEA71 /* AppDelegate.h */,
 				16888CD7173856D700BEEA71 /* AppDelegate.m */,
 				16888CDF173856D800BEEA71 /* MainStoryboard_iPhone.storyboard */,
-				16888CE2173856D800BEEA71 /* MainStoryboard_iPad.storyboard */,
 				16888CE5173856D800BEEA71 /* MasterViewController.h */,
 				16888CE6173856D800BEEA71 /* MasterViewController.m */,
 				16888CE8173856D800BEEA71 /* DetailViewController.h */,
@@ -164,6 +156,7 @@
 				16888CF717385A0A00BEEA71 /* Model */,
 				169C0A2E174ADCA8005B16ED /* VITxAPI.h */,
 				169C0A2F174ADCA8005B16ED /* VITxAPI.m */,
+				16888CE2173856D800BEEA71 /* MainStoryboard_iPad.storyboard */,
 			);
 			path = Test2;
 			sourceTree = "<group>";
@@ -292,7 +285,6 @@
 				169C0A33174B125E005B16ED /* CaptchaViewController.m in Sources */,
 				1677629017FAF6A000727568 /* SJNotificationViewController.m in Sources */,
 				16C3ACC51809420200AD95D9 /* SubjectDetailsViewController.m in Sources */,
-				1668E3EE1752433400C0C58B /* Attendance.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,19 +427,6 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		1668E3EC1752433400C0C58B /* Attendance.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				1668E3ED1752433400C0C58B /* Attendance.xcdatamodel */,
-			);
-			currentVersion = 1668E3ED1752433400C0C58B /* Attendance.xcdatamodel */;
-			path = Attendance.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 16888CBC173856D700BEEA71 /* Project object */;
 }

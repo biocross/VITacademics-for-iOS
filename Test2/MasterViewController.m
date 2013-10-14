@@ -19,6 +19,10 @@
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
+    NSMutableArray *MTheorySubjects;
+    NSMutableArray *MLabSubjects;
+    
+    
 }
 @property (strong, nonatomic) Subjects *subjects;
 @end
@@ -32,6 +36,8 @@
     }
 return _subjects;
 }
+
+
 
 
 - (void)awakeFromNib
@@ -48,10 +54,10 @@ return _subjects;
 {
     
     [super viewDidLoad];
+    
     //[[UINavigationBar appearance] setBarTintColor:[UIColor blueColor]];
     
     //Load Attendance from cache
-    
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     if([preferences stringForKey:@"registrationNumber"]){
         if([preferences stringForKey:[preferences stringForKey:@"registrationNumber"]]){
@@ -61,21 +67,83 @@ return _subjects;
         }
         else{
             NSLog(@"Attendance is not cached currently for this user");
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"No Data Here"
+                                                              message:@"It time to load/refresh your attendance!"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                                    otherButtonTitles:@"Refresh", nil];
+            
+            [message show];
         }
     }
     else{
         //Show tutorial or open Settings View Controller
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Welcome to VITacademics!"
+                                                          message:@"Let's begin by entering your credentials"
+                                                         delegate:self
+                                                cancelButtonTitle:@"Cancel"
+                                                otherButtonTitles:@"Okay", nil];
+        
+        [message show];
+        
+        
     }
     
     
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
-    NSString *notificationName = @"captchaDidVerify";
+    //Observers:
+    NSString *notificationForCaptcha = @"captchaDidVerify";
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(startLoadingAttendance:)
-     name:notificationName
+     name:notificationForCaptcha
      object:nil];
+    
+    NSString *notificationForSettings = @"settingsDidChange";
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(beginLoadingAttendance)
+     name:notificationForSettings
+     object:nil];
+
+}
+
+-(void)beginLoadingAttendance{
+    
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Credential Change Detected"
+                                                      message:@"Looks like you changed your details. Let's refresh your attendance to reflect this."
+                                                     delegate:self
+                                            cancelButtonTitle:@"Cancel"
+                                            otherButtonTitles:@"Yup", nil];
+    [message show];
+
+}
+
+#pragma mark - New User Handling
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if([title isEqualToString:@"Okay"])
+    {
+        NSLog(@"New user clicked on Okay, now opening Settings.");
+        
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+        UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"SettingsViewNav"];
+        [self presentViewController:vc animated:YES completion:NULL];
+        
+    }
+    else if([title isEqualToString:@"Refresh"]){
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+        UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CaptchaViewNav"];
+        [self presentViewController:vc animated:YES completion:NULL];
+    }
+    
+    else if([title isEqualToString:@"Yup"]){
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+        UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CaptchaViewNav"];
+        [self presentViewController:vc animated:YES completion:NULL];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,26 +152,65 @@ return _subjects;
     // Dispose of any resources that can be recreated.
 }
 
-- (void)insertNewObject:(id)sender
-{
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
-    }
-    [_objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-}
-
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    int subjectsLength = [_subjects count] - 1;
+    
+    //Sort the subjects:
+    MTheorySubjects = [[NSMutableArray alloc] init];
+    MLabSubjects = [[NSMutableArray alloc] init];
+    
+    for(int i = 0; i < subjectsLength; i++){
+        if ([_subjects[i].subjectType rangeOfString:@"Theory"].location != NSNotFound){
+            [MTheorySubjects addObject:_subjects[i]];
+        }
+        else if([_subjects[i].subjectType rangeOfString:@"Lab"].location != NSNotFound){
+            [MLabSubjects addObject:_subjects[i]];
+        }
+    }
+    
+    NSLog(@"Found %d theories, and %d labs", [MTheorySubjects count], [MLabSubjects count]);
+    
+    self.theorySubjects = [[Subjects alloc] init];
+    self.labSubjects = [[Subjects alloc] init];
+    
+    [self.theorySubjects setArray:MTheorySubjects];
+    [self.labSubjects setArray:MLabSubjects];
+    
+    
+    
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.subjects count];
+    int returnValue = 0;
+    
+    if(section == 0){
+        returnValue = [self.theorySubjects count];
+    }
+    else if(section == 1){
+        returnValue = [self.labSubjects count];
+    }
+    
+    NSLog(@"numberOfRowsInSection: Theory: %d, Lab: %d", [self.theorySubjects count], [self.labSubjects count]);
+    
+    return returnValue;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *returnString = @"Others";
+    
+    if(section == 0)
+        returnString = @"Theory";
+    if(section == 1)
+        returnString = @"Lab";
+    
+    return returnString;
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -111,18 +218,20 @@ return _subjects;
     
     TDBadgedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SubjectCell" forIndexPath:indexPath];
     
-    if(indexPath.row < [self.subjects count]){
-    cell.textLabel.text = [NSString stringWithString:self.subjects[indexPath.row].subjectTitle];
-    cell.detailTextLabel.text = [NSString stringWithString:self.subjects[indexPath.row].subjectType];
     
-    cell.badgeColor = [UIColor clearColor];
-    cell.badge.radius = 8;
-    cell.badge.fontSize = 12;
+    if(indexPath.section == 0){
+        cell.textLabel.text = [NSString stringWithString:self.theorySubjects[indexPath.row].subjectTitle];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", self.theorySubjects[indexPath.row].subjectType, self.theorySubjects[indexPath.row].subjectSlot];
+        [cell.detailTextLabel setTextColor:[UIColor grayColor]];
         
-    float calculatedPercentage =(float) self.subjects[indexPath.row].attendedClasses / self.subjects[indexPath.row].conductedClasses;
-    float displayPercentageInteger = calculatedPercentage * 100;
-    NSString *displayPercentage = [NSString stringWithFormat:@"%1.0f",displayPercentageInteger];
-    cell.badgeString = [displayPercentage stringByAppendingString:@"%"];
+        cell.badgeColor = [UIColor clearColor];
+        cell.badge.radius = 8;
+        cell.badge.fontSize = 12;
+        
+        float calculatedPercentage =(float) self.theorySubjects[indexPath.row].attendedClasses / self.theorySubjects[indexPath.row].conductedClasses;
+        float displayPercentageInteger = calculatedPercentage * 100;
+        NSString *displayPercentage = [NSString stringWithFormat:@"%1.0f",displayPercentageInteger];
+        cell.badgeString = [displayPercentage stringByAppendingString:@"%"];
         
         if(displayPercentageInteger < 75){
             cell.badgeTextColor = [UIColor redColor];
@@ -133,14 +242,36 @@ return _subjects;
         else{
             cell.badgeTextColor = [UIColor greenColor];
         }
+    }
+    else{
+        cell.textLabel.text = [NSString stringWithString:self.labSubjects[indexPath.row].subjectTitle];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", self.labSubjects[indexPath.row].subjectType, self.labSubjects[indexPath.row].subjectSlot];
+        [cell.detailTextLabel setTextColor:[UIColor grayColor]];
+
+        cell.badgeColor = [UIColor clearColor];
+        cell.badge.radius = 8;
+        cell.badge.fontSize = 12;
+        
+        float calculatedPercentage =(float) self.labSubjects[indexPath.row].attendedClasses / self.labSubjects[indexPath.row].conductedClasses;
+        float displayPercentageInteger = calculatedPercentage * 100;
+        NSString *displayPercentage = [NSString stringWithFormat:@"%1.0f",displayPercentageInteger];
+        cell.badgeString = [displayPercentage stringByAppendingString:@"%"];
+        
+        if(displayPercentageInteger < 75){
+            cell.badgeTextColor = [UIColor redColor];
+        }
+        else if (displayPercentageInteger > 75 && displayPercentageInteger < 80){
+            cell.badgeTextColor = [UIColor orangeColor];
+        }
+        else{
+            cell.badgeTextColor = [UIColor greenColor];
+    }
+}//end of sections clause
+    
+    
     
         
-    }
-    /*
-    else{
-        cell.textLabel.text = @"VITacademics";
-        cell.detailTextLabel.text = @"Siddharth Gupta";
-    }*/
+    
     
     return cell;
     
@@ -151,32 +282,6 @@ return _subjects;
     // Return NO if you do not want the specified item to be editable.
     return NO;
 }
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }
-}
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -192,7 +297,14 @@ return _subjects;
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
         DetailViewController *detailViewController = [segue destinationViewController];
-        detailViewController.subject = self.subjects[selectedRowIndex.row];
+        
+        
+        if(selectedRowIndex.section == 0){
+            detailViewController.subject = self.theorySubjects[selectedRowIndex.row];
+        }
+        else{
+            detailViewController.subject = self.labSubjects[selectedRowIndex.row];
+        }
     }
 }
 

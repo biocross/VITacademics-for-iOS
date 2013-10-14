@@ -24,13 +24,13 @@
         <scene sceneID="18">
             <objects>
                 <tableViewController title="Master" id="12" customClass="MasterViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="13">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="13">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" horizontalCompressionResistancePriority="711" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubjectCell" textLabel="0k2-Ap-XAz" detailTextLabel="UdB-vC-u9U" style="IBUITableViewCellStyleSubtitle" id="lJ0-d7-vTF" customClass="TDBadgedCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="119" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lJ0-d7-vTF" id="Hg4-oV-jdy">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -84,7 +84,7 @@
         <!--New Settings View Controller - Settings-->
         <scene sceneID="8lT-kC-8t1">
             <objects>
-                <viewController title="Settings" id="sgQ-su-5YJ" customClass="NewSettingsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsView" title="Settings" id="sgQ-su-5YJ" customClass="NewSettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qnf-si-NoZ"/>
                         <viewControllerLayoutGuide type="bottom" id="opE-Vz-F9L"/>
@@ -93,8 +93,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4fZ-dk-KGK">
-                                <rect key="frame" x="0.0" y="264" width="320" height="162"/>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4fZ-dk-KGK">
+                                <rect key="frame" x="0.0" y="318" width="320" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="390709107.57445401">
                                     <!--2013-05-20 02:18:27 +0000-->
                                 </date>
@@ -441,7 +441,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <!--Navigation Controller-->
         <scene sceneID="cAJ-dn-EMW">
             <objects>
-                <navigationController id="l5c-ab-rJN" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SettingsViewNav" id="l5c-ab-rJN" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ye8-B5-Lwy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -459,7 +459,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <!--Navigation Controller-->
         <scene sceneID="AgY-Ao-ep5">
             <objects>
-                <navigationController id="cgH-ZL-5Mb" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CaptchaViewNav" id="cgH-ZL-5Mb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="i77-lg-dwb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

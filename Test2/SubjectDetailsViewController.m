@@ -28,6 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"DetailCell"];
     
     NSLog(@"Got the detailsOriginal array with length - %d", [self.detailsArray count]);
@@ -54,9 +56,7 @@
                                                                                style:UIBarButtonSystemItemDone
                                                                              target:self   action:@selector(dismissView)];
     self.navigationItem.title = @"Attendance Details";
- 
-
-    [self.tableView reloadData];
+    [self.tableView setAllowsSelection:NO];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
