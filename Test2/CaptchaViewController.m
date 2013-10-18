@@ -9,7 +9,7 @@
 #import "CaptchaViewController.h"
 #import "VITxAPI.h"
 #import "MasterViewController.h"
-#import "SJNotificationViewController.h"
+#import "CSNotificationView.h"
 
 @interface CaptchaViewController ()
 
@@ -59,11 +59,12 @@
         [_captchaText resignFirstResponder];
         
         if([_captchaText.text length] == 6){
-            [self verifyCaptcha:nil];
+            [self beginCaptchaVerification];
         }
         else{
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Please enter the complete captcha! (6 characters)" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
             [alert show];
+            [_captchaImage becomeFirstResponder];
         }
         
     }
@@ -83,9 +84,7 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)verifyCaptcha:(id)sender {
-    
-    [_captchaText resignFirstResponder];
+- (void)beginCaptchaVerification{
     
     VITxAPI *handler = [[VITxAPI alloc] init];
     
@@ -94,13 +93,11 @@
     NSString *dateOfBirth = [preferences objectForKey:@"dateOfBirth"];
     
     //show progress
-    SJNotificationViewController *notificationController = [[SJNotificationViewController alloc] initWithNibName:@"SJNotificationViewController" bundle:nil];
-    [notificationController setParentView:self.view];
-    [notificationController setNotificationTitle:@"Submitting Captcha..."];
-    [notificationController setNotificationLevel:SJNotificationLevelMessage];
-    [notificationController setShowSpinner:YES];
-    [notificationController setNotificationPosition:SJNotificationPositionBottom];
-    [notificationController show];
+    
+    CSNotificationView *notificationController = [CSNotificationView notificationViewWithParentViewController:self tintColor:[UIColor blueColor] image:nil message:@"Submitting Captcha..."];
+    
+    [notificationController setVisible:YES animated:YES completion:nil];
+    
     
     
     //verify captcha in the background
@@ -108,7 +105,7 @@
     dispatch_async(downloadQueue, ^{
         NSString *result = [handler verifyCaptchaWithRegistrationNumber:registrationNumber andDateOfBirth:dateOfBirth andCaptcha:_captchaText.text];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [notificationController hide];
+            [notificationController setVisible:NO animated:YES completion:nil];
             if([result rangeOfString:@"timedout"].location != NSNotFound){
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"Please check your Captcha and/or Details" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
                 [alert show];
@@ -122,14 +119,30 @@
                 NSString *notificationName = @"captchaDidVerify";
                 [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:nil];
             }
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-        [self.navigationController popViewControllerAnimated:YES];
-
+            else if([result isEqualToString:@"networkerror"]){
+                UIAlertView *errorMessage = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"There was a problem connecting to the internet. Please check your Data/Wi-Fi connection and try again." delegate:self cancelButtonTitle:@"Okay." otherButtonTitles: nil];
+                [errorMessage show];
+            }
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+            [self.navigationController popViewControllerAnimated:YES];
+            
         });
     });//end of GCD
-    
-    
-    
-    
+}
+
+- (IBAction)verifyCaptcha:(id)sender {
+    if (_captchaText == self.captchaText) {
+        [_captchaText resignFirstResponder];
+        
+        if([_captchaText.text length] == 6){
+            [self beginCaptchaVerification];
+        }
+        else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Please enter the complete captcha! (6 characters)" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+            [alert show];
+            [_captchaImage becomeFirstResponder];
+        }
+        
+    }
 }
 @end

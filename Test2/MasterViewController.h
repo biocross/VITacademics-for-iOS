@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CaptchaViewController.h"
 #import "Subjects.h"
+#import "RNFrostedSidebar.h"
 
 
 
@@ -16,17 +17,19 @@
 
 
 
-@interface MasterViewController : UITableViewController <UIAlertViewDelegate>
+@interface MasterViewController : UITableViewController <UIAlertViewDelegate, RNFrostedSidebarDelegate>
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 
-- (IBAction)openSettings:(id)sender;
 - (void)startLoadingAttendance:(id)sender;
 - (void)completedProcess;
+- (IBAction)openMenu:(id)sender;
 
 @property NSString *attendanceCacheString;
 
 @property (nonatomic, strong) Subjects *theorySubjects;
 @property (nonatomic, strong) Subjects *labSubjects;
+@property (nonatomic, strong) NSMutableIndexSet *menuOptionIndices;
+@property (nonatomic) RNFrostedSidebar *menuPointer;
 
 @end

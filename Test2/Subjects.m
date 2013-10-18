@@ -36,7 +36,6 @@
     float calculatedPercentage =(float) self.attendedClasses /self.conductedClasses;
     float displayPercentageInteger = calculatedPercentage * 100;
     NSString *displayPercentage = [NSString stringWithFormat:@"%1.0f",displayPercentageInteger];
-    
     return displayPercentage;
 }
 
@@ -47,10 +46,8 @@
 - (void)setArray:(NSArray *)newArray {
     
     if ( _privateListOfSubjects != newArray ) {
-        NSLog(@"Before: %d", _privateListOfSubjects.count);
         _privateListOfSubjects = nil;
         _privateListOfSubjects = [newArray mutableCopy];
-        NSLog(@"After: %d", _privateListOfSubjects.count);
 
     }
     

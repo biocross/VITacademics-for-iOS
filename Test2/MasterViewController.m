@@ -13,9 +13,18 @@
 #import "VITxAPI.h"
 #import "CaptchaViewController.h"
 #import "TDBadgedCell.h"
-#import "SJNotificationViewController.h"
+#import "CSNotificationView.h"
 #import "NSDate+TimeAgo.h"
+#import "RNFrostedSidebar.h"
+#import "Helpshift.h"
 
+/* TODO:
+ 
+ - Error Handling for server responses
+ - Select icons for the sidebar
+ - Build the tutorial using CSNotificztions! Oh Sexy!
+ 
+*/
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
@@ -44,7 +53,7 @@ return _subjects;
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         self.clearsSelectionOnViewWillAppear = NO;
-        self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
+        self.preferredContentSize = CGSizeMake(320.0, 600.0);
     }
     [super awakeFromNib];
     
@@ -56,6 +65,8 @@ return _subjects;
     [super viewDidLoad];
     
     //[[UINavigationBar appearance] setBarTintColor:[UIColor blueColor]];
+    
+    
     
     //Load Attendance from cache
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
@@ -78,16 +89,26 @@ return _subjects;
     }
     else{
         //Show tutorial or open Settings View Controller
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Welcome to VITacademics!"
-                                                          message:@"Let's begin by entering your credentials"
-                                                         delegate:self
-                                                cancelButtonTitle:@"Cancel"
-                                                otherButtonTitles:@"Okay", nil];
-        
-        [message show];
-        
-        
-    }
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4f * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [CSNotificationView showInViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:@"Welcome to VITacademics!" duration:2.5f];
+            
+            dispatch_time_t popTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.35f * NSEC_PER_SEC));
+            dispatch_after(popTime2, dispatch_get_main_queue(), ^(void){
+                [self openMenu:self];
+                dispatch_time_t popTime3 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5f * NSEC_PER_SEC));
+                dispatch_after(popTime3, dispatch_get_main_queue(), ^(void){
+                    [self.menuPointer dismissAnimated:YES];
+                    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Welcome to VITacademics!"
+                                                                      message:@"Let's begin by entering your credentials"
+                                                                     delegate:self
+                                                            cancelButtonTitle:@"Cancel"
+                                                            otherButtonTitles:@"Okay", nil];
+                    [message show];
+                });
+            });
+        });
+    }//end of else
     
     
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
@@ -106,6 +127,7 @@ return _subjects;
      selector:@selector(beginLoadingAttendance)
      name:notificationForSettings
      object:nil];
+    
 
 }
 
@@ -156,7 +178,7 @@ return _subjects;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    int subjectsLength = [_subjects count] - 1;
+    int subjectsLength = [_subjects count];
     
     //Sort the subjects:
     MTheorySubjects = [[NSMutableArray alloc] init];
@@ -171,16 +193,12 @@ return _subjects;
         }
     }
     
-    NSLog(@"Found %d theories, and %d labs", [MTheorySubjects count], [MLabSubjects count]);
-    
     self.theorySubjects = [[Subjects alloc] init];
     self.labSubjects = [[Subjects alloc] init];
     
     [self.theorySubjects setArray:MTheorySubjects];
     [self.labSubjects setArray:MLabSubjects];
-    
-    
-    
+
     return 2;
 }
 
@@ -194,8 +212,6 @@ return _subjects;
     else if(section == 1){
         returnValue = [self.labSubjects count];
     }
-    
-    NSLog(@"numberOfRowsInSection: Theory: %d, Lab: %d", [self.theorySubjects count], [self.labSubjects count]);
     
     return returnValue;
 }
@@ -230,6 +246,10 @@ return _subjects;
         
         float calculatedPercentage =(float) self.theorySubjects[indexPath.row].attendedClasses / self.theorySubjects[indexPath.row].conductedClasses;
         float displayPercentageInteger = calculatedPercentage * 100;
+        int compararingVariable = (int) displayPercentageInteger;
+        if(displayPercentageInteger > compararingVariable){
+            displayPercentageInteger += 1;
+        }
         NSString *displayPercentage = [NSString stringWithFormat:@"%1.0f",displayPercentageInteger];
         cell.badgeString = [displayPercentage stringByAppendingString:@"%"];
         
@@ -254,6 +274,11 @@ return _subjects;
         
         float calculatedPercentage =(float) self.labSubjects[indexPath.row].attendedClasses / self.labSubjects[indexPath.row].conductedClasses;
         float displayPercentageInteger = calculatedPercentage * 100;
+        int compararingVariable = (int) displayPercentageInteger;
+        if(displayPercentageInteger > compararingVariable){
+            displayPercentageInteger += 1;
+        }
+        
         NSString *displayPercentage = [NSString stringWithFormat:@"%1.0f",displayPercentageInteger];
         cell.badgeString = [displayPercentage stringByAppendingString:@"%"];
         
@@ -288,7 +313,17 @@ return _subjects;
     // Handled by Storyboards for iPhone
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        [self.detailViewController setDetailItem:self.subjects[indexPath.row]];
+        
+        NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
+        
+        if(selectedRowIndex.section == 0){
+            [self.detailViewController setDetailItem:self.theorySubjects[indexPath.row]];
+        }
+        else{
+            [self.detailViewController setDetailItem:self.labSubjects[indexPath.row]];
+        }
+        
+        
     }
 }
 
@@ -308,22 +343,15 @@ return _subjects;
     }
 }
 
-- (IBAction)openSettings:(id)sender {
-    //handled by Storyboards
-}
 
 
 #pragma mark - VITx API Calls
 
 - (void)startLoadingAttendance:(id)sender {
     
-    SJNotificationViewController *notificationController = [[SJNotificationViewController alloc] initWithNibName:@"SJNotificationViewController" bundle:nil];
-    [notificationController setParentView:self.view];
-    [notificationController setNotificationTitle:@"Loading Attendance..."];
-    [notificationController setNotificationLevel:SJNotificationLevelMessage];
-    [notificationController setShowSpinner:YES];
-    [notificationController setNotificationPosition:SJNotificationPositionTop];
-    [notificationController show];
+    CSNotificationView *notificationController = [CSNotificationView notificationViewWithParentViewController:self tintColor:[UIColor orangeColor] image:nil message:@"Loading Attendance..."];
+
+    [notificationController setVisible:YES animated:YES completion:nil];
     
     //getting the regno, dob from preferences.
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
@@ -340,7 +368,7 @@ return _subjects;
         dispatch_async(dispatch_get_main_queue(), ^{
            //update table here!
             //[alert dismissWithClickedButtonIndex:0 animated:YES];
-            [notificationController hide];
+            [notificationController setVisible:NO animated:YES completion:nil];
             self.attendanceCacheString = result;
             
             NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
@@ -366,7 +394,16 @@ return _subjects;
      
      if (!jsonArray) {
          NSLog(@"Error parsing JSON: %@", e);
+         if([newString isEqualToString:@"networkerror"]){
+             UIAlertView *errorMessage = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"There was a problem connecting to the internet. Please check your Data/Wi-Fi connection and try again." delegate:self cancelButtonTitle:@"Okay." otherButtonTitles: nil];
+             [errorMessage show];
+             
+         }
+         else if([newString isEqualToString:@"timedout"] || [newString isEqualToString:@"captchaerror"]){
+             UIAlertView *errorMessage = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"Something went wrong. Please try again. If this keeps on happening, please let us know via the \"Help\" section." delegate:self cancelButtonTitle:@"Okay." otherButtonTitles: nil];
+            [errorMessage show];
         }
+     }//end of if
      else {
          NSMutableArray *refreshedArray = [[NSMutableArray alloc] init];
          for(NSDictionary *item in jsonArray) {
@@ -384,25 +421,102 @@ return _subjects;
          if([preferences objectForKey:@"lastUpdated"]){
              NSDate *lastUpdated = [preferences objectForKey:@"lastUpdated"];
              
-             SJNotificationViewController *notificationController = [[SJNotificationViewController alloc] initWithNibName:@"SJNotificationViewController" bundle:nil];
-             [notificationController setParentView:self.view];
-             [notificationController setNotificationTitle:[@"Last Updated: " stringByAppendingString:[lastUpdated timeAgo]]];
-             [notificationController setNotificationLevel:SJNotificationLevelMessage];
-             [notificationController setNotificationPosition:SJNotificationPositionTop];
-             [notificationController showFor:2];
+             NSString *cardMessage = [@"Last Updated: " stringByAppendingString:[lastUpdated timeAgo]];
+             
+             //Bug Fix fix for Empty Card -> Delay
+             double delayInSeconds = 0.05f;
+             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                 [CSNotificationView showInViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:cardMessage duration:2.5f];
+             });
+             
+             
+             
+             
          }
      } //end of else
     
 
 }
 
+#pragma mark - Frost Menu Methods and Protocol Implementation
+
+-(IBAction)openMenu:(id)sender {
+    
+    NSArray *images = @[
+                        [UIImage imageNamed:@"gear"],
+                        [UIImage imageNamed:@"globe"],
+                        [UIImage imageNamed:@"profile"],
+                        [UIImage imageNamed:@"star"],
+                        [UIImage imageNamed:@"star"],
+                        [UIImage imageNamed:@"star"],
+                        ];
+    NSArray *colors = @[
+                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
+                        [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
+                        [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
+                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
+                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
+                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
+                        ];
+    
+    RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:self.menuOptionIndices borderColors:colors];
+    callout.delegate = self;
+    [callout show];
+
+    self.menuPointer = callout;
+    
+}
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
+    
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    
+    if (index == 0) { //Home Button
+        UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"HomeNav"];
+        [sidebar dismissAnimated:YES];
+        double delayInSeconds = 0.25f;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self presentViewController:vc animated:NO completion:nil];
+        });
+    }
+    if(index == 1){ //Settings
+        [sidebar dismissAnimated:YES];
+        UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"SettingsViewNav"];
+        [self presentViewController:vc animated:YES completion:NULL];
+    }
+    if(index == 2){ //Beta Access
+        [sidebar dismissAnimated:YES];
+        UIAlertView *betaAcess = [[UIAlertView alloc] initWithTitle:@"Early Access" message:@"Would you like to get early access to testing builds of VITacademics and provide feedback to help us develop features into VITacademics faster?" delegate:self cancelButtonTitle:@"Nope" otherButtonTitles:@"Oh Yeah!", nil];
+        [betaAcess show];
+    }
+    if(index == 3){ //Share with friends
+        NSString *message = @"Hello World!";
+        //UIImage *imageToShare = [UIImage imageNamed:@"test.jpg"];
+        NSArray *postItems = @[message]; //add image here if you want
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc]
+                                                initWithActivityItems:postItems
+                                                applicationActivities:nil];
+        [self presentViewController:activityVC animated:YES completion:nil];
+    }
+    if(index == 4){ //Helpshift
+        [sidebar dismissAnimated:YES];
+        [[Helpshift sharedInstance] showSupport:self];
+    }
+    if(index == 5){ //About
+        
+    }
+}
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didEnable:(BOOL)itemEnabled itemAtIndex:(NSUInteger)index {
+    if (itemEnabled) {
+        [self.menuOptionIndices removeAllIndexes];
+        [self.menuOptionIndices addIndex:index];
+    }
+    else {
+        [self.menuOptionIndices removeIndex:index];
+    }
+}
+
 @end
-
-
-
-
-
-
-
-
-

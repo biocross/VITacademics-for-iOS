@@ -8,56 +8,64 @@
 
 #import "VITxAPI.h"
 
+
 @implementation VITxAPI
 
 -(NSString *)loadAttendanceWithRegistrationNumber: (NSString *)registrationNumber andDateOfBirth: (NSString *)dateOfBirth{
     
-    NSString *buildingUrl = @"http://vitacademicsrel.appspot.com/attj/";
-    buildingUrl = [buildingUrl stringByAppendingString:registrationNumber];
-    buildingUrl = [buildingUrl stringByAppendingString:@"/"];
-    buildingUrl = [buildingUrl stringByAppendingString:dateOfBirth];
-    
-    NSURL * url= [NSURL URLWithString:buildingUrl];
-    NSError* error = nil;
+    NSString *buildingUrl = [NSString stringWithFormat:@"http://vitacademicsrel.appspot.com/attj/%@/%@", registrationNumber, dateOfBirth];
+    NSURL *url = [NSURL URLWithString:buildingUrl];
+    NSError *error = nil;
     NSString *text = [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
-    if( text )
+    
+    if(text)
     {
         return text;
     }
     else
     {
         NSLog(@"Error = %@", error);
-        return @"Error";
+        return @"networkerror";
     }
 }
 
 
 -(UIImage *)loadCaptchaIntoImageView{
+    
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     NSString *registrationNumber = [preferences stringForKey:@"registrationNumber"];
     //get the image
     id path =@"http://vitacademicsrel.appspot.com/captcha/";
     NSString *finalURL = [path stringByAppendingString:registrationNumber];
     NSURL * url= [NSURL URLWithString:finalURL];
-    NSData * data = [NSData dataWithContentsOfURL:url];
-    UIImage * img = [[UIImage alloc] initWithData:data];
-    return img;
-
     
+    NSError *error = nil;
+    NSData * data = [NSData dataWithContentsOfURL:url options:NSDataReadingUncached error:&error];
     
+    if (error){
+        NSLog(@"Failed to load the captcha.");
+        UIImage *img = [UIImage imageNamed:@"captchaError"];
+        return img;
+    }
+    else{
+        UIImage * img = [[UIImage alloc] initWithData:data];
+        return img;
+    }
 
 }
 
 -(NSString *)verifyCaptchaWithRegistrationNumber: (NSString *)registrationNumber andDateOfBirth: (NSString *)dateOfBirth andCaptcha:(NSString *)captcha{
-    NSString *url = @"http://vitacademicsrel.appspot.com/captchasub/";
-    url = [url stringByAppendingString:registrationNumber];
-    url = [url stringByAppendingString:@"/"];
-    url = [url stringByAppendingString:dateOfBirth];
-    url = [url stringByAppendingString:@"/"];
-    url = [url stringByAppendingString:captcha];
+    
+    NSString *url = [NSString stringWithFormat:@"http://vitacademicsrel.appspot.com/captchasub/%@/%@/%@", registrationNumber, dateOfBirth, captcha];
+    
     NSURL *finalUrl = [NSURL URLWithString:url];
     NSError* error = nil;
     NSString *result = [NSString stringWithContentsOfURL:finalUrl encoding:NSASCIIStringEncoding error:&error];
+    
+    if(error){
+        return @"networkerror";
+    }
+    
     return result;
     
     

@@ -32,8 +32,6 @@
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"DetailCell"];
     
-    NSLog(@"Got the detailsOriginal array with length - %d", [self.detailsArray count]);
-    
     int totalLength = [_detailsArray count];
     
     _days = [[NSMutableArray alloc] init];
@@ -48,9 +46,6 @@
 
         }
     }
-    
-    NSLog(@"Days Length is %d and Statuses length is %d", [_days count], [_statuses count]);
-    
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done"
                                                                                style:UIBarButtonSystemItemDone

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <CoreData/CoreData.h>
+#import "Helpshift.h"
 
 
 
@@ -21,6 +22,16 @@
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
         splitViewController.delegate = (id)navigationController.topViewController;
     }
+    
+#pragma mark - External Library Initializations
+    
+    //Helpshift
+    [Helpshift installForAppID:@"vitinfo-android_platform_20130524211329481-a3c8d4e32860316" domainName:@"vitinfo-android.helpshift.com" apiKey:@"91ff50eded9d62de7020a839c1e2292e"];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    if([prefs stringForKey:@"registrationNumber"]){
+        [Helpshift setUsername:[prefs stringForKey:@"registrationNumber"]];
+    }
+    
     return YES;
 }
 							

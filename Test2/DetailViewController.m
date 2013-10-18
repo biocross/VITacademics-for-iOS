@@ -61,6 +61,10 @@
 - (void)recalculateAttendance{
     float calculatedPercentage =(float) [self.subjectAttended.text intValue] / [self.subjectConducted.text intValue];
     float displayPercentageInteger = calculatedPercentage * 100;
+    int compararingVariable = (int) displayPercentageInteger;
+    if(displayPercentageInteger > compararingVariable){
+        displayPercentageInteger += 1;
+    }
     NSString *displayPercentage = [NSString stringWithFormat:@"%1.0f",displayPercentageInteger];
     self.subjectPercentage.text = [displayPercentage stringByAppendingString:@"%"];
     [self.progressBar setProgress:calculatedPercentage animated:YES];
@@ -209,7 +213,6 @@
 
 - (IBAction)subjectDetailsButton:(id)sender {
     SubjectDetailsViewController *forThisSubject = [[SubjectDetailsViewController alloc] init];
-    NSLog(@"Sending Array with %d elements", [_subject.subjectDetails count]);
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:forThisSubject];
     [self presentViewController:nav animated:YES completion:nil];
     [forThisSubject setDetailsArray:_subject.subjectDetails];
