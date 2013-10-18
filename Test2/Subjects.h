@@ -21,6 +21,7 @@
 @property (nonatomic) NSInteger attendedClasses;
 @property (copy, nonatomic) NSString *subjectType;
 @property (nonatomic) NSArray *subjectDetails;
+@property (nonatomic) NSString *classNumber;
 
 -(NSUInteger)count;
 -(Subjects *)objectAtIndexedSubscript:(NSInteger)subjectNumber;

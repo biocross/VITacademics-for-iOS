@@ -23,9 +23,12 @@
 
 - (void)startLoadingAttendance:(id)sender;
 - (void)completedProcess;
+- (void)processMarks;
 - (IBAction)openMenu:(id)sender;
 
 @property NSString *attendanceCacheString;
+@property NSString *marksCacheString;
+
 
 @property (nonatomic, strong) Subjects *theorySubjects;
 @property (nonatomic, strong) Subjects *labSubjects;

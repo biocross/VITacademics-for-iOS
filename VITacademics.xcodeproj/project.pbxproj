@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1627657317FB0E3300A18AB2 /* NSDateTimeAgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1627657217FB0E3300A18AB2 /* NSDateTimeAgo.bundle */; };
-		163E584017F9E18200FCB8A1 /* TDBadgedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 163E583F17F9E18200FCB8A1 /* TDBadgedCell.m */; };
 		1677629417FAFCB700727568 /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677629317FAFCB700727568 /* NSDate+TimeAgo.m */; };
 		16888CC8173856D700BEEA71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16888CC7173856D700BEEA71 /* UIKit.framework */; };
 		16888CCA173856D700BEEA71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16888CC9173856D700BEEA71 /* Foundation.framework */; };
@@ -25,6 +24,7 @@
 		16888CEA173856D800BEEA71 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16888CE9173856D800BEEA71 /* DetailViewController.m */; };
 		16888CF21738578F00BEEA71 /* Subject.m in Sources */ = {isa = PBXBuildFile; fileRef = 16888CF11738578F00BEEA71 /* Subject.m */; };
 		16888CF5173859E900BEEA71 /* Subjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 16888CF4173859E900BEEA71 /* Subjects.m */; };
+		169A34221811625200B2AB27 /* TDBadgedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 169A34211811625200B2AB27 /* TDBadgedCell.m */; };
 		169C0A30174ADCA8005B16ED /* VITxAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 169C0A2F174ADCA8005B16ED /* VITxAPI.m */; };
 		169C0A33174B125E005B16ED /* CaptchaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 169C0A32174B125E005B16ED /* CaptchaViewController.m */; };
 		16A0DE8A180C8EF100461BE1 /* CSNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A0DE88180C8EF100461BE1 /* CSNotificationView.m */; };
@@ -64,12 +64,11 @@
 		16C3ACC51809420200AD95D9 /* SubjectDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3ACC41809420200AD95D9 /* SubjectDetailsViewController.m */; };
 		16D66A2C1755EFC40015FDD7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D66A2B1755EFC40015FDD7 /* QuartzCore.framework */; };
 		16EF8A5D1749BE5B00368179 /* NewSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EF8A5C1749BE5B00368179 /* NewSettingsViewController.m */; };
+		16F9C3D81811D0AE00B8A527 /* MarksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F9C3D71811D0AE00B8A527 /* MarksViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1627657217FB0E3300A18AB2 /* NSDateTimeAgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NSDateTimeAgo.bundle; sourceTree = "<group>"; };
-		163E583E17F9E18200FCB8A1 /* TDBadgedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDBadgedCell.h; sourceTree = "<group>"; };
-		163E583F17F9E18200FCB8A1 /* TDBadgedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDBadgedCell.m; sourceTree = "<group>"; };
 		1677629217FAFCB700727568 /* NSDate+TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeAgo.h"; sourceTree = "<group>"; };
 		1677629317FAFCB700727568 /* NSDate+TimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeAgo.m"; sourceTree = "<group>"; };
 		16888CC4173856D700BEEA71 /* VITacademics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VITacademics.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +92,8 @@
 		16888CF11738578F00BEEA71 /* Subject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subject.m; sourceTree = "<group>"; };
 		16888CF3173859E900BEEA71 /* Subjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subjects.h; sourceTree = "<group>"; };
 		16888CF4173859E900BEEA71 /* Subjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subjects.m; sourceTree = "<group>"; };
+		169A34201811625200B2AB27 /* TDBadgedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDBadgedCell.h; sourceTree = "<group>"; };
+		169A34211811625200B2AB27 /* TDBadgedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDBadgedCell.m; sourceTree = "<group>"; };
 		169C0A2E174ADCA8005B16ED /* VITxAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VITxAPI.h; sourceTree = "<group>"; };
 		169C0A2F174ADCA8005B16ED /* VITxAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VITxAPI.m; sourceTree = "<group>"; };
 		169C0A31174B125E005B16ED /* CaptchaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptchaViewController.h; sourceTree = "<group>"; };
@@ -150,6 +151,8 @@
 		16D66A2B1755EFC40015FDD7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		16EF8A5B1749BE5B00368179 /* NewSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSettingsViewController.h; sourceTree = "<group>"; };
 		16EF8A5C1749BE5B00368179 /* NewSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSettingsViewController.m; sourceTree = "<group>"; };
+		16F9C3D61811D0AE00B8A527 /* MarksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarksViewController.h; sourceTree = "<group>"; };
+		16F9C3D71811D0AE00B8A527 /* MarksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarksViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,8 +184,8 @@
 				1627657217FB0E3300A18AB2 /* NSDateTimeAgo.bundle */,
 				1677629217FAFCB700727568 /* NSDate+TimeAgo.h */,
 				1677629317FAFCB700727568 /* NSDate+TimeAgo.m */,
-				163E583E17F9E18200FCB8A1 /* TDBadgedCell.h */,
-				163E583F17F9E18200FCB8A1 /* TDBadgedCell.m */,
+				169A34201811625200B2AB27 /* TDBadgedCell.h */,
+				169A34211811625200B2AB27 /* TDBadgedCell.m */,
 				16B86847180DCC6100C3DF5E /* RNFrostedSidebar.h */,
 				16B86848180DCC6100C3DF5E /* RNFrostedSidebar.m */,
 			);
@@ -237,6 +240,8 @@
 				16888CE9173856D800BEEA71 /* DetailViewController.m */,
 				16C3ACC31809420200AD95D9 /* SubjectDetailsViewController.h */,
 				16C3ACC41809420200AD95D9 /* SubjectDetailsViewController.m */,
+				16F9C3D61811D0AE00B8A527 /* MarksViewController.h */,
+				16F9C3D71811D0AE00B8A527 /* MarksViewController.m */,
 				16EF8A5B1749BE5B00368179 /* NewSettingsViewController.h */,
 				16EF8A5C1749BE5B00368179 /* NewSettingsViewController.m */,
 				169C0A31174B125E005B16ED /* CaptchaViewController.h */,
@@ -444,11 +449,12 @@
 			files = (
 				16888CD4173856D700BEEA71 /* main.m in Sources */,
 				16888CD8173856D800BEEA71 /* AppDelegate.m in Sources */,
-				163E584017F9E18200FCB8A1 /* TDBadgedCell.m in Sources */,
+				169A34221811625200B2AB27 /* TDBadgedCell.m in Sources */,
 				16888CE7173856D800BEEA71 /* MasterViewController.m in Sources */,
 				16B86849180DCC6100C3DF5E /* RNFrostedSidebar.m in Sources */,
 				16888CEA173856D800BEEA71 /* DetailViewController.m in Sources */,
 				16888CF21738578F00BEEA71 /* Subject.m in Sources */,
+				16F9C3D81811D0AE00B8A527 /* MarksViewController.m in Sources */,
 				16888CF5173859E900BEEA71 /* Subjects.m in Sources */,
 				16EF8A5D1749BE5B00368179 /* NewSettingsViewController.m in Sources */,
 				169C0A30174ADCA8005B16ED /* VITxAPI.m in Sources */,

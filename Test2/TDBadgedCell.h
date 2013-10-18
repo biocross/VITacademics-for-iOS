@@ -35,6 +35,8 @@
 
 @interface TDBadgeView : UIView
 {
+    UIColor *__defaultColor;
+    UIColor *__defaultHighlightColor;
 }
 
 @property (nonatomic, readonly)     NSUInteger width;
@@ -44,6 +46,7 @@
 @property (nonatomic, TD_STRONG)    UIColor *badgeTextColor;
 @property (nonatomic, TD_STRONG)    UIColor *badgeColorHighlighted;
 @property (nonatomic, assign)       BOOL showShadow;
+@property (nonatomic, assign)       BOOL boldFont;
 @property (nonatomic, assign)       CGFloat fontSize;
 @property (nonatomic, assign)       CGFloat radius;
 

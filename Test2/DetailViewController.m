@@ -9,6 +9,8 @@
 #import "DetailViewController.h"
 #import "SubjectDetailsViewController.h"
 #import "Subject.h"
+#import "MarksViewController.h"
+#import "CSNotificationView.h"
 
 @interface DetailViewController ()
 
@@ -219,5 +221,22 @@
 
     
 }
+
+- (IBAction)marksButton:(id)sender {
+    if([self.subjectMarks count] < 16){
+        [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"PBL/Lab not supported (yet)"];
+    }
+    else{
+        MarksViewController *forThisSubject = [[MarksViewController alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:forThisSubject];
+        [self presentViewController:nav animated:YES completion:nil];
+        [forThisSubject setMarksArray:self.subjectMarks];
+    }
+    
+    
+    
+}
+
+
 
 @end

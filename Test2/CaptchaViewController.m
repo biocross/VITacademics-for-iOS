@@ -107,12 +107,13 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [notificationController setVisible:NO animated:YES completion:nil];
             if([result rangeOfString:@"timedout"].location != NSNotFound){
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"Please check your Captcha and/or Details" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
-                [alert show];
+
+                NSString *notificationName = @"captchaError";
+                [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:nil];
             }
             else if([result rangeOfString:@"captchaerror"].location != NSNotFound){
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"Please check your captcha and/or details" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
-                [alert show];
+                NSString *notificationName = @"captchaError";
+                [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:nil];
             }
             else if([result rangeOfString:@"success"].location != NSNotFound){
                 NSLog(@"We're In!");

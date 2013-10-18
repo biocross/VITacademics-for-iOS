@@ -20,7 +20,7 @@
 
 /* TODO:
  
- - Error Handling for server responses
+ - [DONE] Error Handling for server responses
  - Select icons for the sidebar
  - Build the tutorial using CSNotificztions! Oh Sexy!
  
@@ -30,6 +30,7 @@
     NSMutableArray *_objects;
     NSMutableArray *MTheorySubjects;
     NSMutableArray *MLabSubjects;
+    NSArray *marksArray;
     
     
 }
@@ -74,6 +75,8 @@ return _subjects;
         if([preferences stringForKey:[preferences stringForKey:@"registrationNumber"]]){
             NSLog(@"Loading attendance from cache! Yay!");
             self.attendanceCacheString = [preferences stringForKey:[preferences stringForKey:@"registrationNumber"]];
+            NSString *marksKey = [NSString stringWithFormat:@"MarksOf%@", [preferences objectForKey:@"registrationNumber"]];
+            self.marksCacheString = [preferences objectForKey:marksKey];
             [self completedProcess];
         }
         else{
@@ -93,7 +96,7 @@ return _subjects;
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             [CSNotificationView showInViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:@"Welcome to VITacademics!" duration:2.5f];
             
-            dispatch_time_t popTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.35f * NSEC_PER_SEC));
+            dispatch_time_t popTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.05f * NSEC_PER_SEC));
             dispatch_after(popTime2, dispatch_get_main_queue(), ^(void){
                 [self openMenu:self];
                 dispatch_time_t popTime3 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5f * NSEC_PER_SEC));
@@ -128,7 +131,23 @@ return _subjects;
      name:notificationForSettings
      object:nil];
     
+    NSString *notificationForCaptchaError = @"captchaError";
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(showCaptchaError)
+     name:notificationForCaptchaError
+     object:nil];
+    
 
+}
+
+-(void)showCaptchaError{
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Incorrect captcha!"];
+    });
+    
+    
 }
 
 -(void)beginLoadingAttendance{
@@ -166,6 +185,19 @@ return _subjects;
         UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CaptchaViewNav"];
         [self presentViewController:vc animated:YES completion:NULL];
     }
+    
+    
+    else if([title isEqualToString:@"Oh Yeah!"]){
+        NSLog(@"Opening Google+ Group");
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://plus.google.com/u/0/communities/112543766365145422569"]];
+    }
+    
+    else if([title isEqualToString:@"Not Now"]){
+        [CSNotificationView showInViewController:self tintColor:[UIColor blueColor] image:nil message:@"Some other time, then :)" duration:1.8f];
+    }
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -244,7 +276,7 @@ return _subjects;
         cell.badge.radius = 8;
         cell.badge.fontSize = 12;
         
-        float calculatedPercentage =(float) self.theorySubjects[indexPath.row].attendedClasses / self.theorySubjects[indexPath.row].conductedClasses;
+        float calculatedPercentage = (float) self.theorySubjects[indexPath.row].attendedClasses / self.theorySubjects[indexPath.row].conductedClasses;
         float displayPercentageInteger = calculatedPercentage * 100;
         int compararingVariable = (int) displayPercentageInteger;
         if(displayPercentageInteger > compararingVariable){
@@ -262,6 +294,8 @@ return _subjects;
         else{
             cell.badgeTextColor = [UIColor greenColor];
         }
+        
+        
     }
     else{
         cell.textLabel.text = [NSString stringWithString:self.labSubjects[indexPath.row].subjectTitle];
@@ -292,11 +326,6 @@ return _subjects;
             cell.badgeTextColor = [UIColor greenColor];
     }
 }//end of sections clause
-    
-    
-    
-        
-    
     
     return cell;
     
@@ -334,11 +363,33 @@ return _subjects;
         DetailViewController *detailViewController = [segue destinationViewController];
         
         
+        
+        
+        
+        
         if(selectedRowIndex.section == 0){
+            
+            int indexOfMatchedSubject = 0;
+            int i = 0;
+            for(NSArray *item in marksArray){
+                if([item[1] isEqualToString:self.theorySubjects[selectedRowIndex.row].classNumber]){
+                    indexOfMatchedSubject = i;
+                }
+                i += 1;
+            }
+            
             detailViewController.subject = self.theorySubjects[selectedRowIndex.row];
+            if(indexOfMatchedSubject < [marksArray count]){
+                detailViewController.subjectMarks = marksArray[indexOfMatchedSubject];
+            }
+            else{
+                detailViewController.subjectMarks = [[NSArray alloc] init];
+            }
+            
         }
         else{
             detailViewController.subject = self.labSubjects[selectedRowIndex.row];
+            detailViewController.subjectMarks = [[NSArray alloc] init];
         }
     }
 }
@@ -365,16 +416,21 @@ return _subjects;
     dispatch_queue_t downloadQueue = dispatch_queue_create("attendanceLoader", nil);
     dispatch_async(downloadQueue, ^{
          NSString *result = [attendanceManager loadAttendanceWithRegistrationNumber:registrationNumber andDateOfBirth:dateOfBirth];
+        NSString *marks = [attendanceManager loadMarksWithRegistrationNumber:registrationNumber andDateOfBirth:dateOfBirth];
         dispatch_async(dispatch_get_main_queue(), ^{
            //update table here!
             //[alert dismissWithClickedButtonIndex:0 animated:YES];
             [notificationController setVisible:NO animated:YES completion:nil];
             self.attendanceCacheString = result;
+            self.marksCacheString = marks;
             
             NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
         
             [preferences removeObjectForKey:[preferences objectForKey:@"registrationNumber"]];
             [preferences setObject:result forKey:[preferences objectForKey:@"registrationNumber"]];
+            NSString *marksKey = [NSString stringWithFormat:@"MarksOf%@", [preferences objectForKey:@"registrationNumber"]];
+            [preferences removeObjectForKey:marksKey];
+            [preferences setObject:marks forKey:marksKey];
             NSDate *date = [[NSDate alloc] init];
             [preferences setObject:date forKey:@"lastUpdated"];
             
@@ -387,6 +443,7 @@ return _subjects;
 
 -(void)completedProcess{
 
+    
      NSError *e = nil;
      NSString *newString = [self.attendanceCacheString stringByReplacingOccurrencesOfString:@"valid%" withString:@""];
      NSData *attendanceDataFromString = [newString dataUsingEncoding:NSUTF8StringEncoding];
@@ -408,7 +465,7 @@ return _subjects;
          NSMutableArray *refreshedArray = [[NSMutableArray alloc] init];
          for(NSDictionary *item in jsonArray) {
              
-             Subject *x = [[Subject alloc] initWithSubject:[item valueForKey:@"code"] title:[item valueForKey:@"title"] slot:[item valueForKey:@"slot"] attended:[[item valueForKey:@"attended"] integerValue] conducted:[[item valueForKey:@"conducted"] integerValue] number:[[item valueForKey:@"sl_no"] integerValue] type:[item valueForKey:@"type"] details:[item valueForKey:@"details"]];
+             Subject *x = [[Subject alloc] initWithSubject:[item valueForKey:@"code"] title:[item valueForKey:@"title"] slot:[item valueForKey:@"slot"] attended:[[item valueForKey:@"attended"] integerValue] conducted:[[item valueForKey:@"conducted"] integerValue] number:[[item valueForKey:@"sl_no"] integerValue] type:[item valueForKey:@"type"] details:[item valueForKey:@"details"] classNumber:[item valueForKey:@"classnbr"]];
              
              [refreshedArray addObject:x];
              
@@ -420,7 +477,6 @@ return _subjects;
          NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
          if([preferences objectForKey:@"lastUpdated"]){
              NSDate *lastUpdated = [preferences objectForKey:@"lastUpdated"];
-             
              NSString *cardMessage = [@"Last Updated: " stringByAppendingString:[lastUpdated timeAgo]];
              
              //Bug Fix fix for Empty Card -> Delay
@@ -431,12 +487,22 @@ return _subjects;
              });
              
              
-             
-             
-         }
+            }
+         
+         [self processMarks];
      } //end of else
     
 
+}
+
+- (void)processMarks{
+
+    NSError *e = nil;
+    NSData *attendanceDataFromString = [self.marksCacheString dataUsingEncoding:NSUTF8StringEncoding];
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: attendanceDataFromString options: NSJSONReadingMutableContainers error: &e];
+    
+    marksArray = jsonArray[0];
+    
 }
 
 #pragma mark - Frost Menu Methods and Protocol Implementation
@@ -488,7 +554,7 @@ return _subjects;
     }
     if(index == 2){ //Beta Access
         [sidebar dismissAnimated:YES];
-        UIAlertView *betaAcess = [[UIAlertView alloc] initWithTitle:@"Early Access" message:@"Would you like to get early access to testing builds of VITacademics and provide feedback to help us develop features into VITacademics faster?" delegate:self cancelButtonTitle:@"Nope" otherButtonTitles:@"Oh Yeah!", nil];
+        UIAlertView *betaAcess = [[UIAlertView alloc] initWithTitle:@"Early Access" message:@"Would you like to join our Google+ group, and get early access to testing builds of VITacademics and provide feedback to help us develop features into VITacademics faster?" delegate:self cancelButtonTitle:@"Not Now" otherButtonTitles:@"Oh Yeah!", nil];
         [betaAcess show];
     }
     if(index == 3){ //Share with friends

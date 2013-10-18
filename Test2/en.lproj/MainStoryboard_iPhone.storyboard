@@ -170,7 +170,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qD6-jA-C9O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4" y="776"/>
+            <point key="canvasLocation" x="-116" y="736"/>
         </scene>
         <!--Detail View Controller - Detail-->
         <scene sceneID="24">
@@ -344,20 +344,39 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUD-hF-MZb">
-                                <rect key="frame" x="108" y="437" width="104" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Subject Details">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="subjectDetailsButton:" destination="21" eventType="touchUpInside" id="oOY-dS-XkR"/>
-                                </connections>
-                            </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mPU-96-MzF">
+                                <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="3eB-Oy-W0Q"/>
+                                    <constraint firstAttribute="width" constant="320" id="bT1-3P-AEU"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="rqw-V2-K6P"/>
+                                    <barButtonItem title="Subject Details" id="CNx-th-EYk">
+                                        <connections>
+                                            <action selector="subjectDetailsButton:" destination="21" id="iXc-EH-7SL"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="rW9-ED-BKw"/>
+                                    <barButtonItem title="Marks" id="6mC-PC-nQK">
+                                        <connections>
+                                            <action selector="marksButton:" destination="21" id="a7P-fo-nGY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="2A7-S0-xzi"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="mPU-96-MzF" secondAttribute="bottom" id="WXM-8b-dMi"/>
+                            <constraint firstItem="mPU-96-MzF" firstAttribute="leading" secondItem="22" secondAttribute="leading" id="rJ5-jm-cM4"/>
+                        </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Subject Details" id="26"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="attendLabel" destination="jY3-ED-5dY" id="zP3-YC-HnS"/>
                         <outlet property="lastUpdatedLabel" destination="9gG-eS-w9v" id="kNf-OE-Znk"/>
@@ -374,7 +393,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="23" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="506" y="-46"/>
+            <point key="canvasLocation" x="272" y="38"/>
         </scene>
         <!--CaptchaView-->
         <scene sceneID="Bcf-HM-GEs">
@@ -439,7 +458,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uAe-Z8-YbC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="931" y="573"/>
+            <point key="canvasLocation" x="667" y="736"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cAJ-dn-EMW">
@@ -457,7 +476,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zBZ-NX-8MY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-358" y="776"/>
+            <point key="canvasLocation" x="-497" y="736"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AgY-Ao-ep5">
@@ -475,7 +494,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hsr-bu-cqY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="563" y="573"/>
+            <point key="canvasLocation" x="272" y="736"/>
         </scene>
     </scenes>
     <resources>

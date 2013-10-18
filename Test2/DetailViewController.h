@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) id detailItem;
 @property (strong, nonatomic) Subjects *subject;
+@property (strong, nonatomic) NSArray *subjectMarks;
 @property (weak, nonatomic) IBOutlet UILabel *lastUpdatedLabel;
 
 - (void)setDetailItem:(id)newDetailItem;
@@ -37,5 +38,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *attendLabel;
 
 - (IBAction)subjectDetailsButton:(id)sender;
+- (IBAction)marksButton:(id)sender;
 
 @end
