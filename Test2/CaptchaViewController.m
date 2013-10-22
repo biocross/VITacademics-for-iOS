@@ -62,7 +62,7 @@
             [self beginCaptchaVerification];
         }
         else{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Please enter the complete captcha! (6 characters)" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Please enter exactly 6 characters" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
             [alert show];
             [_captchaImage becomeFirstResponder];
         }
@@ -138,7 +138,7 @@
             [self beginCaptchaVerification];
         }
         else{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Please enter the complete captcha! (6 characters)" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Please enter exactly 6 characters" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
             [alert show];
             [_captchaImage becomeFirstResponder];
         }

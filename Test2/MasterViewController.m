@@ -52,10 +52,6 @@ return _subjects;
 
 - (void)awakeFromNib
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        self.clearsSelectionOnViewWillAppear = NO;
-        self.preferredContentSize = CGSizeMake(320.0, 600.0);
-    }
     [super awakeFromNib];
     
 }
@@ -118,7 +114,7 @@ return _subjects;
     }//end of else
     
     
-    self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    //self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
 #pragma mark - Observers
     [[NSNotificationCenter defaultCenter]
@@ -354,20 +350,15 @@ return _subjects;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Handled by Storyboards for iPhone
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        
+    /*if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
-        
         if(selectedRowIndex.section == 0){
             [self.detailViewController setDetailItem:self.theorySubjects[indexPath.row]];
         }
         else{
             [self.detailViewController setDetailItem:self.labSubjects[indexPath.row]];
         }
-        
-        
-    }
+    }*/
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

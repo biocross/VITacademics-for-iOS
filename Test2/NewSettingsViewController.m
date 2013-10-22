@@ -30,9 +30,17 @@
     [_registrationNumber becomeFirstResponder];
     
     NSDate *now = [NSDate date];
-	[_datePicker setDate:now animated:YES];
+    @try {
+        [_datePicker setDate:now animated:YES];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@", [exception description]);
+    }
     
     [_dateOfBirth setInputView:_datePicker];
+    
+    
+    
     
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
 
@@ -46,7 +54,12 @@
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"ddMMYYYY"];;
         NSDate *anyDate = [dateFormat dateFromString:[preferences stringForKey:@"dateOfBirth"]];
-        [_datePicker setDate:anyDate];
+        @try{
+            [_datePicker setDate:anyDate];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"%@", [exception description]);
+        }
     }
     
     [_datePicker setAlpha:0];
@@ -65,7 +78,7 @@
 - (IBAction)cancelButton:(id)sender {
 
     //EDIT HERE FOR IPHONE AND IPAD IMPORTANT
-    [self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -79,11 +92,16 @@
     [preferences setObject:_registrationNumber.text forKey:@"registrationNumber"];
     [preferences setObject:_dateOfBirth.text forKey:@"dateOfBirth"];
     
+    NSLog(@"Sending Notification");
     NSString *notificationName = @"settingsDidChange";
     [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:nil];
     
     [self.navigationController popViewControllerAnimated:YES];
+    NSLog(@"DISMISS POP");
+
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"DISMISS NAV");
+
 }
 
 - (IBAction)setDOBfromPicker:(id)sender {

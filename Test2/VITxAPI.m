@@ -45,8 +45,16 @@
 
 -(UIImage *)loadCaptchaIntoImageView{
     
+    NSString *registrationNumber;
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-    NSString *registrationNumber = [preferences stringForKey:@"registrationNumber"];
+    
+    if([preferences stringForKey:@"registrationNumber"]){
+        registrationNumber = [preferences stringForKey:@"registrationNumber"];
+    }
+    else{
+        registrationNumber = @"Blank";
+    }
+    
     id path =@"http://vitacademicsrel.appspot.com/captcha/";
     NSString *finalURL = [path stringByAppendingString:registrationNumber];
     NSURL * url= [NSURL URLWithString:finalURL];
