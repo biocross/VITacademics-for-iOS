@@ -90,8 +90,8 @@
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"ddMMYYYY"];
-    NSString *str = [dateFormatter stringFromDate:[_datePicker date]];
-	_dateOfBirth.text = str;
+    _dateOfBirth.text = [dateFormatter stringFromDate:[_datePicker date]];
+	
     
 }
 

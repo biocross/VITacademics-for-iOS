@@ -121,8 +121,7 @@
                 [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:nil];
             }
             else if([result isEqualToString:@"networkerror"]){
-                UIAlertView *errorMessage = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"There was a problem connecting to the internet. Please check your Data/Wi-Fi connection and try again." delegate:self cancelButtonTitle:@"Okay." otherButtonTitles: nil];
-                [errorMessage show];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"networkError" object:nil userInfo:nil];
             }
             [self.navigationController dismissViewControllerAnimated:YES completion:nil];
             [self.navigationController popViewControllerAnimated:YES];

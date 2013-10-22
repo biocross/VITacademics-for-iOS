@@ -24,7 +24,7 @@
 @property (nonatomic) NSString *classNumber;
 
 -(NSUInteger)count;
--(Subjects *)objectAtIndexedSubscript:(NSInteger)subjectNumber;
+-(Subjects *)objectAtIndexedSubscript:(NSUInteger)subjectNumber;
 - (void)setArray:(NSArray *)newArray;
 - (NSString *)percentage;
 @end

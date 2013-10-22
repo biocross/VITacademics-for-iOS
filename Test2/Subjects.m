@@ -39,7 +39,7 @@
     return displayPercentage;
 }
 
--(Subjects *)objectAtIndexedSubscript:(NSInteger)subjectNumber{
+-(Subjects *)objectAtIndexedSubscript:(NSUInteger)subjectNumber{
     return self.privateListOfSubjects[subjectNumber] ;
 }
 

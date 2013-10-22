@@ -43,7 +43,7 @@
 @property (nonatomic, TD_STRONG)    NSString *badgeString;
 @property (nonatomic, TD_WEAK)      UITableViewCell *parent;
 @property (nonatomic, TD_STRONG)    UIColor *badgeColor;
-@property (nonatomic, TD_STRONG)    UIColor *badgeTextColor;
+@property (nonatomic, strong)    UIColor *badgeTextColor;
 @property (nonatomic, TD_STRONG)    UIColor *badgeColorHighlighted;
 @property (nonatomic, assign)       BOOL showShadow;
 @property (nonatomic, assign)       BOOL boldFont;

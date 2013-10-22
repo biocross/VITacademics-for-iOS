@@ -67,13 +67,17 @@ return _subjects;
     
     //[[UINavigationBar appearance] setBarTintColor:[UIColor blueColor]];
     
+    UISwipeGestureRecognizer* gestureR;
+    gestureR = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(openMenu:)] ;
+    gestureR.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:gestureR];
     
     
     //Load Attendance from cache
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     if([preferences stringForKey:@"registrationNumber"]){
         if([preferences stringForKey:[preferences stringForKey:@"registrationNumber"]]){
-            NSLog(@"Loading attendance from cache! Yay!");
+            //NSLog(@"Loading attendance from cache! Yay!");
             self.attendanceCacheString = [preferences stringForKey:[preferences stringForKey:@"registrationNumber"]];
             NSString *marksKey = [NSString stringWithFormat:@"MarksOf%@", [preferences objectForKey:@"registrationNumber"]];
             self.marksCacheString = [preferences objectForKey:marksKey];
@@ -116,26 +120,29 @@ return _subjects;
     
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
-    //Observers:
-    NSString *notificationForCaptcha = @"captchaDidVerify";
+#pragma mark - Observers
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(startLoadingAttendance:)
-     name:notificationForCaptcha
+     name:@"captchaDidVerify"
      object:nil];
     
-    NSString *notificationForSettings = @"settingsDidChange";
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(beginLoadingAttendance)
-     name:notificationForSettings
+     name:@"settingsDidChange"
      object:nil];
     
-    NSString *notificationForCaptchaError = @"captchaError";
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(showCaptchaError)
-     name:notificationForCaptchaError
+     name:@"captchaError"
+     object:nil];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(showNetworkError)
+     name:@"networkError"
      object:nil];
     
 
@@ -148,6 +155,13 @@ return _subjects;
     });
     
     
+}
+
+-(void)showNetworkError{
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Network Error, Please check your internet connectivity."];
+    });
 }
 
 -(void)beginLoadingAttendance{
@@ -268,7 +282,7 @@ return _subjects;
     
     
     if(indexPath.section == 0){
-        cell.textLabel.text = [NSString stringWithString:self.theorySubjects[indexPath.row].subjectTitle];
+        cell.textLabel.text = self.theorySubjects[indexPath.row].subjectTitle;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", self.theorySubjects[indexPath.row].subjectType, self.theorySubjects[indexPath.row].subjectSlot];
         [cell.detailTextLabel setTextColor:[UIColor grayColor]];
         
@@ -298,7 +312,7 @@ return _subjects;
         
     }
     else{
-        cell.textLabel.text = [NSString stringWithString:self.labSubjects[indexPath.row].subjectTitle];
+        cell.textLabel.text = self.labSubjects[indexPath.row].subjectTitle;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", self.labSubjects[indexPath.row].subjectType, self.labSubjects[indexPath.row].subjectSlot];
         [cell.detailTextLabel setTextColor:[UIColor grayColor]];
 
@@ -362,14 +376,9 @@ return _subjects;
         NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
         DetailViewController *detailViewController = [segue destinationViewController];
         
-        
-        
-        
-        
-        
         if(selectedRowIndex.section == 0){
             
-            int indexOfMatchedSubject = 0;
+            int indexOfMatchedSubject = -1;
             int i = 0;
             for(NSArray *item in marksArray){
                 if([item[1] isEqualToString:self.theorySubjects[selectedRowIndex.row].classNumber]){
@@ -379,7 +388,7 @@ return _subjects;
             }
             
             detailViewController.subject = self.theorySubjects[selectedRowIndex.row];
-            if(indexOfMatchedSubject < [marksArray count]){
+            if(indexOfMatchedSubject < [marksArray count] && indexOfMatchedSubject != -1){
                 detailViewController.subjectMarks = marksArray[indexOfMatchedSubject];
             }
             else{
@@ -424,7 +433,6 @@ return _subjects;
             self.attendanceCacheString = result;
             self.marksCacheString = marks;
             
-            NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
         
             [preferences removeObjectForKey:[preferences objectForKey:@"registrationNumber"]];
             [preferences setObject:result forKey:[preferences objectForKey:@"registrationNumber"]];
@@ -483,13 +491,14 @@ return _subjects;
              double delayInSeconds = 0.05f;
              dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
              dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                 
                  [CSNotificationView showInViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:cardMessage duration:2.5f];
              });
              
              
             }
-         
          [self processMarks];
+         
      } //end of else
     
 
@@ -510,12 +519,11 @@ return _subjects;
 -(IBAction)openMenu:(id)sender {
     
     NSArray *images = @[
-                        [UIImage imageNamed:@"gear"],
-                        [UIImage imageNamed:@"globe"],
-                        [UIImage imageNamed:@"profile"],
-                        [UIImage imageNamed:@"star"],
-                        [UIImage imageNamed:@"star"],
-                        [UIImage imageNamed:@"star"],
+                        [UIImage imageNamed:@"home"],
+                        [UIImage imageNamed:@"settings"],
+                        [UIImage imageNamed:@"beta_access"],
+                        [UIImage imageNamed:@"share"],
+                        [UIImage imageNamed:@"help"],
                         ];
     NSArray *colors = @[
                         [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
@@ -523,11 +531,11 @@ return _subjects;
                         [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
                         [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
                         [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
-                        [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
                         ];
     
     RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:self.menuOptionIndices borderColors:colors];
     callout.delegate = self;
+    callout.tintColor = [UIColor colorWithRed:0.0 green:0.1 blue:0.30 alpha:0.73];
     [callout show];
 
     self.menuPointer = callout;
@@ -558,7 +566,7 @@ return _subjects;
         [betaAcess show];
     }
     if(index == 3){ //Share with friends
-        NSString *message = @"Hello World!";
+        NSString *message = @"https://itunes.apple.com/us/app/vine/id592447445?mt=8";
         //UIImage *imageToShare = [UIImage imageNamed:@"test.jpg"];
         NSArray *postItems = @[message]; //add image here if you want
         UIActivityViewController *activityVC = [[UIActivityViewController alloc]

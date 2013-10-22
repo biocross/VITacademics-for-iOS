@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1627657317FB0E3300A18AB2 /* NSDateTimeAgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1627657217FB0E3300A18AB2 /* NSDateTimeAgo.bundle */; };
+		1657D3B6181548B100E633E9 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 1657D3B5181548B000E633E9 /* 120.png */; };
+		1657D3BD18154C4A00E633E9 /* 640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 1657D3BB18154C4A00E633E9 /* 640x960.png */; };
+		1657D3BE18154C4A00E633E9 /* 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 1657D3BC18154C4A00E633E9 /* 640x1136.png */; };
 		1677629417FAFCB700727568 /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677629317FAFCB700727568 /* NSDate+TimeAgo.m */; };
 		16888CC8173856D700BEEA71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16888CC7173856D700BEEA71 /* UIKit.framework */; };
 		16888CCA173856D700BEEA71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16888CC9173856D700BEEA71 /* Foundation.framework */; };
@@ -63,12 +66,16 @@
 		16B86895180DEAA600C3DF5E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B86894180DEAA600C3DF5E /* libz.dylib */; };
 		16C3ACC51809420200AD95D9 /* SubjectDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3ACC41809420200AD95D9 /* SubjectDetailsViewController.m */; };
 		16D66A2C1755EFC40015FDD7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D66A2B1755EFC40015FDD7 /* QuartzCore.framework */; };
+		16EDBE5D1815655D00007BEC /* 76.png in Resources */ = {isa = PBXBuildFile; fileRef = 16EDBE5C1815655D00007BEC /* 76.png */; };
 		16EF8A5D1749BE5B00368179 /* NewSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EF8A5C1749BE5B00368179 /* NewSettingsViewController.m */; };
 		16F9C3D81811D0AE00B8A527 /* MarksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F9C3D71811D0AE00B8A527 /* MarksViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1627657217FB0E3300A18AB2 /* NSDateTimeAgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NSDateTimeAgo.bundle; sourceTree = "<group>"; };
+		1657D3B5181548B000E633E9 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
+		1657D3BB18154C4A00E633E9 /* 640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x960.png; sourceTree = "<group>"; };
+		1657D3BC18154C4A00E633E9 /* 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x1136.png; sourceTree = "<group>"; };
 		1677629217FAFCB700727568 /* NSDate+TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeAgo.h"; sourceTree = "<group>"; };
 		1677629317FAFCB700727568 /* NSDate+TimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeAgo.m"; sourceTree = "<group>"; };
 		16888CC4173856D700BEEA71 /* VITacademics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VITacademics.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +156,7 @@
 		16C3ACC31809420200AD95D9 /* SubjectDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectDetailsViewController.h; sourceTree = "<group>"; };
 		16C3ACC41809420200AD95D9 /* SubjectDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectDetailsViewController.m; sourceTree = "<group>"; };
 		16D66A2B1755EFC40015FDD7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		16EDBE5C1815655D00007BEC /* 76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 76.png; sourceTree = "<group>"; };
 		16EF8A5B1749BE5B00368179 /* NewSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSettingsViewController.h; sourceTree = "<group>"; };
 		16EF8A5C1749BE5B00368179 /* NewSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSettingsViewController.m; sourceTree = "<group>"; };
 		16F9C3D61811D0AE00B8A527 /* MarksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarksViewController.h; sourceTree = "<group>"; };
@@ -252,6 +260,10 @@
 				169C0A2F174ADCA8005B16ED /* VITxAPI.m */,
 				16888CE2173856D800BEEA71 /* MainStoryboard_iPad.storyboard */,
 				16B8684C180DCE3E00C3DF5E /* Images.xcassets */,
+				1657D3B5181548B000E633E9 /* 120.png */,
+				1657D3BB18154C4A00E633E9 /* 640x960.png */,
+				1657D3BC18154C4A00E633E9 /* 640x1136.png */,
+				16EDBE5C1815655D00007BEC /* 76.png */,
 			);
 			name = VITacademics;
 			path = Test2;
@@ -417,12 +429,15 @@
 				16B86884180DE9FA00C3DF5E /* HSConfirmBox@2x.png in Resources */,
 				16B8687D180DE9FA00C3DF5E /* HS-section-header.png in Resources */,
 				16B8687B180DE9FA00C3DF5E /* HS-screenshot-error.png in Resources */,
+				1657D3B6181548B100E633E9 /* 120.png in Resources */,
 				16888CDC173856D800BEEA71 /* Default@2x.png in Resources */,
+				16EDBE5D1815655D00007BEC /* 76.png in Resources */,
 				16B86886180DE9FA00C3DF5E /* HSTutorial@2x.png in Resources */,
 				16B86881180DE9FA00C3DF5E /* HSChatBubbleWhite.png in Resources */,
 				16B86876180DE9FA00C3DF5E /* HS-background-tile@2x.png in Resources */,
 				16B86887180DE9FA00C3DF5E /* HSTutorialiPad.png in Resources */,
 				16B8687E180DE9FA00C3DF5E /* HS-section-header@2x.png in Resources */,
+				1657D3BE18154C4A00E633E9 /* 640x1136.png in Resources */,
 				16B8688A180DE9FA00C3DF5E /* HelpshiftConfigDark.plist in Resources */,
 				16B86878180DE9FA00C3DF5E /* HS-no-connection@2x.png in Resources */,
 				16888CDE173856D800BEEA71 /* Default-568h@2x.png in Resources */,
@@ -437,6 +452,7 @@
 				16B86875180DE9FA00C3DF5E /* HS-background-tile.png in Resources */,
 				16A0DE8B180C8EF100461BE1 /* CSNotificationView.xcassets in Resources */,
 				16B86888180DE9FA00C3DF5E /* HSTutorialiPad@2x.png in Resources */,
+				1657D3BD18154C4A00E633E9 /* 640x960.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,8 +593,9 @@
 		16888CEE173856D800BEEA71 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]" = "";
+				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Test2/VITacademics-Prefix.pch";
 				INFOPLIST_FILE = "Test2/VITacademics-Info.plist";
@@ -588,6 +605,7 @@
 					"/Users/Sids/Downloads/VITacademics-for-iOS/Test2",
 				);
 				PRODUCT_NAME = VITacademics;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -597,6 +615,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Siddharth Gupta (GC4Z88CPZF)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Test2/VITacademics-Prefix.pch";
 				INFOPLIST_FILE = "Test2/VITacademics-Info.plist";
@@ -606,6 +625,7 @@
 					"/Users/Sids/Downloads/VITacademics-for-iOS/Test2",
 				);
 				PRODUCT_NAME = VITacademics;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

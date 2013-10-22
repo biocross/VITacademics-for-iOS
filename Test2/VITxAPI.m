@@ -18,14 +18,12 @@
     NSError *error = nil;
     NSString *text = [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
     
-    if(text)
-    {
-        return text;
-    }
-    else
-    {
+    if(!text){
         NSLog(@"Error = %@", error);
         return @"networkerror";
+    }
+    else{
+        return text;
     }
 }
 
@@ -35,18 +33,13 @@
     NSError *error = nil;
     NSString *text = [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
     
-    if(text)
-    {
-        return text;
-    }
-    else
-    {
+    if(!text){
         NSLog(@"Error = %@", error);
         return @"networkerror";
     }
-    
-    NSLog(@"%@", text);
-    return text;
+    else{
+        return text;
+    }
 }
 
 
@@ -54,7 +47,6 @@
     
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     NSString *registrationNumber = [preferences stringForKey:@"registrationNumber"];
-    //get the image
     id path =@"http://vitacademicsrel.appspot.com/captcha/";
     NSString *finalURL = [path stringByAppendingString:registrationNumber];
     NSURL * url= [NSURL URLWithString:finalURL];
@@ -62,7 +54,7 @@
     NSError *error = nil;
     NSData * data = [NSData dataWithContentsOfURL:url options:NSDataReadingUncached error:&error];
     
-    if (error){
+    if (!data){
         NSLog(@"Failed to load the captcha.");
         UIImage *img = [UIImage imageNamed:@"captchaError"];
         return img;
@@ -82,7 +74,7 @@
     NSError* error = nil;
     NSString *result = [NSString stringWithContentsOfURL:finalUrl encoding:NSASCIIStringEncoding error:&error];
     
-    if(error){
+    if(!result){
         return @"networkerror";
     }
     
@@ -91,10 +83,5 @@
     
 }
 
-/* Sample Marks String
- 
- [[["1", "1630", "ECE101", "Electron Devices and Circuits", "Embedded Theory", "Present", "39.00", "", "", "Present", "4.50", "", "", "", "", "", "", "N/A"], ["2", "4630", "ECE101", "Electron Devices and Circuits", "Embedded Lab", "N/A", "", ""], ["3", "1631", "ECE201", "Probability Theory and Random Process", "Theory Only", "Present", "44.00", "", "", "Present", "3.50", "", "", "", "", "", "", "N/A"], ["4", "1638", "ECE202", "Transmission Lines and Fields", "Theory Only", "Present", "16.50", "", "", "Present", "3.50", "", "", "", "", "", "", "N/A"], ["5", "1419", "ECE303", "Digital Signal Processing", "Embedded Theory", "Present", "19.50", "", "", "", "", "", "", "", "", "", "", "N/A"], ["6", "4473", "ECE303", "Digital Signal Processing", "Embedded Lab", "N/A", "", ""], ["7", "4691", "ECE305", "Digital Communication", "Embedded Lab", "N/A", "", ""], ["8", "2393", "MAT201", "Complex Variables and Partial Differential Equations", "Theory Only", "Present", "19.00", "", "", "Present", "2.00", "", "", "", "", "", "", "N/A"]], []]
- 
- */
-
 @end
+
