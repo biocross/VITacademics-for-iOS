@@ -62,7 +62,6 @@
         }
     }
     
-    [_datePicker setAlpha:0];
     
         
         
@@ -77,8 +76,6 @@
 
 - (IBAction)cancelButton:(id)sender {
 
-    //EDIT HERE FOR IPHONE AND IPAD IMPORTANT
-    //[self.navigationController popViewControllerAnimated:YES];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -92,15 +89,9 @@
     [preferences setObject:_registrationNumber.text forKey:@"registrationNumber"];
     [preferences setObject:_dateOfBirth.text forKey:@"dateOfBirth"];
     
-    NSLog(@"Sending Notification");
     NSString *notificationName = @"settingsDidChange";
     [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:nil];
-    
-    [self.navigationController popViewControllerAnimated:YES];
-    NSLog(@"DISMISS POP");
-
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-    NSLog(@"DISMISS NAV");
 
 }
 
@@ -110,7 +101,6 @@
     [dateFormatter setDateFormat:@"ddMMYYYY"];
     _dateOfBirth.text = [dateFormatter stringFromDate:[_datePicker date]];
 	
-    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)registrationNumber {

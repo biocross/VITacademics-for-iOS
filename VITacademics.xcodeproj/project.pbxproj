@@ -13,6 +13,7 @@
 		1657D3B6181548B100E633E9 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 1657D3B5181548B000E633E9 /* 120.png */; };
 		1657D3BD18154C4A00E633E9 /* 640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 1657D3BB18154C4A00E633E9 /* 640x960.png */; };
 		1657D3BE18154C4A00E633E9 /* 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 1657D3BC18154C4A00E633E9 /* 640x1136.png */; };
+		166A6B2D18170BFB00FF9187 /* iPadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 166A6B2C18170BFB00FF9187 /* iPadTableViewCell.m */; };
 		1677629417FAFCB700727568 /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677629317FAFCB700727568 /* NSDate+TimeAgo.m */; };
 		16888CC8173856D700BEEA71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16888CC7173856D700BEEA71 /* UIKit.framework */; };
 		16888CCA173856D700BEEA71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16888CC9173856D700BEEA71 /* Foundation.framework */; };
@@ -69,6 +70,7 @@
 		16D66A2C1755EFC40015FDD7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D66A2B1755EFC40015FDD7 /* QuartzCore.framework */; };
 		16EDBE5D1815655D00007BEC /* 76.png in Resources */ = {isa = PBXBuildFile; fileRef = 16EDBE5C1815655D00007BEC /* 76.png */; };
 		16EF8A5D1749BE5B00368179 /* NewSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EF8A5C1749BE5B00368179 /* NewSettingsViewController.m */; };
+		16F0E36C1818353D002C8E26 /* iPadCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16F0E36B1818353D002C8E26 /* iPadCellNib.xib */; };
 		16F9C3D81811D0AE00B8A527 /* MarksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F9C3D71811D0AE00B8A527 /* MarksViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,8 @@
 		1657D3B5181548B000E633E9 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
 		1657D3BB18154C4A00E633E9 /* 640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x960.png; sourceTree = "<group>"; };
 		1657D3BC18154C4A00E633E9 /* 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x1136.png; sourceTree = "<group>"; };
+		166A6B2B18170BFB00FF9187 /* iPadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPadTableViewCell.h; sourceTree = "<group>"; };
+		166A6B2C18170BFB00FF9187 /* iPadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPadTableViewCell.m; sourceTree = "<group>"; };
 		1677629217FAFCB700727568 /* NSDate+TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeAgo.h"; sourceTree = "<group>"; };
 		1677629317FAFCB700727568 /* NSDate+TimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeAgo.m"; sourceTree = "<group>"; };
 		16888CC4173856D700BEEA71 /* VITacademics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VITacademics.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +166,7 @@
 		16EDBE5C1815655D00007BEC /* 76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 76.png; sourceTree = "<group>"; };
 		16EF8A5B1749BE5B00368179 /* NewSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSettingsViewController.h; sourceTree = "<group>"; };
 		16EF8A5C1749BE5B00368179 /* NewSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSettingsViewController.m; sourceTree = "<group>"; };
+		16F0E36B1818353D002C8E26 /* iPadCellNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iPadCellNib.xib; sourceTree = "<group>"; };
 		16F9C3D61811D0AE00B8A527 /* MarksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarksViewController.h; sourceTree = "<group>"; };
 		16F9C3D71811D0AE00B8A527 /* MarksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarksViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -269,14 +274,17 @@
 				16EF8A5C1749BE5B00368179 /* NewSettingsViewController.m */,
 				169C0A31174B125E005B16ED /* CaptchaViewController.h */,
 				169C0A32174B125E005B16ED /* CaptchaViewController.m */,
+				162A797E1815BA5B00BFAA89 /* Images */,
 				16888CCE173856D700BEEA71 /* Supporting Files */,
 				16888CF717385A0A00BEEA71 /* Model */,
 				169C0A2E174ADCA8005B16ED /* VITxAPI.h */,
 				169C0A2F174ADCA8005B16ED /* VITxAPI.m */,
-				162A797E1815BA5B00BFAA89 /* Images */,
 				162A79791815B56400BFAA89 /* iPadStoryboard.storyboard */,
 				162A797B1815BA3500BFAA89 /* iPadTableViewController.h */,
 				162A797C1815BA3500BFAA89 /* iPadTableViewController.m */,
+				166A6B2B18170BFB00FF9187 /* iPadTableViewCell.h */,
+				166A6B2C18170BFB00FF9187 /* iPadTableViewCell.m */,
+				16F0E36B1818353D002C8E26 /* iPadCellNib.xib */,
 			);
 			name = VITacademics;
 			path = Test2;
@@ -434,6 +442,7 @@
 				16888CD2173856D700BEEA71 /* InfoPlist.strings in Resources */,
 				16B86885180DE9FA00C3DF5E /* HSTutorial.png in Resources */,
 				16B8687F180DE9FA00C3DF5E /* HSChatBubbleBlue.png in Resources */,
+				16F0E36C1818353D002C8E26 /* iPadCellNib.xib in Resources */,
 				16B86883180DE9FA00C3DF5E /* HSConfirmBox.png in Resources */,
 				16B86880180DE9FA00C3DF5E /* HSChatBubbleBlue@2x.png in Resources */,
 				1627657317FB0E3300A18AB2 /* NSDateTimeAgo.bundle in Resources */,
@@ -490,6 +499,7 @@
 				169C0A30174ADCA8005B16ED /* VITxAPI.m in Sources */,
 				1677629417FAFCB700727568 /* NSDate+TimeAgo.m in Sources */,
 				169C0A33174B125E005B16ED /* CaptchaViewController.m in Sources */,
+				166A6B2D18170BFB00FF9187 /* iPadTableViewCell.m in Sources */,
 				16A0DE8A180C8EF100461BE1 /* CSNotificationView.m in Sources */,
 				16C3ACC51809420200AD95D9 /* SubjectDetailsViewController.m in Sources */,
 			);

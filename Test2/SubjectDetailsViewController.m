@@ -52,6 +52,11 @@
                                                                              target:self   action:@selector(dismissView)];
     self.navigationItem.title = @"Attendance Details";
     [self.tableView setAllowsSelection:NO];
+    
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"marks" style:UIBarButtonItemStyleDone target:self action:@selector(showMarksOniPad)];
+    }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -61,6 +66,13 @@
 
 -(void)dismissView{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)showMarksOniPad{
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"showMarksOniPad" object:nil userInfo:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning

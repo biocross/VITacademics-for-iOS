@@ -21,7 +21,7 @@
 /* TODO:
  
  - [DONE] Error Handling for server responses
- - Select icons for the sidebar
+ - [DONE] Select icons for the sidebar
  - Build the tutorial using CSNotificztions! Oh Sexy!
  
 */
@@ -557,7 +557,7 @@ return _subjects;
         [betaAcess show];
     }
     if(index == 3){ //Share with friends
-        NSString *message = @"https://itunes.apple.com/us/app/vine/id592447445?mt=8";
+        NSString *message = @"https://itunes.apple.com/in/app/vitacademics/id727796987?mt=8";
         //UIImage *imageToShare = [UIImage imageNamed:@"test.jpg"];
         NSArray *postItems = @[message]; //add image here if you want
         UIActivityViewController *activityVC = [[UIActivityViewController alloc]
