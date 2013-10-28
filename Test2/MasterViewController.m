@@ -18,6 +18,7 @@
 #import "RNFrostedSidebar.h"
 #import "Helpshift.h"
 
+
 /* TODO:
  
  - [DONE] Error Handling for server responses
@@ -60,8 +61,12 @@ return _subjects;
 {
     
     [super viewDidLoad];
+
     
-    //[[UINavigationBar appearance] setBarTintColor:[UIColor blueColor]];
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName
+           value:@"Home View (Table)"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
     
     UISwipeGestureRecognizer* gestureR;
     gestureR = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(openMenu:)] ;
@@ -147,7 +152,7 @@ return _subjects;
 -(void)showCaptchaError{
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Incorrect captcha!"];
+        [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Incorrect captcha/credentials"];
     });
     
     

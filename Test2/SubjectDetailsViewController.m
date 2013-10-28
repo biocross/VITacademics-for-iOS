@@ -7,6 +7,7 @@
 //
 
 #import "SubjectDetailsViewController.h"
+#import "CSNotificationView.h"
 
 @interface SubjectDetailsViewController (){
 }
@@ -28,8 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
+
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"DetailCell"];
     
     int totalLength = [_detailsArray count];
@@ -55,13 +55,14 @@
     
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"marks" style:UIBarButtonItemStyleDone target:self action:@selector(showMarksOniPad)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Marks" style:UIBarButtonItemStyleDone target:self action:@selector(showMarksOniPad)];
     }
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName
+           value:@"Subject Details"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+    
 }
 
 -(void)dismissView{
@@ -69,9 +70,12 @@
 }
 
 -(void)showMarksOniPad{
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05f * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        
+        [CSNotificationView showInViewController:self tintColor:[UIColor orangeColor] image:nil message:@"Coming Soon..." duration:1.5f];
+    });
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"showMarksOniPad" object:nil userInfo:nil];
     
 }
 

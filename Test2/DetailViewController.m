@@ -99,6 +99,10 @@
 {
     [super viewDidLoad];
     [self configureView];
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName
+           value:@"Subject Details"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
     
 }
 

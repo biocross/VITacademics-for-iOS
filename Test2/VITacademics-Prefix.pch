@@ -13,4 +13,8 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>   
     #import <QuartzCore/QuartzCore.h>
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
+#import "GAILogger.h"
+#import "GAIFields.h"
 #endif

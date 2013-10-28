@@ -34,6 +34,10 @@
                                                                              target:self   action:@selector(dismissView)];
     self.navigationItem.title = @"Marks";
     [self.tableView setAllowsSelection:NO];
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName
+           value:@"Marks"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 -(void)dismissView{

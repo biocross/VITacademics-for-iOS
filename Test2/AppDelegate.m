@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import <CoreData/CoreData.h>
 #import "Helpshift.h"
+#import "GAI.h"
+#import "Crittercism.h"
 
 
 
@@ -31,6 +33,16 @@
     if([prefs stringForKey:@"registrationNumber"]){
         [Helpshift setUsername:[prefs stringForKey:@"registrationNumber"]];
     }
+    
+    //Crittercism
+    [Crittercism enableWithAppID: @"526e47368b2e337b2700000a"];
+    
+    //Google Analytics
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    [GAI sharedInstance].dispatchInterval = 30;
+    //[[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    // Initialize tracker.
+    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-38195928-4"];
     
     return YES;
 }
