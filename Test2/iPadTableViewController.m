@@ -46,6 +46,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName
+           value:@"iPad Home View"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+    
+    
     [self.tableView registerClass:[iPadTableViewCell class] forCellReuseIdentifier:@"iPadCell"];
     
     self.tableView.allowsSelection = YES;
@@ -157,7 +164,7 @@
 -(void)showCaptchaError{
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Incorrect captcha!"];
+        [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Incorrect captcha/Credentials"];
     });
     
     

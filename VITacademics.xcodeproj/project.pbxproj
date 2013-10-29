@@ -14,6 +14,9 @@
 		1634B8E2181E7A6500FD4FA2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1634B8E1181E7A6500FD4FA2 /* CoreData.framework */; };
 		1634B8E9181E80A500FD4FA2 /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = 1634B8E7181E80A500FD4FA2 /* dsym_upload.sh */; };
 		1634B8EA181E80A500FD4FA2 /* libCrittercism_v4_0_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1634B8E8181E80A500FD4FA2 /* libCrittercism_v4_0_7.a */; };
+		164163CE181E889200F20C77 /* 152.png in Resources */ = {isa = PBXBuildFile; fileRef = 164163CD181E889200F20C77 /* 152.png */; };
+		164163D1181E89AA00F20C77 /* 768x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 164163CF181E89AA00F20C77 /* 768x1024.png */; };
+		164163D2181E89AA00F20C77 /* 1536x2048.png in Resources */ = {isa = PBXBuildFile; fileRef = 164163D0181E89AA00F20C77 /* 1536x2048.png */; };
 		1657D3B6181548B100E633E9 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 1657D3B5181548B000E633E9 /* 120.png */; };
 		1657D3BD18154C4A00E633E9 /* 640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 1657D3BB18154C4A00E633E9 /* 640x960.png */; };
 		1657D3BE18154C4A00E633E9 /* 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 1657D3BC18154C4A00E633E9 /* 640x1136.png */; };
@@ -96,6 +99,9 @@
 		1634B8E6181E80A500FD4FA2 /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
 		1634B8E7181E80A500FD4FA2 /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
 		1634B8E8181E80A500FD4FA2 /* libCrittercism_v4_0_7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_0_7.a; sourceTree = "<group>"; };
+		164163CD181E889200F20C77 /* 152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 152.png; sourceTree = "<group>"; };
+		164163CF181E89AA00F20C77 /* 768x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 768x1024.png; sourceTree = "<group>"; };
+		164163D0181E89AA00F20C77 /* 1536x2048.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1536x2048.png; sourceTree = "<group>"; };
 		1657D3B5181548B000E633E9 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
 		1657D3BB18154C4A00E633E9 /* 640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x960.png; sourceTree = "<group>"; };
 		1657D3BC18154C4A00E633E9 /* 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x1136.png; sourceTree = "<group>"; };
@@ -216,6 +222,9 @@
 		162A797E1815BA5B00BFAA89 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				164163CF181E89AA00F20C77 /* 768x1024.png */,
+				164163D0181E89AA00F20C77 /* 1536x2048.png */,
+				164163CD181E889200F20C77 /* 152.png */,
 				16B8684C180DCE3E00C3DF5E /* Images.xcassets */,
 				1657D3B5181548B000E633E9 /* 120.png */,
 				1657D3BB18154C4A00E633E9 /* 640x960.png */,
@@ -508,6 +517,7 @@
 				1634B8E9181E80A500FD4FA2 /* dsym_upload.sh in Resources */,
 				16B86876180DE9FA00C3DF5E /* HS-background-tile@2x.png in Resources */,
 				16B86887180DE9FA00C3DF5E /* HSTutorialiPad.png in Resources */,
+				164163CE181E889200F20C77 /* 152.png in Resources */,
 				16B8687E180DE9FA00C3DF5E /* HS-section-header@2x.png in Resources */,
 				1657D3BE18154C4A00E633E9 /* 640x1136.png in Resources */,
 				16B8688A180DE9FA00C3DF5E /* HelpshiftConfigDark.plist in Resources */,
@@ -521,7 +531,9 @@
 				16B86874180DE9FA00C3DF5E /* HelpshiftLocalizable.strings in Resources */,
 				16B86877180DE9FA00C3DF5E /* HS-no-connection.png in Resources */,
 				16B86875180DE9FA00C3DF5E /* HS-background-tile.png in Resources */,
+				164163D1181E89AA00F20C77 /* 768x1024.png in Resources */,
 				16A0DE8B180C8EF100461BE1 /* CSNotificationView.xcassets in Resources */,
+				164163D2181E89AA00F20C77 /* 1536x2048.png in Resources */,
 				16B86888180DE9FA00C3DF5E /* HSTutorialiPad@2x.png in Resources */,
 				1657D3BD18154C4A00E633E9 /* 640x960.png in Resources */,
 				162A797A1815B56400BFAA89 /* iPadStoryboard.storyboard in Resources */,
@@ -683,7 +695,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Siddharth Gupta (GC4Z88CPZF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Test2/VITacademics-Prefix.pch";
 				INFOPLIST_FILE = "Test2/VITacademics-Info.plist";
