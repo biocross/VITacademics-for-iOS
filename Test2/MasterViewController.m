@@ -13,10 +13,11 @@
 #import "VITxAPI.h"
 #import "CaptchaViewController.h"
 #import "TDBadgedCell.h"
-#import "CSNotificationView.h"
+//#import "CSNotificationView.h"
 #import "NSDate+TimeAgo.h"
 #import "RNFrostedSidebar.h"
 #import "Helpshift.h"
+#import "CSNotificationTableView.h"
 
 
 /* TODO:
@@ -24,6 +25,7 @@
  - [DONE] Error Handling for server responses
  - [DONE] Select icons for the sidebar
  - Build the tutorial using CSNotificztions! Oh Sexy!
+ - Use a custom cell for iPhone instead of TDBadgedCell
  
 */
 
@@ -61,7 +63,7 @@ return _subjects;
 {
     
     [super viewDidLoad];
-
+    
     
     id tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName
@@ -99,7 +101,7 @@ return _subjects;
         //Show tutorial or open Settings View Controller
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4f * NSEC_PER_SEC));
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            [CSNotificationView showInViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:@"Welcome to VITacademics!" duration:2.5f];
+            [CSNotificationTableView showInTableViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:@"Welcome to VITacademics!" duration:2.5f];
             
             dispatch_time_t popTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.05f * NSEC_PER_SEC));
             dispatch_after(popTime2, dispatch_get_main_queue(), ^(void){
@@ -152,7 +154,7 @@ return _subjects;
 -(void)showCaptchaError{
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Incorrect captcha/credentials"];
+        [CSNotificationTableView showInTableViewController:self style:CSNotificationViewStyleError message:@"Incorrect captcha/credentials"];
     });
     
     
@@ -161,7 +163,7 @@ return _subjects;
 -(void)showNetworkError{
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Network Error, Please check your internet connectivity."];
+        [CSNotificationTableView showInTableViewController:self style:CSNotificationViewStyleError message:@"Network Error, Please check your internet connectivity."];
     });
 }
 
@@ -208,7 +210,7 @@ return _subjects;
     }
     
     else if([title isEqualToString:@"Not Now"]){
-        [CSNotificationView showInViewController:self tintColor:[UIColor blueColor] image:nil message:@"Some other time, then :)" duration:1.8f];
+        [CSNotificationTableView showInTableViewController:self tintColor:[UIColor blueColor] image:nil message:@"Some other time, then :)" duration:1.8f];
     }
     
     
@@ -405,8 +407,8 @@ return _subjects;
 
 - (void)startLoadingAttendance:(id)sender {
     
-    CSNotificationView *notificationController = [CSNotificationView notificationViewWithParentViewController:self tintColor:[UIColor orangeColor] image:nil message:@"Loading Attendance..."];
-
+    CSNotificationTableView *notificationController = [CSNotificationTableView notificationViewWithParentViewController:self tintColor:[UIColor orangeColor] image:nil message:@"Loading Attendance..."];
+    [notificationController setShowingActivity:YES];
     [notificationController setVisible:YES animated:YES completion:nil];
     
     //getting the regno, dob from preferences.
@@ -428,7 +430,6 @@ return _subjects;
             [notificationController setVisible:NO animated:YES completion:nil];
             self.attendanceCacheString = result;
             self.marksCacheString = marks;
-            
         
             [preferences removeObjectForKey:[preferences objectForKey:@"registrationNumber"]];
             [preferences setObject:result forKey:[preferences objectForKey:@"registrationNumber"]];
@@ -488,7 +489,7 @@ return _subjects;
              dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
              dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                  
-                 [CSNotificationView showInViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:cardMessage duration:2.5f];
+                 [CSNotificationTableView showInTableViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:cardMessage duration:2.5f];
              });
              
              

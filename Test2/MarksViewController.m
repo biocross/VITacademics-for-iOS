@@ -115,7 +115,7 @@
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ / 5", self.marksArray[12]];
         }
         if(indexPath.row == 2){
-            cell.textLabel.text = @"Quiz II";
+            cell.textLabel.text = @"Quiz III";
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ / 5", self.marksArray[14]];
         }
     }

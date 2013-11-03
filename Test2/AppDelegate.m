@@ -43,6 +43,7 @@
     //[[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
     // Initialize tracker.
     id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-38195928-4"];
+    NSLog(@"%@", [tracker debugDescription]);
     
     return YES;
 }

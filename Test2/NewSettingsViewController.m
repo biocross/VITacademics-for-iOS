@@ -62,8 +62,6 @@
         }
     }
     
-    
-        
         
     //set the date from NSUserPreferences here.
 }

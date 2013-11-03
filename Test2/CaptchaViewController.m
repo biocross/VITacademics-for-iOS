@@ -94,8 +94,8 @@
     
     //show progress
     
-    CSNotificationView *notificationController = [CSNotificationView notificationViewWithParentViewController:self tintColor:[UIColor blueColor] image:nil message:@"Submitting Captcha..."];
-    
+    CSNotificationView *notificationController = [CSNotificationView notificationViewWithParentViewController:self tintColor:[UIColor colorWithRed:0.000 green:0.6 blue:1.000 alpha:1] image:nil message:@"Submitting Captcha..."];
+    [notificationController setShowingActivity:YES];
     [notificationController setVisible:YES animated:YES completion:nil];
     
     

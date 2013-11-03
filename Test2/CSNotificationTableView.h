@@ -17,15 +17,15 @@ typedef enum {
     CSNotificationViewStyleError,
 } CSNotificationViewStyle;
 
-@interface CSNotificationView : UIView
+@interface CSNotificationTableView : UIView
 
 #pragma mark + quick presentation
 
-+ (void)showInViewController:(UIViewController*)viewController
++ (void)showInTableViewController:(UITableViewController*)viewController
              style:(CSNotificationViewStyle)style
            message:(NSString*)message;
 
-+ (void)showInViewController:(UIViewController*)viewController
++ (void)showInTableViewController:(UITableViewController*)viewController
          tintColor:(UIColor*)tintColor
              image:(UIImage*)image
            message:(NSString*)message
@@ -33,14 +33,14 @@ typedef enum {
 
 #pragma mark + creators
 
-+ (CSNotificationView*)notificationViewWithParentViewController:(UIViewController*)viewController
++ (CSNotificationTableView*)notificationViewWithParentViewController:(UITableViewController*)viewController
                                                       tintColor:(UIColor*)tintColor
                                                           image:(UIImage*)image
                                                         message:(NSString*)message;
 
 #pragma mark - initialization
 
-- (instancetype)initWithParentViewController:(UIViewController*)viewController;
+- (instancetype)initWithParentViewController:(UITableViewController*)viewController;
 
 #pragma mark - presentation
 

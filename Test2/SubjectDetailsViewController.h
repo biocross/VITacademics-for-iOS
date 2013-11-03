@@ -13,5 +13,6 @@
 @property (nonatomic, strong) NSArray *detailsArray;
 @property (strong) NSMutableArray *days;
 @property (strong) NSMutableArray *statuses;
+@property (strong) NSIndexPath *selectedRow;
 
 @end

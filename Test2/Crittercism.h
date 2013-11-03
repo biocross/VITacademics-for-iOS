@@ -29,6 +29,8 @@
 //
 // [Crittercism enableWithAppID:@"YOURAPPIDGOESHERE"];
 
+@class CLLocation;
+
 @interface Crittercism : NSObject
 
 // Enabling Crittercism
@@ -97,6 +99,14 @@
 // instruct the library to perform all breadcrumb writes on a background thread.
 
 + (void)setAsyncBreadcrumbMode:(BOOL)writeAsync;
+
+// Inform Crittercism of the device's most recent location for use with
+// OPTMZ network instrumentation. 
+// Note: Currently, only customers that are participating in the OPTMZ
+//   geo-location beta program will be able to see location data in the
+//   Crittercism portal. If you would like to participate in the beta
+//   program, please contact beta@crittercism.com.
++ (void)updateLocation:(CLLocation *)location;
 
 // Handled exceptions are a way of reporting exceptions your app intentionally
 // caught. If the passed in NSException object was @thrown, the stack trace

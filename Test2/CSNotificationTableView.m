@@ -6,18 +6,18 @@
 //  Copyright (c) 2013 Christian Schwarz. Check LICENSE.md.
 //
 
-#import "CSNotificationView.h"
+#import "CSNotificationTableView.h"
 
 static NSInteger const kCSNotificationViewEmptySymbolViewTag = 666;
 
-@interface CSNotificationView ()
+@interface CSNotificationTableView ()
 
 #pragma mark - blur effect
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) CALayer *blurLayer;
 
 #pragma mark - presentation
-@property (nonatomic, weak) UIViewController* parentViewController;
+@property (nonatomic, weak) UITableViewController* parentViewController;
 @property (nonatomic, getter = isVisible) BOOL visible;
 
 #pragma mark - content views
@@ -27,12 +27,12 @@ static NSInteger const kCSNotificationViewEmptySymbolViewTag = 666;
 
 @end
 
-@implementation CSNotificationView
+@implementation CSNotificationTableView
 @dynamic tintColor;
 
 #pragma mark + quick presentation
 
-+ (void)showInViewController:(UIViewController*)viewController
++ (void)showInTableViewController:(UITableViewController*)viewController
          tintColor:(UIColor*)tintColor
              image:(UIImage*)image
            message:(NSString*)message
@@ -40,12 +40,14 @@ static NSInteger const kCSNotificationViewEmptySymbolViewTag = 666;
 {
     NSAssert(message, @"'message' must not be nil.");
     
-    __block CSNotificationView* note = [[CSNotificationView alloc] initWithParentViewController:viewController];
+    __block CSNotificationTableView* note = [[CSNotificationTableView alloc] initWithParentViewController:viewController];
     note.tintColor = tintColor;
     note.image = image;
     note.textLabel.text = message;
     
-    void (^completion)() = ^{[note setVisible:NO animated:YES completion:nil];};
+    void (^completion)() = ^{[note setVisible:NO animated:YES completion:nil];
+        [note.parentViewController.tableView reloadData];
+    };
     [note setVisible:YES animated:YES completion:^{
         double delayInSeconds = duration;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
@@ -56,29 +58,29 @@ static NSInteger const kCSNotificationViewEmptySymbolViewTag = 666;
     
 }
 
-+ (void)showInViewController:(UIViewController *)viewController
++ (void)showInTableViewController:(UITableViewController *)viewController
              style:(CSNotificationViewStyle)style
            message:(NSString *)message
 {
     
     
-    [CSNotificationView showInViewController:viewController
-                         tintColor:[CSNotificationView blurTintColorForStyle:style]
-                             image:[CSNotificationView imageForStyle:style]
+    [CSNotificationTableView showInTableViewController:viewController
+                         tintColor:[CSNotificationTableView blurTintColorForStyle:style]
+                             image:[CSNotificationTableView imageForStyle:style]
                            message:message
                           duration:kCSNotificationViewDefaultShowDuration];
 }
 
 #pragma mark + creators
 
-+ (CSNotificationView*)notificationViewWithParentViewController:(UIViewController*)viewController
++ (CSNotificationTableView*)notificationViewWithParentViewController:(UITableViewController*)viewController
                                                       tintColor:(UIColor*)tintColor
                                                           image:(UIImage*)image
                                                         message:(NSString*)message
 {
     NSParameterAssert(viewController);
     
-    CSNotificationView* note = [[CSNotificationView alloc] initWithParentViewController:viewController];
+    CSNotificationTableView* note = [[CSNotificationTableView alloc] initWithParentViewController:viewController];
     note.tintColor = tintColor;
     note.image = image;
     note.textLabel.text = message;
@@ -88,7 +90,7 @@ static NSInteger const kCSNotificationViewEmptySymbolViewTag = 666;
 
 #pragma mark - lifecycle
 
-- (instancetype)initWithParentViewController:(UIViewController*)viewController
+- (instancetype)initWithParentViewController:(UITableViewController*)viewController
 {
     self = [super initWithFrame:CGRectZero];
     if (self) {
@@ -277,15 +279,16 @@ static NSInteger const kCSNotificationViewEmptySymbolViewTag = 666;
     [UIView animateWithDuration:0.1 animations:^{
 
         weakself.showingActivity = NO;
-        weakself.image = [CSNotificationView imageForStyle:style];
+        weakself.image = [CSNotificationTableView imageForStyle:style];
         weakself.textLabel.text = message;
-        weakself.tintColor = [CSNotificationView blurTintColorForStyle:style];
+        weakself.tintColor = [CSNotificationTableView blurTintColorForStyle:style];
         
     } completion:^(BOOL finished) {
         double delayInSeconds = 2.0;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             [weakself setVisible:NO animated:animated completion:nil];
+            
         });
     }];
 }
@@ -294,7 +297,7 @@ static NSInteger const kCSNotificationViewEmptySymbolViewTag = 666;
 
 - (CGRect)visibleFrame
 {
-    UIViewController* viewController = self.parentViewController;
+    UITableViewController* viewController = self.parentViewController;
     
     CGRect displayFrame = CGRectMake(0, 0, CGRectGetWidth(viewController.view.frame),
                                      kCSNotificationViewHeight + viewController.topLayoutGuide.length);
@@ -309,7 +312,7 @@ static NSInteger const kCSNotificationViewEmptySymbolViewTag = 666;
 
 - (CGRect)hiddenFrame
 {
-    UIViewController* viewController = self.parentViewController;
+    UITableViewController* viewController = self.parentViewController;
     
     CGRect offscreenFrame = CGRectMake(0, -kCSNotificationViewHeight - viewController.topLayoutGuide.length,
                                        CGRectGetWidth(viewController.view.frame),

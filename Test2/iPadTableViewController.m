@@ -16,6 +16,7 @@
 #import "NSDate+TimeAgo.h"
 #import "Helpshift.h"
 #import "SubjectDetailsViewController.h"
+#import "MarksViewController.h"
 
 @interface iPadTableViewController (){
     NSMutableArray *MTheorySubjects;
@@ -139,26 +140,38 @@
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(showMarksOniPad:)
-     name:@"showMarksOniPad"
+     name:@"MarksOniPad"
      object:nil];
     
     
 }
 
--(void)showMarksOniPad{
+-(void)showMarksOniPad:(NSNotification *)notification{
     
-    //NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
-
-    /*
-    if([self.subjects[selectedRowIndex.row]. count] < 16){
+    
+    NSIndexPath *selectedRowIndex = [[notification userInfo] valueForKey:@"indexPath"];
+    NSLog(@"Reached 1");
+    int indexOfMatchedSubject = -1;
+    int i = 0;
+    for(NSArray *item in marksArray){
+        if([item[1] isEqualToString:self.subjects[selectedRowIndex.row].classNumber]){
+            indexOfMatchedSubject = i;
+        }
+        i += 1;
+    }
+    NSLog(@"Reached 2");
+    if([marksArray[indexOfMatchedSubject] count] < 16){
         [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"PBL/Lab not supported (yet)"];
     }
     else{
+        NSLog(@"Reached 3");
         MarksViewController *forThisSubject = [[MarksViewController alloc] init];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:forThisSubject];
+        nav.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        nav.modalPresentationStyle = UIModalPresentationFormSheet;
         [self presentViewController:nav animated:YES completion:nil];
-        [forThisSubject setMarksArray:self.subjectMarks];
-    }*/
+        [forThisSubject setMarksArray:marksArray[indexOfMatchedSubject]];
+    }
 }
 
 -(void)showCaptchaError{
@@ -329,7 +342,8 @@
 {
     
     SubjectDetailsViewController *forThisSubject = [[SubjectDetailsViewController alloc] init];
-    [forThisSubject setDetailsArray:_subjects[indexPath.row].subjectDetails];
+    forThisSubject.detailsArray = _subjects[indexPath.row].subjectDetails;
+    forThisSubject.selectedRow = [self.tableView indexPathForSelectedRow];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:forThisSubject];
     nav.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     nav.modalPresentationStyle = UIModalPresentationFormSheet;

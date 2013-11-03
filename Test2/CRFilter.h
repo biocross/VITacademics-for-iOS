@@ -37,7 +37,7 @@
            queryOnly:(BOOL)onlyScrubQuery;
 
 // Does specified URL match this filter?
-- (BOOL)matches:(NSString *)url;
+- (BOOL)doesMatch:(NSString *)url;
 
 // Scrub supplied URL
 // Returns nil if this is a blacklist filter

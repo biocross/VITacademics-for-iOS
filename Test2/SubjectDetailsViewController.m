@@ -70,11 +70,12 @@
 }
 
 -(void)showMarksOniPad{
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05f * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        
-        [CSNotificationView showInViewController:self tintColor:[UIColor orangeColor] image:nil message:@"Coming Soon..." duration:1.5f];
-    });
+    NSIndexPath *selectedRowIndex = self.selectedRow;
+    NSDictionary* dict = [NSDictionary dictionaryWithObject:selectedRowIndex forKey:@"indexPath"];
+    NSNotification *notification = [[NSNotification alloc] initWithName:@"MarksOniPad" object:self userInfo:dict];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
     
     
 }

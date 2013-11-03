@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="4510" systemVersion="13A598" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="4514" systemVersion="13A598" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Subject Name" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="1" preferredMaxLayoutWidth="255" translatesAutoresizingMaskIntoConstraints="NO" id="L2U-tW-raP">
-                        <rect key="frame" x="20" y="35" width="255" height="109"/>
+                        <rect key="frame" x="20" y="34" width="255" height="109"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <accessibility key="accessibilityConfiguration" hint="The Subject Name" label="The Subject Name"/>
                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="23"/>
@@ -39,20 +39,20 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Last Uploaded:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcO-VP-TiC">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" misplaced="YES" text="Last Uploaded:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcO-VP-TiC">
                         <rect key="frame" x="137" y="15" width="72" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="00-Mon-2013" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0y-hM-kyc">
-                        <rect key="frame" x="211" y="15" width="64" height="12"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" misplaced="YES" text="00-Mon-2013" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0y-hM-kyc">
+                        <rect key="frame" x="213" y="15" width="64" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="84%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Egs-JB-PMo">
-                        <rect key="frame" x="315" y="70" width="144" height="56"/>
+                        <rect key="frame" x="315" y="61" width="144" height="56"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="67"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -177,6 +177,7 @@
                 <constraints>
                     <constraint firstItem="fxO-pT-6Wr" firstAttribute="leading" secondItem="Fva-Bt-yjG" secondAttribute="trailing" constant="5" id="8Dg-vF-CaA"/>
                     <constraint firstItem="mJN-kf-HeU" firstAttribute="leading" secondItem="g1b-W4-p0a" secondAttribute="trailing" constant="5" id="B4c-qn-m7Y"/>
+                    <constraint firstItem="T0y-hM-kyc" firstAttribute="leading" secondItem="wcO-VP-TiC" secondAttribute="trailing" constant="5" id="Bjn-h4-WCF"/>
                     <constraint firstItem="Fva-Bt-yjG" firstAttribute="leading" secondItem="0Pq-bY-NMr" secondAttribute="trailing" constant="5" id="BwQ-UO-5A0"/>
                     <constraint firstItem="rBR-XA-IYb" firstAttribute="leading" secondItem="lbM-MC-MR1" secondAttribute="trailing" constant="5" id="Mgl-8b-EJ2"/>
                     <constraint firstItem="m5h-zz-iZa" firstAttribute="leading" secondItem="BPY-v6-JKb" secondAttribute="trailing" constant="5" id="R2A-YA-mrk"/>
