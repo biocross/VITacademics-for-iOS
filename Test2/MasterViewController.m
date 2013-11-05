@@ -13,7 +13,6 @@
 #import "VITxAPI.h"
 #import "CaptchaViewController.h"
 #import "iPhoneTableViewCell.h"
-//#import "CSNotificationView.h"
 #import "NSDate+TimeAgo.h"
 #import "RNFrostedSidebar.h"
 #import "Helpshift.h"
@@ -25,7 +24,7 @@
  - [DONE] Error Handling for server responses
  - [DONE] Select icons for the sidebar
  - Build the tutorial using CSNotificztions! Oh Sexy!
- - Use a custom cell for iPhone instead of TDBadgedCell
+ - [DONE] Use a custom cell for iPhone instead of TDBadgedCell
  
 */
 
@@ -63,6 +62,7 @@ return _subjects;
 {
     
     [super viewDidLoad];
+    [self.tableView reloadData];
     
     [self.tableView registerClass:[iPhoneTableViewCell class] forCellReuseIdentifier:@"iPhoneCell"];
     
@@ -340,6 +340,11 @@ return _subjects;
     
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 58;
+}
+
 
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -350,18 +355,38 @@ return _subjects;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Handled by Storyboards for iPhone
-    /*if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
-        if(selectedRowIndex.section == 0){
-            [self.detailViewController setDetailItem:self.theorySubjects[indexPath.row]];
+    NSIndexPath *selectedRowIndex = indexPath;
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    DetailViewController *detailViewController = [sb instantiateViewControllerWithIdentifier:@"DetailsView"];
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    
+    if(selectedRowIndex.section == 0){
+        int indexOfMatchedSubject = -1;
+        int i = 0;
+        for(NSArray *item in marksArray){
+            if([item[1] isEqualToString:self.theorySubjects[selectedRowIndex.row].classNumber]){
+                indexOfMatchedSubject = i;
+                break;
+            }
+            i += 1;
+        }
+        
+        detailViewController.subject = self.theorySubjects[selectedRowIndex.row];
+        if(indexOfMatchedSubject < [marksArray count] && indexOfMatchedSubject != -1){
+            detailViewController.subjectMarks = marksArray[indexOfMatchedSubject];
         }
         else{
-            [self.detailViewController setDetailItem:self.labSubjects[indexPath.row]];
+            detailViewController.subjectMarks = [[NSArray alloc] init];
         }
-    }*/
+        
+    }
+    else{
+        detailViewController.subject = self.labSubjects[selectedRowIndex.row];
+        detailViewController.subjectMarks = [[NSArray alloc] init];
+    }
 }
 
+/*
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
@@ -396,7 +421,7 @@ return _subjects;
     }
 }
 
-
+*/
 
 #pragma mark - VITx API Calls
 
