@@ -10,6 +10,7 @@
 #import "SubjectDetailsViewController.h"
 #import "Subject.h"
 #import "MarksViewController.h"
+#import "MasterViewController.h"
 #import "CSNotificationView.h"
 
 @interface DetailViewController ()
@@ -39,6 +40,14 @@
     if (self.masterPopoverController != nil) {
         [self.masterPopoverController dismissPopoverAnimated:YES];
     }        
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    if (self.navigationController.visibleViewController != self) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTable" object:nil userInfo:nil];
+    }
 }
 
 - (void)configureView

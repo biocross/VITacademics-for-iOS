@@ -55,7 +55,11 @@ return _subjects;
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    
+}
+
+- (void)didMoveToParentViewController:(UITableViewController *)parent
+{
+    // parent is nil if this view controller was removed
 }
 
 - (void)viewDidLoad
@@ -63,7 +67,6 @@ return _subjects;
     
     [super viewDidLoad];
     [self.tableView reloadData];
-    
     [self.tableView registerClass:[iPhoneTableViewCell class] forCellReuseIdentifier:@"iPhoneCell"];
     
     id tracker = [[GAI sharedInstance] defaultTracker];
@@ -120,9 +123,7 @@ return _subjects;
             });
         });
     }//end of else
-    
-    
-    //self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+
     
 #pragma mark - Observers
     [[NSNotificationCenter defaultCenter]
@@ -149,7 +150,19 @@ return _subjects;
      name:@"networkError"
      object:nil];
     
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(refreshTableView)
+     name:@"refreshTable"
+     object:nil];
+    
+}
 
+-(void)refreshTableView{
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8f * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.tableView reloadData];
+    });
 }
 
 -(void)showCaptchaError{
