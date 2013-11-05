@@ -17,6 +17,8 @@
 		164163CE181E889200F20C77 /* 152.png in Resources */ = {isa = PBXBuildFile; fileRef = 164163CD181E889200F20C77 /* 152.png */; };
 		164163D1181E89AA00F20C77 /* 768x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 164163CF181E89AA00F20C77 /* 768x1024.png */; };
 		164163D2181E89AA00F20C77 /* 1536x2048.png in Resources */ = {isa = PBXBuildFile; fileRef = 164163D0181E89AA00F20C77 /* 1536x2048.png */; };
+		16426BD71826E6AA00FBA646 /* iPhoneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16426BD61826E6AA00FBA646 /* iPhoneTableViewCell.m */; };
+		16426BD91826E6D300FBA646 /* iPhoneCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16426BD81826E6D300FBA646 /* iPhoneCellNib.xib */; };
 		1657D3B6181548B100E633E9 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 1657D3B5181548B000E633E9 /* 120.png */; };
 		1657D3BD18154C4A00E633E9 /* 640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 1657D3BB18154C4A00E633E9 /* 640x960.png */; };
 		1657D3BE18154C4A00E633E9 /* 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 1657D3BC18154C4A00E633E9 /* 640x1136.png */; };
@@ -36,7 +38,6 @@
 		16888CEA173856D800BEEA71 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16888CE9173856D800BEEA71 /* DetailViewController.m */; };
 		16888CF21738578F00BEEA71 /* Subject.m in Sources */ = {isa = PBXBuildFile; fileRef = 16888CF11738578F00BEEA71 /* Subject.m */; };
 		16888CF5173859E900BEEA71 /* Subjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 16888CF4173859E900BEEA71 /* Subjects.m */; };
-		169A34221811625200B2AB27 /* TDBadgedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 169A34211811625200B2AB27 /* TDBadgedCell.m */; };
 		169C0A30174ADCA8005B16ED /* VITxAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 169C0A2F174ADCA8005B16ED /* VITxAPI.m */; };
 		169C0A33174B125E005B16ED /* CaptchaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 169C0A32174B125E005B16ED /* CaptchaViewController.m */; };
 		16B86849180DCC6100C3DF5E /* RNFrostedSidebar.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B86848180DCC6100C3DF5E /* RNFrostedSidebar.m */; };
@@ -101,6 +102,9 @@
 		164163CD181E889200F20C77 /* 152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 152.png; sourceTree = "<group>"; };
 		164163CF181E89AA00F20C77 /* 768x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 768x1024.png; sourceTree = "<group>"; };
 		164163D0181E89AA00F20C77 /* 1536x2048.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1536x2048.png; sourceTree = "<group>"; };
+		16426BD51826E6AA00FBA646 /* iPhoneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhoneTableViewCell.h; sourceTree = "<group>"; };
+		16426BD61826E6AA00FBA646 /* iPhoneTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPhoneTableViewCell.m; sourceTree = "<group>"; };
+		16426BD81826E6D300FBA646 /* iPhoneCellNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iPhoneCellNib.xib; sourceTree = "<group>"; };
 		1657D3B5181548B000E633E9 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
 		1657D3BB18154C4A00E633E9 /* 640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x960.png; sourceTree = "<group>"; };
 		1657D3BC18154C4A00E633E9 /* 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x1136.png; sourceTree = "<group>"; };
@@ -128,8 +132,6 @@
 		16888CF11738578F00BEEA71 /* Subject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subject.m; sourceTree = "<group>"; };
 		16888CF3173859E900BEEA71 /* Subjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subjects.h; sourceTree = "<group>"; };
 		16888CF4173859E900BEEA71 /* Subjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subjects.m; sourceTree = "<group>"; };
-		169A34201811625200B2AB27 /* TDBadgedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDBadgedCell.h; sourceTree = "<group>"; };
-		169A34211811625200B2AB27 /* TDBadgedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDBadgedCell.m; sourceTree = "<group>"; };
 		169C0A2E174ADCA8005B16ED /* VITxAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VITxAPI.h; sourceTree = "<group>"; };
 		169C0A2F174ADCA8005B16ED /* VITxAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VITxAPI.m; sourceTree = "<group>"; };
 		169C0A31174B125E005B16ED /* CaptchaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptchaViewController.h; sourceTree = "<group>"; };
@@ -272,8 +274,6 @@
 				1627657217FB0E3300A18AB2 /* NSDateTimeAgo.bundle */,
 				1677629217FAFCB700727568 /* NSDate+TimeAgo.h */,
 				1677629317FAFCB700727568 /* NSDate+TimeAgo.m */,
-				169A34201811625200B2AB27 /* TDBadgedCell.h */,
-				169A34211811625200B2AB27 /* TDBadgedCell.m */,
 				16B86847180DCC6100C3DF5E /* RNFrostedSidebar.h */,
 				16B86848180DCC6100C3DF5E /* RNFrostedSidebar.m */,
 			);
@@ -345,6 +345,9 @@
 				166A6B2B18170BFB00FF9187 /* iPadTableViewCell.h */,
 				166A6B2C18170BFB00FF9187 /* iPadTableViewCell.m */,
 				16F0E36B1818353D002C8E26 /* iPadCellNib.xib */,
+				16426BD51826E6AA00FBA646 /* iPhoneTableViewCell.h */,
+				16426BD61826E6AA00FBA646 /* iPhoneTableViewCell.m */,
+				16426BD81826E6D300FBA646 /* iPhoneCellNib.xib */,
 			);
 			name = VITacademics;
 			path = Test2;
@@ -529,6 +532,7 @@
 				162B22A3181FD7E10093DABC /* CSNotificationView.xcassets in Resources */,
 				16B86881180DE9FA00C3DF5E /* HSChatBubbleWhite.png in Resources */,
 				16B86876180DE9FA00C3DF5E /* HS-background-tile@2x.png in Resources */,
+				16426BD91826E6D300FBA646 /* iPhoneCellNib.xib in Resources */,
 				16B86887180DE9FA00C3DF5E /* HSTutorialiPad.png in Resources */,
 				164163CE181E889200F20C77 /* 152.png in Resources */,
 				16B8687E180DE9FA00C3DF5E /* HS-section-header@2x.png in Resources */,
@@ -563,9 +567,9 @@
 				16D079BB1826544800A2FDA2 /* CSNotificationTableView.m in Sources */,
 				16888CD4173856D700BEEA71 /* main.m in Sources */,
 				16888CD8173856D800BEEA71 /* AppDelegate.m in Sources */,
-				169A34221811625200B2AB27 /* TDBadgedCell.m in Sources */,
 				16888CE7173856D800BEEA71 /* MasterViewController.m in Sources */,
 				16B86849180DCC6100C3DF5E /* RNFrostedSidebar.m in Sources */,
+				16426BD71826E6AA00FBA646 /* iPhoneTableViewCell.m in Sources */,
 				16888CEA173856D800BEEA71 /* DetailViewController.m in Sources */,
 				16888CF21738578F00BEEA71 /* Subject.m in Sources */,
 				162B22A2181FD7E10093DABC /* CSNotificationView.m in Sources */,

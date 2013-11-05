@@ -71,11 +71,11 @@
 
 -(void)showMarksOniPad{
     NSIndexPath *selectedRowIndex = self.selectedRow;
-    NSDictionary* dict = [NSDictionary dictionaryWithObject:selectedRowIndex forKey:@"indexPath"];
-    NSNotification *notification = [[NSNotification alloc] initWithName:@"MarksOniPad" object:self userInfo:dict];
-    [[NSNotificationCenter defaultCenter] postNotification:notification];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^(void){
+        NSDictionary* dict = [NSDictionary dictionaryWithObject:selectedRowIndex forKey:@"indexPath"];
+        NSNotification *notification = [[NSNotification alloc] initWithName:@"MarksOniPad" object:self userInfo:dict];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
+    }];
     
     
 }

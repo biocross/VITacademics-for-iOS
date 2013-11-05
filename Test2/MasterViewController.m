@@ -12,7 +12,7 @@
 #import "DetailViewController.h"
 #import "VITxAPI.h"
 #import "CaptchaViewController.h"
-#import "TDBadgedCell.h"
+#import "iPhoneTableViewCell.h"
 //#import "CSNotificationView.h"
 #import "NSDate+TimeAgo.h"
 #import "RNFrostedSidebar.h"
@@ -64,6 +64,7 @@ return _subjects;
     
     [super viewDidLoad];
     
+    [self.tableView registerClass:[iPhoneTableViewCell class] forCellReuseIdentifier:@"iPhoneCell"];
     
     id tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName
@@ -281,17 +282,13 @@ return _subjects;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    TDBadgedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SubjectCell" forIndexPath:indexPath];
-    
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"iPhoneCellNib" owner:self options:nil];
+    iPhoneTableViewCell *cell = [nib objectAtIndex:0];
     
     if(indexPath.section == 0){
-        cell.textLabel.text = self.theorySubjects[indexPath.row].subjectTitle;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", self.theorySubjects[indexPath.row].subjectType, self.theorySubjects[indexPath.row].subjectSlot];
-        [cell.detailTextLabel setTextColor:[UIColor grayColor]];
-        
-        cell.badgeColor = [UIColor clearColor];
-        cell.badge.radius = 8;
-        cell.badge.fontSize = 12;
+        cell.subjectTitle.text = self.theorySubjects[indexPath.row].subjectTitle;
+        cell.subjectTypeAndSlot.text = [NSString stringWithFormat:@"%@ - %@", self.theorySubjects[indexPath.row].subjectType, self.theorySubjects[indexPath.row].subjectSlot];
+        [cell.subjectTypeAndSlot setTextColor:[UIColor grayColor]];
         
         float calculatedPercentage = (float) self.theorySubjects[indexPath.row].attendedClasses / self.theorySubjects[indexPath.row].conductedClasses;
         float displayPercentageInteger = calculatedPercentage * 100;
@@ -300,28 +297,23 @@ return _subjects;
             displayPercentageInteger += 1;
         }
         NSString *displayPercentage = [NSString stringWithFormat:@"%1.0f",displayPercentageInteger];
-        cell.badgeString = [displayPercentage stringByAppendingString:@"%"];
+        cell.percentage.text = [displayPercentage stringByAppendingString:@"%"];
         
         if(displayPercentageInteger < 75){
-            cell.badgeTextColor = [UIColor redColor];
+            cell.percentage.textColor = [UIColor redColor];
         }
         else if (displayPercentageInteger > 75 && displayPercentageInteger < 80){
-            cell.badgeTextColor = [UIColor orangeColor];
+            cell.percentage.textColor = [UIColor orangeColor];
         }
         else{
-            cell.badgeTextColor = [UIColor greenColor];
+            cell.percentage.textColor = [UIColor greenColor];
         }
-        
         
     }
     else{
-        cell.textLabel.text = self.labSubjects[indexPath.row].subjectTitle;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", self.labSubjects[indexPath.row].subjectType, self.labSubjects[indexPath.row].subjectSlot];
-        [cell.detailTextLabel setTextColor:[UIColor grayColor]];
-
-        cell.badgeColor = [UIColor clearColor];
-        cell.badge.radius = 8;
-        cell.badge.fontSize = 12;
+        cell.subjectTitle.text = self.labSubjects[indexPath.row].subjectTitle;
+        cell.subjectTypeAndSlot.text = [NSString stringWithFormat:@"%@ - %@", self.labSubjects[indexPath.row].subjectType, self.labSubjects[indexPath.row].subjectSlot];
+        [cell.subjectTypeAndSlot setTextColor:[UIColor grayColor]];
         
         float calculatedPercentage =(float) self.labSubjects[indexPath.row].attendedClasses / self.labSubjects[indexPath.row].conductedClasses;
         float displayPercentageInteger = calculatedPercentage * 100;
@@ -331,22 +323,24 @@ return _subjects;
         }
         
         NSString *displayPercentage = [NSString stringWithFormat:@"%1.0f",displayPercentageInteger];
-        cell.badgeString = [displayPercentage stringByAppendingString:@"%"];
+        cell.percentage.text = [displayPercentage stringByAppendingString:@"%"];
         
         if(displayPercentageInteger < 75){
-            cell.badgeTextColor = [UIColor redColor];
+            cell.percentage.textColor = [UIColor redColor];
         }
         else if (displayPercentageInteger > 75 && displayPercentageInteger < 80){
-            cell.badgeTextColor = [UIColor orangeColor];
+            cell.percentage.textColor = [UIColor orangeColor];
         }
         else{
-            cell.badgeTextColor = [UIColor greenColor];
+            cell.percentage.textColor = [UIColor greenColor];
     }
 }//end of sections clause
     
     return cell;
     
 }
+
+
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -381,6 +375,7 @@ return _subjects;
             for(NSArray *item in marksArray){
                 if([item[1] isEqualToString:self.theorySubjects[selectedRowIndex.row].classNumber]){
                     indexOfMatchedSubject = i;
+                    break;
                 }
                 i += 1;
             }

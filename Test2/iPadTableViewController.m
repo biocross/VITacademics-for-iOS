@@ -9,7 +9,7 @@
 #import "iPadTableViewController.h"
 #import "RNFrostedSidebar.h"
 #import "iPadTableViewCell.h"
-#import "CSNotificationView.h"
+#import "CSNotificationTableView.h"
 #import "VITxAPI.h"
 #import "Subjects.h"
 #import "Subject.h"
@@ -90,7 +90,7 @@
         //Show tutorial or open Settings View Controller
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4f * NSEC_PER_SEC));
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            [CSNotificationView showInViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:@"Welcome to VITacademics!" duration:2.5f];
+            [CSNotificationTableView showInTableViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:@"Welcome to VITacademics!" duration:2.5f];
             
             dispatch_time_t popTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.05f * NSEC_PER_SEC));
             dispatch_after(popTime2, dispatch_get_main_queue(), ^(void){
@@ -148,36 +148,49 @@
 
 -(void)showMarksOniPad:(NSNotification *)notification{
     
-    
     NSIndexPath *selectedRowIndex = [[notification userInfo] valueForKey:@"indexPath"];
-    NSLog(@"Reached 1");
-    int indexOfMatchedSubject = -1;
-    int i = 0;
-    for(NSArray *item in marksArray){
-        if([item[1] isEqualToString:self.subjects[selectedRowIndex.row].classNumber]){
-            indexOfMatchedSubject = i;
+    
+    if(selectedRowIndex.section == 0){
+        int indexOfMatchedSubject = -1;
+        int i = 0;
+        for(NSArray *item in marksArray){
+            if([item[1] isEqualToString:self.theorySubjects[selectedRowIndex.row].classNumber]){
+                indexOfMatchedSubject = i;
+                break;
+            }
+            i += 1;
         }
-        i += 1;
+        
+        if(indexOfMatchedSubject < [marksArray count] && indexOfMatchedSubject != -1){
+            if([marksArray[indexOfMatchedSubject] count] < 16){
+                [CSNotificationTableView showInTableViewController:self style:CSNotificationViewStyleError message:@"PBL/Lab not supported (yet)"];
+            }
+            else{
+                NSLog(@"Starting Marks view Controller");
+                MarksViewController *forThisSubject = [[MarksViewController alloc] init];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:forThisSubject];
+                nav.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+                nav.modalPresentationStyle = UIModalPresentationFormSheet;
+                [self presentViewController:nav animated:YES completion:nil];
+                [forThisSubject setMarksArray:marksArray[indexOfMatchedSubject]];
+            }
+        }
+        else{
+            [CSNotificationTableView showInTableViewController:self style:CSNotificationViewStyleError message:@"PBL/Lab not supported (yet)"];
+        }
     }
-    NSLog(@"Reached 2");
-    if([marksArray[indexOfMatchedSubject] count] < 16){
-        [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"PBL/Lab not supported (yet)"];
-    }
+    
     else{
-        NSLog(@"Reached 3");
-        MarksViewController *forThisSubject = [[MarksViewController alloc] init];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:forThisSubject];
-        nav.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        nav.modalPresentationStyle = UIModalPresentationFormSheet;
-        [self presentViewController:nav animated:YES completion:nil];
-        [forThisSubject setMarksArray:marksArray[indexOfMatchedSubject]];
+        [CSNotificationTableView showInTableViewController:self style:CSNotificationViewStyleError message:@"PBL/Lab not supported (yet)"];
     }
+    
+    
 }
 
 -(void)showCaptchaError{
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Incorrect captcha/Credentials"];
+        [CSNotificationTableView showInTableViewController:self style:CSNotificationViewStyleError message:@"Incorrect captcha/Credentials"];
     });
     
     
@@ -186,7 +199,7 @@
 -(void)showNetworkError{
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Network Error, Please check your internet connectivity."];
+        [CSNotificationTableView showInTableViewController:self style:CSNotificationViewStyleError message:@"Network Error, Please check your internet connectivity."];
     });
 }
 
@@ -244,7 +257,7 @@
     }
     
     else if([title isEqualToString:@"Not Now"]){
-        [CSNotificationView showInViewController:self tintColor:[UIColor blueColor] image:nil message:@"Some other time, then :)" duration:1.8f];
+        [CSNotificationTableView showInTableViewController:self tintColor:[UIColor blueColor] image:nil message:@"Some other time, then :)" duration:1.8f];
     }
     
     
@@ -355,7 +368,7 @@
 
 - (void)startLoadingAttendance:(id)sender {
     
-    CSNotificationView *notificationController = [CSNotificationView notificationViewWithParentViewController:self tintColor:[UIColor orangeColor] image:nil message:@"Loading Attendance..."];
+    CSNotificationTableView *notificationController = [CSNotificationTableView notificationViewWithParentViewController:self tintColor:[UIColor orangeColor] image:nil message:@"Loading Attendance..."];
     
     [notificationController setVisible:YES animated:YES completion:nil];
     
@@ -447,7 +460,7 @@
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                 
-                [CSNotificationView showInViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:cardMessage duration:2.5f];
+                [CSNotificationTableView showInTableViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:cardMessage duration:2.5f];
             });
             
             
