@@ -304,11 +304,7 @@ return _subjects;
         [cell.subjectTypeAndSlot setTextColor:[UIColor grayColor]];
         
         float calculatedPercentage = (float) self.theorySubjects[indexPath.row].attendedClasses / self.theorySubjects[indexPath.row].conductedClasses;
-        float displayPercentageInteger = calculatedPercentage * 100;
-        int compararingVariable = (int) displayPercentageInteger;
-        if(displayPercentageInteger > compararingVariable){
-            displayPercentageInteger += 1;
-        }
+        float displayPercentageInteger = ceil(calculatedPercentage * 100);
         NSString *displayPercentage = [NSString stringWithFormat:@"%1.0f",displayPercentageInteger];
         cell.percentage.text = [displayPercentage stringByAppendingString:@"%"];
         
@@ -319,7 +315,7 @@ return _subjects;
             cell.percentage.textColor = [UIColor orangeColor];
         }
         else{
-            cell.percentage.textColor = [UIColor greenColor];
+            cell.percentage.textColor = [UIColor colorWithRed:0.21 green:0.72 blue:0.00 alpha:1.0];
         }
         
     }
@@ -329,12 +325,7 @@ return _subjects;
         [cell.subjectTypeAndSlot setTextColor:[UIColor grayColor]];
         
         float calculatedPercentage =(float) self.labSubjects[indexPath.row].attendedClasses / self.labSubjects[indexPath.row].conductedClasses;
-        float displayPercentageInteger = calculatedPercentage * 100;
-        int compararingVariable = (int) displayPercentageInteger;
-        if(displayPercentageInteger > compararingVariable){
-            displayPercentageInteger += 1;
-        }
-        
+        float displayPercentageInteger = ceil(calculatedPercentage * 100);
         NSString *displayPercentage = [NSString stringWithFormat:@"%1.0f",displayPercentageInteger];
         cell.percentage.text = [displayPercentage stringByAppendingString:@"%"];
         
@@ -345,10 +336,9 @@ return _subjects;
             cell.percentage.textColor = [UIColor orangeColor];
         }
         else{
-            cell.percentage.textColor = [UIColor greenColor];
+            cell.percentage.textColor = [UIColor colorWithRed:0.21 green:0.72 blue:0.00 alpha:1.0];
     }
 }//end of sections clause
-    
     return cell;
     
 }

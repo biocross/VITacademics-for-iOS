@@ -77,8 +77,8 @@
     [self.progressBar setProgress:calculatedPercentage animated:YES];
     
     if(displayPercentageInteger >= 80){
-        [self.subjectPercentage setTextColor:[UIColor greenColor]];
-        [self.progressBar setProgressTintColor:[UIColor greenColor]];
+        [self.subjectPercentage setTextColor:[UIColor colorWithRed:0.21 green:0.72 blue:0.00 alpha:1.0]];
+        [self.progressBar setProgressTintColor:[UIColor colorWithRed:0.21 green:0.72 blue:0.00 alpha:1.0]];
     }
     else if(displayPercentageInteger >= 75 && displayPercentageInteger < 80){
         [self.subjectPercentage setTextColor:[UIColor orangeColor]];
