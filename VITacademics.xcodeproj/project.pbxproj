@@ -23,6 +23,14 @@
 		1657D3BD18154C4A00E633E9 /* 640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 1657D3BB18154C4A00E633E9 /* 640x960.png */; };
 		1657D3BE18154C4A00E633E9 /* 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 1657D3BC18154C4A00E633E9 /* 640x1136.png */; };
 		166A6B2D18170BFB00FF9187 /* iPadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 166A6B2C18170BFB00FF9187 /* iPadTableViewCell.m */; };
+		166DBD87182BD50D00A2D09C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166DBD86182BD50D00A2D09C /* Parse.framework */; };
+		166DBD89182BD54200A2D09C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166DBD88182BD54200A2D09C /* AudioToolbox.framework */; };
+		166DBD8B182BD54900A2D09C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166DBD8A182BD54900A2D09C /* CFNetwork.framework */; };
+		166DBD8D182BD55400A2D09C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166DBD8C182BD55400A2D09C /* CoreLocation.framework */; };
+		166DBD8F182BD56200A2D09C /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 166DBD8E182BD56200A2D09C /* libz.1.1.3.dylib */; };
+		166DBD91182BD56900A2D09C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166DBD90182BD56900A2D09C /* MobileCoreServices.framework */; };
+		166DBD93182BD57100A2D09C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166DBD92182BD57100A2D09C /* Security.framework */; };
+		166DBD95182BD57900A2D09C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166DBD94182BD57900A2D09C /* StoreKit.framework */; };
 		1677629417FAFCB700727568 /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677629317FAFCB700727568 /* NSDate+TimeAgo.m */; };
 		16888CC8173856D700BEEA71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16888CC7173856D700BEEA71 /* UIKit.framework */; };
 		16888CCA173856D700BEEA71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16888CC9173856D700BEEA71 /* Foundation.framework */; };
@@ -110,6 +118,14 @@
 		1657D3BC18154C4A00E633E9 /* 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x1136.png; sourceTree = "<group>"; };
 		166A6B2B18170BFB00FF9187 /* iPadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPadTableViewCell.h; sourceTree = "<group>"; };
 		166A6B2C18170BFB00FF9187 /* iPadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPadTableViewCell.m; sourceTree = "<group>"; };
+		166DBD86182BD50D00A2D09C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		166DBD88182BD54200A2D09C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		166DBD8A182BD54900A2D09C /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		166DBD8C182BD55400A2D09C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		166DBD8E182BD56200A2D09C /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		166DBD90182BD56900A2D09C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		166DBD92182BD57100A2D09C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		166DBD94182BD57900A2D09C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		1677629217FAFCB700727568 /* NSDate+TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeAgo.h"; sourceTree = "<group>"; };
 		1677629317FAFCB700727568 /* NSDate+TimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeAgo.m"; sourceTree = "<group>"; };
 		16888CC4173856D700BEEA71 /* VITacademics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VITacademics.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,10 +220,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16B8688F180DEA8900C3DF5E /* SystemConfiguration.framework in Frameworks */,
+				166DBD95182BD57900A2D09C /* StoreKit.framework in Frameworks */,
+				166DBD93182BD57100A2D09C /* Security.framework in Frameworks */,
+				166DBD91182BD56900A2D09C /* MobileCoreServices.framework in Frameworks */,
+				166DBD8F182BD56200A2D09C /* libz.1.1.3.dylib in Frameworks */,
+				166DBD8D182BD55400A2D09C /* CoreLocation.framework in Frameworks */,
+				166DBD8B182BD54900A2D09C /* CFNetwork.framework in Frameworks */,
+				166DBD89182BD54200A2D09C /* AudioToolbox.framework in Frameworks */,
 				16A40C24182BC4DA0048956C /* libCrittercism_v4_1_2.a in Frameworks */,
 				16B86895180DEAA600C3DF5E /* libz.dylib in Frameworks */,
-				16B8688F180DEA8900C3DF5E /* SystemConfiguration.framework in Frameworks */,
 				1634B8E2181E7A6500FD4FA2 /* CoreData.framework in Frameworks */,
+				166DBD87182BD50D00A2D09C /* Parse.framework in Frameworks */,
 				16B86893180DEA9F00C3DF5E /* libsqlite3.0.dylib in Frameworks */,
 				16B86891180DEA8D00C3DF5E /* CoreTelephony.framework in Frameworks */,
 				16B8688D180DEA7F00C3DF5E /* CoreText.framework in Frameworks */,
@@ -301,6 +325,14 @@
 		16888CC6173856D700BEEA71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				166DBD94182BD57900A2D09C /* StoreKit.framework */,
+				166DBD92182BD57100A2D09C /* Security.framework */,
+				166DBD90182BD56900A2D09C /* MobileCoreServices.framework */,
+				166DBD8E182BD56200A2D09C /* libz.1.1.3.dylib */,
+				166DBD8C182BD55400A2D09C /* CoreLocation.framework */,
+				166DBD8A182BD54900A2D09C /* CFNetwork.framework */,
+				166DBD88182BD54200A2D09C /* AudioToolbox.framework */,
+				166DBD86182BD50D00A2D09C /* Parse.framework */,
 				1634B8E1181E7A6500FD4FA2 /* CoreData.framework */,
 				16B86894180DEAA600C3DF5E /* libz.dylib */,
 				16B86892180DEA9F00C3DF5E /* libsqlite3.0.dylib */,
@@ -690,8 +722,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Siddharth Gupta (GC4Z88CPZF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Siddharth Gupta (GC4Z88CPZF)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Sids/Desktop/VITacademics-for-iOS",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Test2/VITacademics-Prefix.pch";
 				INFOPLIST_FILE = "Test2/VITacademics-Info.plist";
@@ -702,7 +738,7 @@
 					"/Users/Sids/Desktop/VITacademics-for-iOS/Test2",
 				);
 				PRODUCT_NAME = VITacademics;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "829E6FD7-4069-4529-960A-032573CAE192";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -711,8 +747,12 @@
 		16888CEF173856D800BEEA71 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Siddharth Gupta (GC4Z88CPZF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Siddharth Gupta (GC4Z88CPZF)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Sids/Desktop/VITacademics-for-iOS",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Test2/VITacademics-Prefix.pch";
 				INFOPLIST_FILE = "Test2/VITacademics-Info.plist";
@@ -723,7 +763,7 @@
 					"/Users/Sids/Desktop/VITacademics-for-iOS/Test2",
 				);
 				PRODUCT_NAME = VITacademics;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "829E6FD7-4069-4529-960A-032573CAE192";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
