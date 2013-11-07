@@ -353,10 +353,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     SubjectDetailsViewController *forThisSubject = [[SubjectDetailsViewController alloc] init];
-    forThisSubject.detailsArray = _subjects[indexPath.row].subjectDetails;
     forThisSubject.selectedRow = [self.tableView indexPathForSelectedRow];
+    
+    if (indexPath.section == 0){
+        forThisSubject.detailsArray = self.theorySubjects[indexPath.row].subjectDetails;
+    }
+    else{
+        forThisSubject.detailsArray = self.labSubjects[indexPath.row].subjectDetails;
+    }
+    
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:forThisSubject];
     nav.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     nav.modalPresentationStyle = UIModalPresentationFormSheet;

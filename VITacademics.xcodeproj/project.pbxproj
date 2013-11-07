@@ -40,6 +40,8 @@
 		16888CF5173859E900BEEA71 /* Subjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 16888CF4173859E900BEEA71 /* Subjects.m */; };
 		169C0A30174ADCA8005B16ED /* VITxAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 169C0A2F174ADCA8005B16ED /* VITxAPI.m */; };
 		169C0A33174B125E005B16ED /* CaptchaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 169C0A32174B125E005B16ED /* CaptchaViewController.m */; };
+		16A40C23182BC4DA0048956C /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = 16A40C21182BC4DA0048956C /* dsym_upload.sh */; };
+		16A40C24182BC4DA0048956C /* libCrittercism_v4_1_2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16A40C22182BC4DA0048956C /* libCrittercism_v4_1_2.a */; };
 		16B86849180DCC6100C3DF5E /* RNFrostedSidebar.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B86848180DCC6100C3DF5E /* RNFrostedSidebar.m */; };
 		16B8684B180DCD9900C3DF5E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B8684A180DCD9900C3DF5E /* Accelerate.framework */; };
 		16B8684D180DCE3E00C3DF5E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16B8684C180DCE3E00C3DF5E /* Images.xcassets */; };
@@ -73,8 +75,6 @@
 		16B86893180DEA9F00C3DF5E /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B86892180DEA9F00C3DF5E /* libsqlite3.0.dylib */; };
 		16B86895180DEAA600C3DF5E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B86894180DEAA600C3DF5E /* libz.dylib */; };
 		16C3ACC51809420200AD95D9 /* SubjectDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3ACC41809420200AD95D9 /* SubjectDetailsViewController.m */; };
-		16D079B61826534C00A2FDA2 /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = 16D079B41826534C00A2FDA2 /* dsym_upload.sh */; };
-		16D079B71826534C00A2FDA2 /* libCrittercism_v4_1_2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D079B51826534C00A2FDA2 /* libCrittercism_v4_1_2.a */; };
 		16D079BB1826544800A2FDA2 /* CSNotificationTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D079B91826544800A2FDA2 /* CSNotificationTableView.m */; };
 		16D66A2C1755EFC40015FDD7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D66A2B1755EFC40015FDD7 /* QuartzCore.framework */; };
 		16EDBE5D1815655D00007BEC /* 76.png in Resources */ = {isa = PBXBuildFile; fileRef = 16EDBE5C1815655D00007BEC /* 76.png */; };
@@ -136,6 +136,11 @@
 		169C0A2F174ADCA8005B16ED /* VITxAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VITxAPI.m; sourceTree = "<group>"; };
 		169C0A31174B125E005B16ED /* CaptchaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptchaViewController.h; sourceTree = "<group>"; };
 		169C0A32174B125E005B16ED /* CaptchaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptchaViewController.m; sourceTree = "<group>"; };
+		16A40C1E182BC4DA0048956C /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
+		16A40C1F182BC4DA0048956C /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
+		16A40C20182BC4DA0048956C /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
+		16A40C21182BC4DA0048956C /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
+		16A40C22182BC4DA0048956C /* libCrittercism_v4_1_2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_1_2.a; sourceTree = "<group>"; };
 		16B139421810F85100EE0763 /* VITacademics-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VITacademics-Prefix.pch"; sourceTree = "<group>"; };
 		16B139441810F90700EE0763 /* VITacademics-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VITacademics-Info.plist"; sourceTree = "<group>"; };
 		16B86847180DCC6100C3DF5E /* RNFrostedSidebar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNFrostedSidebar.h; sourceTree = "<group>"; };
@@ -183,11 +188,6 @@
 		16B86894180DEAA600C3DF5E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		16C3ACC31809420200AD95D9 /* SubjectDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectDetailsViewController.h; sourceTree = "<group>"; };
 		16C3ACC41809420200AD95D9 /* SubjectDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectDetailsViewController.m; sourceTree = "<group>"; };
-		16D079B11826534C00A2FDA2 /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
-		16D079B21826534C00A2FDA2 /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
-		16D079B31826534C00A2FDA2 /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
-		16D079B41826534C00A2FDA2 /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
-		16D079B51826534C00A2FDA2 /* libCrittercism_v4_1_2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_1_2.a; sourceTree = "<group>"; };
 		16D079B91826544800A2FDA2 /* CSNotificationTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSNotificationTableView.m; sourceTree = "<group>"; };
 		16D079BA1826544800A2FDA2 /* CSNotificationTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSNotificationTableView.h; sourceTree = "<group>"; };
 		16D66A2B1755EFC40015FDD7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -204,7 +204,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16D079B71826534C00A2FDA2 /* libCrittercism_v4_1_2.a in Frameworks */,
+				16A40C24182BC4DA0048956C /* libCrittercism_v4_1_2.a in Frameworks */,
 				16B86895180DEAA600C3DF5E /* libz.dylib in Frameworks */,
 				16B8688F180DEA8900C3DF5E /* SystemConfiguration.framework in Frameworks */,
 				1634B8E2181E7A6500FD4FA2 /* CoreData.framework in Frameworks */,
@@ -266,8 +266,8 @@
 		1677629517FAFCC300727568 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				16A40C25182BC4E10048956C /* Crittercism SDK */,
 				16D079BC1826544E00A2FDA2 /* CSNotificationTableView */,
-				16D079B81826535200A2FDA2 /* Crittercism */,
 				16B8684E180DE9E900C3DF5E /* Helpshift */,
 				162B229E181FD7E10093DABC /* CSNotificationView */,
 				1634B8DE181E79F400FD4FA2 /* Google Analytics */,
@@ -378,6 +378,18 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		16A40C25182BC4E10048956C /* Crittercism SDK */ = {
+			isa = PBXGroup;
+			children = (
+				16A40C1E182BC4DA0048956C /* CRFilter.h */,
+				16A40C1F182BC4DA0048956C /* Crittercism.h */,
+				16A40C20182BC4DA0048956C /* CrittercismDelegate.h */,
+				16A40C21182BC4DA0048956C /* dsym_upload.sh */,
+				16A40C22182BC4DA0048956C /* libCrittercism_v4_1_2.a */,
+			);
+			name = "Crittercism SDK";
+			sourceTree = "<group>";
+		};
 		16B8684E180DE9E900C3DF5E /* Helpshift */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,18 +436,6 @@
 				16B86872180DE9FA00C3DF5E /* HelpshiftConfigDark.plist */,
 			);
 			path = HSThemes;
-			sourceTree = "<group>";
-		};
-		16D079B81826535200A2FDA2 /* Crittercism */ = {
-			isa = PBXGroup;
-			children = (
-				16D079B11826534C00A2FDA2 /* CRFilter.h */,
-				16D079B21826534C00A2FDA2 /* Crittercism.h */,
-				16D079B31826534C00A2FDA2 /* CrittercismDelegate.h */,
-				16D079B41826534C00A2FDA2 /* dsym_upload.sh */,
-				16D079B51826534C00A2FDA2 /* libCrittercism_v4_1_2.a */,
-			);
-			name = Crittercism;
 			sourceTree = "<group>";
 		};
 		16D079BC1826544E00A2FDA2 /* CSNotificationTableView */ = {
@@ -512,6 +512,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16A40C23182BC4DA0048956C /* dsym_upload.sh in Resources */,
 				16B8684D180DCE3E00C3DF5E /* Images.xcassets in Resources */,
 				16888CD2173856D700BEEA71 /* InfoPlist.strings in Resources */,
 				16B86885180DE9FA00C3DF5E /* HSTutorial.png in Resources */,
@@ -551,7 +552,6 @@
 				164163D1181E89AA00F20C77 /* 768x1024.png in Resources */,
 				164163D2181E89AA00F20C77 /* 1536x2048.png in Resources */,
 				16B86888180DE9FA00C3DF5E /* HSTutorialiPad@2x.png in Resources */,
-				16D079B61826534C00A2FDA2 /* dsym_upload.sh in Resources */,
 				1657D3BD18154C4A00E633E9 /* 640x960.png in Resources */,
 				162A797A1815B56400BFAA89 /* iPadStoryboard.storyboard in Resources */,
 			);
@@ -699,6 +699,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/Sids/Downloads/VITacademics-for-iOS/Test2",
+					"/Users/Sids/Desktop/VITacademics-for-iOS/Test2",
 				);
 				PRODUCT_NAME = VITacademics;
 				PROVISIONING_PROFILE = "";
@@ -719,6 +720,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/Sids/Downloads/VITacademics-for-iOS/Test2",
+					"/Users/Sids/Desktop/VITacademics-for-iOS/Test2",
 				);
 				PRODUCT_NAME = VITacademics;
 				PROVISIONING_PROFILE = "";

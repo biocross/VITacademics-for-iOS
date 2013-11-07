@@ -71,11 +71,7 @@
 
 - (void)recalculateAttendance{
     float calculatedPercentage =(float) [self.subjectAttended.text intValue] / [self.subjectConducted.text intValue];
-    float displayPercentageInteger = calculatedPercentage * 100;
-    int compararingVariable = (int) displayPercentageInteger;
-    if(displayPercentageInteger > compararingVariable){
-        displayPercentageInteger += 1;
-    }
+    float displayPercentageInteger = ceil(calculatedPercentage * 100);
     NSString *displayPercentage = [NSString stringWithFormat:@"%1.0f",displayPercentageInteger];
     self.subjectPercentage.text = [displayPercentage stringByAppendingString:@"%"];
     [self.progressBar setProgress:calculatedPercentage animated:YES];
