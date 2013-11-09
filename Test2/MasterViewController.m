@@ -16,7 +16,7 @@
 #import "NSDate+TimeAgo.h"
 #import "RNFrostedSidebar.h"
 #import "Helpshift.h"
-#import "CSNotificationTableView.h"
+#import "CSNotificationView.h"
 
 
 /* TODO:
@@ -105,7 +105,7 @@ return _subjects;
         //Show tutorial or open Settings View Controller
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4f * NSEC_PER_SEC));
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            [CSNotificationTableView showInTableViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:@"Welcome to VITacademics!" duration:2.5f];
+            [CSNotificationView showInViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:@"Welcome to VITacademics!" duration:2.5f];
             
             dispatch_time_t popTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.05f * NSEC_PER_SEC));
             dispatch_after(popTime2, dispatch_get_main_queue(), ^(void){
@@ -150,25 +150,13 @@ return _subjects;
      name:@"networkError"
      object:nil];
     
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(refreshTableView)
-     name:@"refreshTable"
-     object:nil];
-    
 }
 
--(void)refreshTableView{
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8f * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self.tableView reloadData];
-    });
-}
 
 -(void)showCaptchaError{
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [CSNotificationTableView showInTableViewController:self style:CSNotificationViewStyleError message:@"Incorrect captcha/credentials"];
+        [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Incorrect captcha/credentials"];
     });
     
     
@@ -177,7 +165,7 @@ return _subjects;
 -(void)showNetworkError{
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [CSNotificationTableView showInTableViewController:self style:CSNotificationViewStyleError message:@"Network Error, Please check your internet connectivity."];
+        [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Network Error, Please check your internet connectivity."];
     });
 }
 
@@ -224,7 +212,7 @@ return _subjects;
     }
     
     else if([title isEqualToString:@"Not Now"]){
-        [CSNotificationTableView showInTableViewController:self tintColor:[UIColor blueColor] image:nil message:@"Some other time, then :)" duration:1.8f];
+        [CSNotificationView showInViewController:self tintColor:[UIColor blueColor] image:nil message:@"Some other time, then :)" duration:1.8f];
     }
     
     
@@ -389,48 +377,11 @@ return _subjects;
     }
 }
 
-/*
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
-        DetailViewController *detailViewController = [segue destinationViewController];
-        
-        if(selectedRowIndex.section == 0){
-            
-            int indexOfMatchedSubject = -1;
-            int i = 0;
-            for(NSArray *item in marksArray){
-                if([item[1] isEqualToString:self.theorySubjects[selectedRowIndex.row].classNumber]){
-                    indexOfMatchedSubject = i;
-                    break;
-                }
-                i += 1;
-            }
-            
-            detailViewController.subject = self.theorySubjects[selectedRowIndex.row];
-            if(indexOfMatchedSubject < [marksArray count] && indexOfMatchedSubject != -1){
-                detailViewController.subjectMarks = marksArray[indexOfMatchedSubject];
-            }
-            else{
-                detailViewController.subjectMarks = [[NSArray alloc] init];
-            }
-            
-        }
-        else{
-            detailViewController.subject = self.labSubjects[selectedRowIndex.row];
-            detailViewController.subjectMarks = [[NSArray alloc] init];
-        }
-    }
-}
-
-*/
-
 #pragma mark - VITx API Calls
 
 - (void)startLoadingAttendance:(id)sender {
     
-    CSNotificationTableView *notificationController = [CSNotificationTableView notificationViewWithParentViewController:self tintColor:[UIColor orangeColor] image:nil message:@"Loading Attendance..."];
+    CSNotificationView *notificationController = [CSNotificationView notificationViewWithParentViewController:self tintColor:[UIColor orangeColor] image:nil message:@"Loading Attendance..."];
     [notificationController setShowingActivity:YES];
     [notificationController setVisible:YES animated:YES completion:nil];
     
@@ -512,7 +463,7 @@ return _subjects;
              dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
              dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                  
-                 [CSNotificationTableView showInTableViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:cardMessage duration:2.5f];
+                 [CSNotificationView showInViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:cardMessage duration:2.5f];
              });
              
              

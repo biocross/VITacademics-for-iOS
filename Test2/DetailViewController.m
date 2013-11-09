@@ -42,13 +42,6 @@
     }        
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    if (self.navigationController.visibleViewController != self) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTable" object:nil userInfo:nil];
-    }
-}
 
 - (void)configureView
 {
