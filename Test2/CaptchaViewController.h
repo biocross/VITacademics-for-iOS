@@ -21,5 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *progressDot;
 @property (weak, nonatomic) IBOutlet UILabel *progressLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *reloadButtonOutlet;
+- (IBAction)reloadButtonAction:(id)sender;
 
 @end

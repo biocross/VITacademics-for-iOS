@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13A598" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="zbS-IV-vaE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A598" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="zbS-IV-vaE">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <scenes>
         <!--I Pad Table View Controller - VITacademics-->
@@ -21,11 +21,6 @@
                         <barButtonItem key="leftBarButtonItem" image="Menu" id="w4x-yb-85B">
                             <connections>
                                 <action selector="openMenu:" destination="mtL-fH-lW7" id="xZm-l7-zVj"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="XZr-uu-xOC">
-                            <connections>
-                                <action selector="refreshAttendance:" destination="mtL-fH-lW7" id="A9Q-gz-5Gs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

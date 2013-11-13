@@ -53,6 +53,9 @@
            value:@"iPad Home View"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
     
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refreshAttendance:) forControlEvents:UIControlEventValueChanged];
+    [self setRefreshControl:refreshControl];
     
     [self.tableView registerClass:[iPadTableViewCell class] forCellReuseIdentifier:@"iPadCell"];
     
@@ -375,7 +378,7 @@
 - (void)startLoadingAttendance:(id)sender {
     
     CSNotificationView *notificationController = [CSNotificationView notificationViewWithParentViewController:self tintColor:[UIColor orangeColor] image:nil message:@"Loading Attendance..."];
-    
+    [notificationController setShowingActivity:YES];
     [notificationController setVisible:YES animated:YES completion:nil];
     
     //getting the regno, dob from preferences.
@@ -415,13 +418,17 @@
 }
 
 
-- (IBAction)refreshAttendance:(id)sender {
+- (void)refreshAttendance:(id)sender {
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"iPadStoryboard" bundle:nil];
     UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"iPadCaptchaNav"];
     vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     vc.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:vc animated:YES completion:NULL];
+    
+    [(UIRefreshControl *)sender endRefreshing];
+
 }
+
 
 -(void)completedProcess{
     

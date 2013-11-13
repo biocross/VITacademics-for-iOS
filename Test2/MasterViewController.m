@@ -19,6 +19,7 @@
 #import "CSNotificationView.h"
 
 
+
 /* TODO:
  
  - [DONE] Error Handling for server responses
@@ -66,7 +67,11 @@ return _subjects;
 {
     
     [super viewDidLoad];
-    [self.tableView reloadData];
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refreshAttendance:) forControlEvents:UIControlEventValueChanged];
+    [self setRefreshControl:refreshControl];
+    
     [self.tableView registerClass:[iPhoneTableViewCell class] forCellReuseIdentifier:@"iPhoneCell"];
     
     id tracker = [[GAI sharedInstance] defaultTracker];
@@ -152,6 +157,14 @@ return _subjects;
     
 }
 
+
+-(void)refreshAttendance:(id)sender{
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CaptchaViewNav"];
+    [self presentViewController:vc animated:YES completion:NULL];
+    [(UIRefreshControl *)sender endRefreshing];
+    
+}
 
 -(void)showCaptchaError{
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC));

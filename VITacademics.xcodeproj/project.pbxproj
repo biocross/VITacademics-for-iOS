@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1614471D182E6E810040674A /* CSNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1614471B182E6E810040674A /* CSNotificationView.m */; };
-		1614471E182E6E810040674A /* CSNotificationView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1614471C182E6E810040674A /* CSNotificationView.xcassets */; };
 		1627657317FB0E3300A18AB2 /* NSDateTimeAgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1627657217FB0E3300A18AB2 /* NSDateTimeAgo.bundle */; };
 		162A797A1815B56400BFAA89 /* iPadStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 162A79791815B56400BFAA89 /* iPadStoryboard.storyboard */; };
 		162A797D1815BA3500BFAA89 /* iPadTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 162A797C1815BA3500BFAA89 /* iPadTableViewController.m */; };
@@ -19,6 +17,8 @@
 		164163D2181E89AA00F20C77 /* 1536x2048.png in Resources */ = {isa = PBXBuildFile; fileRef = 164163D0181E89AA00F20C77 /* 1536x2048.png */; };
 		16426BD71826E6AA00FBA646 /* iPhoneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16426BD61826E6AA00FBA646 /* iPhoneTableViewCell.m */; };
 		16426BD91826E6D300FBA646 /* iPhoneCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16426BD81826E6D300FBA646 /* iPhoneCellNib.xib */; };
+		164AEA26182F8B5B00B6D294 /* CSNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 164AEA24182F8B5B00B6D294 /* CSNotificationView.m */; };
+		164AEA27182F8B5B00B6D294 /* CSNotificationView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 164AEA25182F8B5B00B6D294 /* CSNotificationView.xcassets */; };
 		1657D3B6181548B100E633E9 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 1657D3B5181548B000E633E9 /* 120.png */; };
 		1657D3BD18154C4A00E633E9 /* 640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 1657D3BB18154C4A00E633E9 /* 640x960.png */; };
 		1657D3BE18154C4A00E633E9 /* 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 1657D3BC18154C4A00E633E9 /* 640x1136.png */; };
@@ -91,9 +91,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1614471A182E6E810040674A /* CSNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSNotificationView.h; sourceTree = "<group>"; };
-		1614471B182E6E810040674A /* CSNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSNotificationView.m; sourceTree = "<group>"; };
-		1614471C182E6E810040674A /* CSNotificationView.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CSNotificationView.xcassets; sourceTree = "<group>"; };
 		1627657217FB0E3300A18AB2 /* NSDateTimeAgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NSDateTimeAgo.bundle; sourceTree = "<group>"; };
 		162A79791815B56400BFAA89 /* iPadStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPadStoryboard.storyboard; sourceTree = "<group>"; };
 		162A797B1815BA3500BFAA89 /* iPadTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPadTableViewController.h; sourceTree = "<group>"; };
@@ -112,6 +109,9 @@
 		16426BD51826E6AA00FBA646 /* iPhoneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhoneTableViewCell.h; sourceTree = "<group>"; };
 		16426BD61826E6AA00FBA646 /* iPhoneTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPhoneTableViewCell.m; sourceTree = "<group>"; };
 		16426BD81826E6D300FBA646 /* iPhoneCellNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iPhoneCellNib.xib; sourceTree = "<group>"; };
+		164AEA23182F8B5B00B6D294 /* CSNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSNotificationView.h; sourceTree = "<group>"; };
+		164AEA24182F8B5B00B6D294 /* CSNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSNotificationView.m; sourceTree = "<group>"; };
+		164AEA25182F8B5B00B6D294 /* CSNotificationView.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CSNotificationView.xcassets; sourceTree = "<group>"; };
 		1657D3B5181548B000E633E9 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
 		1657D3BB18154C4A00E633E9 /* 640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x960.png; sourceTree = "<group>"; };
 		1657D3BC18154C4A00E633E9 /* 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x1136.png; sourceTree = "<group>"; };
@@ -245,16 +245,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		16144719182E6E810040674A /* CSNotificationView */ = {
-			isa = PBXGroup;
-			children = (
-				1614471A182E6E810040674A /* CSNotificationView.h */,
-				1614471B182E6E810040674A /* CSNotificationView.m */,
-				1614471C182E6E810040674A /* CSNotificationView.xcassets */,
-			);
-			path = CSNotificationView;
-			sourceTree = "<group>";
-		};
 		162A797E1815BA5B00BFAA89 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,10 +274,72 @@
 			name = "Google Analytics";
 			sourceTree = "<group>";
 		};
+		164AEA22182F8B5B00B6D294 /* CSNotificationView */ = {
+			isa = PBXGroup;
+			children = (
+				164AEA23182F8B5B00B6D294 /* CSNotificationView.h */,
+				164AEA24182F8B5B00B6D294 /* CSNotificationView.m */,
+				164AEA25182F8B5B00B6D294 /* CSNotificationView.xcassets */,
+			);
+			path = CSNotificationView;
+			sourceTree = "<group>";
+		};
+		164AEA2F182F927700B6D294 /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				16888CE5173856D800BEEA71 /* MasterViewController.h */,
+				16888CE6173856D800BEEA71 /* MasterViewController.m */,
+				16888CE8173856D800BEEA71 /* DetailViewController.h */,
+				16888CE9173856D800BEEA71 /* DetailViewController.m */,
+				16426BD51826E6AA00FBA646 /* iPhoneTableViewCell.h */,
+				16426BD61826E6AA00FBA646 /* iPhoneTableViewCell.m */,
+				16426BD81826E6D300FBA646 /* iPhoneCellNib.xib */,
+				16888CDF173856D800BEEA71 /* MainStoryboard_iPhone.storyboard */,
+			);
+			name = iPhone;
+			sourceTree = "<group>";
+		};
+		164AEA30182F928500B6D294 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				162A79791815B56400BFAA89 /* iPadStoryboard.storyboard */,
+				162A797B1815BA3500BFAA89 /* iPadTableViewController.h */,
+				162A797C1815BA3500BFAA89 /* iPadTableViewController.m */,
+				166A6B2B18170BFB00FF9187 /* iPadTableViewCell.h */,
+				166A6B2C18170BFB00FF9187 /* iPadTableViewCell.m */,
+				16F0E36B1818353D002C8E26 /* iPadCellNib.xib */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		164AEA31182F929A00B6D294 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				16C3ACC31809420200AD95D9 /* SubjectDetailsViewController.h */,
+				16C3ACC41809420200AD95D9 /* SubjectDetailsViewController.m */,
+				16F9C3D61811D0AE00B8A527 /* MarksViewController.h */,
+				16F9C3D71811D0AE00B8A527 /* MarksViewController.m */,
+				16EF8A5B1749BE5B00368179 /* NewSettingsViewController.h */,
+				16EF8A5C1749BE5B00368179 /* NewSettingsViewController.m */,
+				169C0A31174B125E005B16ED /* CaptchaViewController.h */,
+				169C0A32174B125E005B16ED /* CaptchaViewController.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		164AEA32182F92C100B6D294 /* VITxAPI */ = {
+			isa = PBXGroup;
+			children = (
+				169C0A2E174ADCA8005B16ED /* VITxAPI.h */,
+				169C0A2F174ADCA8005B16ED /* VITxAPI.m */,
+			);
+			name = VITxAPI;
+			sourceTree = "<group>";
+		};
 		1677629517FAFCC300727568 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				16144719182E6E810040674A /* CSNotificationView */,
+				164AEA22182F8B5B00B6D294 /* CSNotificationView */,
 				16A40C25182BC4E10048956C /* Crittercism SDK */,
 				16B8684E180DE9E900C3DF5E /* Helpshift */,
 				1634B8DE181E79F400FD4FA2 /* Google Analytics */,
@@ -346,36 +398,16 @@
 		16888CCD173856D700BEEA71 /* VITacademics */ = {
 			isa = PBXGroup;
 			children = (
-				1677629517FAFCC300727568 /* Libraries */,
 				16888CD6173856D700BEEA71 /* AppDelegate.h */,
 				16888CD7173856D700BEEA71 /* AppDelegate.m */,
-				16888CDF173856D800BEEA71 /* MainStoryboard_iPhone.storyboard */,
-				16888CE5173856D800BEEA71 /* MasterViewController.h */,
-				16888CE6173856D800BEEA71 /* MasterViewController.m */,
-				16888CE8173856D800BEEA71 /* DetailViewController.h */,
-				16888CE9173856D800BEEA71 /* DetailViewController.m */,
-				16C3ACC31809420200AD95D9 /* SubjectDetailsViewController.h */,
-				16C3ACC41809420200AD95D9 /* SubjectDetailsViewController.m */,
-				16F9C3D61811D0AE00B8A527 /* MarksViewController.h */,
-				16F9C3D71811D0AE00B8A527 /* MarksViewController.m */,
-				16EF8A5B1749BE5B00368179 /* NewSettingsViewController.h */,
-				16EF8A5C1749BE5B00368179 /* NewSettingsViewController.m */,
-				169C0A31174B125E005B16ED /* CaptchaViewController.h */,
-				169C0A32174B125E005B16ED /* CaptchaViewController.m */,
+				164AEA30182F928500B6D294 /* iPad */,
+				164AEA2F182F927700B6D294 /* iPhone */,
+				164AEA31182F929A00B6D294 /* Common */,
+				16888CF717385A0A00BEEA71 /* Model */,
+				164AEA32182F92C100B6D294 /* VITxAPI */,
 				162A797E1815BA5B00BFAA89 /* Images */,
 				16888CCE173856D700BEEA71 /* Supporting Files */,
-				16888CF717385A0A00BEEA71 /* Model */,
-				169C0A2E174ADCA8005B16ED /* VITxAPI.h */,
-				169C0A2F174ADCA8005B16ED /* VITxAPI.m */,
-				162A79791815B56400BFAA89 /* iPadStoryboard.storyboard */,
-				162A797B1815BA3500BFAA89 /* iPadTableViewController.h */,
-				162A797C1815BA3500BFAA89 /* iPadTableViewController.m */,
-				166A6B2B18170BFB00FF9187 /* iPadTableViewCell.h */,
-				166A6B2C18170BFB00FF9187 /* iPadTableViewCell.m */,
-				16F0E36B1818353D002C8E26 /* iPadCellNib.xib */,
-				16426BD51826E6AA00FBA646 /* iPhoneTableViewCell.h */,
-				16426BD61826E6AA00FBA646 /* iPhoneTableViewCell.m */,
-				16426BD81826E6D300FBA646 /* iPhoneCellNib.xib */,
+				1677629517FAFCC300727568 /* Libraries */,
 			);
 			name = VITacademics;
 			path = Test2;
@@ -497,6 +529,11 @@
 				TargetAttributes = {
 					16888CC3173856D700BEEA71 = {
 						DevelopmentTeam = GC4Z88CPZF;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -544,7 +581,7 @@
 				16888CDA173856D800BEEA71 /* Default.png in Resources */,
 				16B86884180DE9FA00C3DF5E /* HSConfirmBox@2x.png in Resources */,
 				16B8687D180DE9FA00C3DF5E /* HS-section-header.png in Resources */,
-				1614471E182E6E810040674A /* CSNotificationView.xcassets in Resources */,
+				164AEA27182F8B5B00B6D294 /* CSNotificationView.xcassets in Resources */,
 				16B8687B180DE9FA00C3DF5E /* HS-screenshot-error.png in Resources */,
 				1657D3B6181548B100E633E9 /* 120.png in Resources */,
 				16888CDC173856D800BEEA71 /* Default@2x.png in Resources */,
@@ -590,7 +627,7 @@
 				16426BD71826E6AA00FBA646 /* iPhoneTableViewCell.m in Sources */,
 				16888CEA173856D800BEEA71 /* DetailViewController.m in Sources */,
 				16888CF21738578F00BEEA71 /* Subject.m in Sources */,
-				1614471D182E6E810040674A /* CSNotificationView.m in Sources */,
+				164AEA26182F8B5B00B6D294 /* CSNotificationView.m in Sources */,
 				16F9C3D81811D0AE00B8A527 /* MarksViewController.m in Sources */,
 				16888CF5173859E900BEEA71 /* Subjects.m in Sources */,
 				162A797D1815BA3500BFAA89 /* iPadTableViewController.m in Sources */,
@@ -708,8 +745,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Siddharth Gupta (GC4Z88CPZF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Siddharth Gupta (GC4Z88CPZF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/Sids/Desktop/VITacademics-for-iOS",
@@ -724,7 +761,7 @@
 					"/Users/Sids/Desktop/VITacademics-for-iOS/Test2",
 				);
 				PRODUCT_NAME = VITacademics;
-				PROVISIONING_PROFILE = "829E6FD7-4069-4529-960A-032573CAE192";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -733,8 +770,8 @@
 		16888CEF173856D800BEEA71 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Siddharth Gupta (GC4Z88CPZF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Siddharth Gupta (GC4Z88CPZF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/Sids/Desktop/VITacademics-for-iOS",
@@ -749,7 +786,7 @@
 					"/Users/Sids/Desktop/VITacademics-for-iOS/Test2",
 				);
 				PRODUCT_NAME = VITacademics;
-				PROVISIONING_PROFILE = "829E6FD7-4069-4529-960A-032573CAE192";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

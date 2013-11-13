@@ -20,7 +20,6 @@
 - (void)startLoadingAttendance:(id)sender;
 - (void)completedProcess;
 - (void)processMarks;
-- (IBAction)refreshAttendance:(id)sender;
 
 @property NSString *attendanceCacheString;
 @property NSString *marksCacheString;

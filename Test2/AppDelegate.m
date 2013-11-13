@@ -35,8 +35,9 @@
         [Helpshift setUsername:[prefs stringForKey:@"registrationNumber"]];
     }
     
+#warning Disable Crittrcism for dev
     //Crittercism
-    [Crittercism enableWithAppID: @"526e47368b2e337b2700000a"];
+    //[Crittercism enableWithAppID: @"526e47368b2e337b2700000a"];
     
     //Google Analytics
     [GAI sharedInstance].trackUncaughtExceptions = YES;

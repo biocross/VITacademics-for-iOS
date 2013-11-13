@@ -17,10 +17,6 @@
 
 @implementation CaptchaViewController
 
--(void)hudWasHidden{
-    //protocol conformation
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -34,11 +30,14 @@
 {
     [super viewDidLoad];
     _captchaText.returnKeyType = UIReturnKeyGo;
-	// load the captcha here
-    [_progressDot startAnimating];
+    //[self.reloadButtonOutlet setAlpha:0];
+    [self startLoadingCaptcha];
     
-    VITxAPI *handler = [[VITxAPI alloc] init];
+}
 
+-(void)startLoadingCaptcha{
+    [_progressDot startAnimating];
+    VITxAPI *handler = [[VITxAPI alloc] init];
     dispatch_queue_t downloadQueue = dispatch_queue_create("captcha", nil);
     dispatch_async(downloadQueue, ^{
         UIImage *img = [handler loadCaptchaIntoImageView];
@@ -50,8 +49,8 @@
             [_captchaText becomeFirstResponder];
         });
     });//end of GCD
-    
 }
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)captchaText {
     
@@ -144,5 +143,8 @@
         }
         
     }
+}
+- (IBAction)reloadButtonAction:(id)sender {
+    [self startLoadingCaptcha];
 }
 @end
