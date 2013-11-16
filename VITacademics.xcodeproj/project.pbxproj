@@ -31,6 +31,8 @@
 		166DBD91182BD56900A2D09C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166DBD90182BD56900A2D09C /* MobileCoreServices.framework */; };
 		166DBD93182BD57100A2D09C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166DBD92182BD57100A2D09C /* Security.framework */; };
 		166DBD95182BD57900A2D09C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166DBD94182BD57900A2D09C /* StoreKit.framework */; };
+		16753CD918362A47007F44C4 /* TimeTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 16753CD818362A47007F44C4 /* TimeTable.m */; };
+		16753CDC18362BBB007F44C4 /* TTSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = 16753CDB18362BBB007F44C4 /* TTSubject.m */; };
 		1677629417FAFCB700727568 /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677629317FAFCB700727568 /* NSDate+TimeAgo.m */; };
 		16888CC8173856D700BEEA71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16888CC7173856D700BEEA71 /* UIKit.framework */; };
 		16888CCA173856D700BEEA71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16888CC9173856D700BEEA71 /* Foundation.framework */; };
@@ -125,6 +127,10 @@
 		166DBD90182BD56900A2D09C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		166DBD92182BD57100A2D09C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		166DBD94182BD57900A2D09C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		16753CD718362A47007F44C4 /* TimeTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTable.h; sourceTree = "<group>"; };
+		16753CD818362A47007F44C4 /* TimeTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTable.m; sourceTree = "<group>"; };
+		16753CDA18362BBB007F44C4 /* TTSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSubject.h; sourceTree = "<group>"; };
+		16753CDB18362BBB007F44C4 /* TTSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSubject.m; sourceTree = "<group>"; };
 		1677629217FAFCB700727568 /* NSDate+TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeAgo.h"; sourceTree = "<group>"; };
 		1677629317FAFCB700727568 /* NSDate+TimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeAgo.m"; sourceTree = "<group>"; };
 		16888CC4173856D700BEEA71 /* VITacademics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VITacademics.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -408,6 +414,8 @@
 				162A797E1815BA5B00BFAA89 /* Images */,
 				16888CCE173856D700BEEA71 /* Supporting Files */,
 				1677629517FAFCC300727568 /* Libraries */,
+				16753CD718362A47007F44C4 /* TimeTable.h */,
+				16753CD818362A47007F44C4 /* TimeTable.m */,
 			);
 			name = VITacademics;
 			path = Test2;
@@ -434,6 +442,8 @@
 				16888CF11738578F00BEEA71 /* Subject.m */,
 				16888CF3173859E900BEEA71 /* Subjects.h */,
 				16888CF4173859E900BEEA71 /* Subjects.m */,
+				16753CDA18362BBB007F44C4 /* TTSubject.h */,
+				16753CDB18362BBB007F44C4 /* TTSubject.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -633,7 +643,9 @@
 				162A797D1815BA3500BFAA89 /* iPadTableViewController.m in Sources */,
 				16EF8A5D1749BE5B00368179 /* NewSettingsViewController.m in Sources */,
 				169C0A30174ADCA8005B16ED /* VITxAPI.m in Sources */,
+				16753CD918362A47007F44C4 /* TimeTable.m in Sources */,
 				1677629417FAFCB700727568 /* NSDate+TimeAgo.m in Sources */,
+				16753CDC18362BBB007F44C4 /* TTSubject.m in Sources */,
 				169C0A33174B125E005B16ED /* CaptchaViewController.m in Sources */,
 				166A6B2D18170BFB00FF9187 /* iPadTableViewCell.m in Sources */,
 				16C3ACC51809420200AD95D9 /* SubjectDetailsViewController.m in Sources */,
