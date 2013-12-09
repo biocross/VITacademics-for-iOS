@@ -50,8 +50,6 @@
 		16888CF5173859E900BEEA71 /* Subjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 16888CF4173859E900BEEA71 /* Subjects.m */; };
 		169C0A30174ADCA8005B16ED /* VITxAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 169C0A2F174ADCA8005B16ED /* VITxAPI.m */; };
 		169C0A33174B125E005B16ED /* CaptchaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 169C0A32174B125E005B16ED /* CaptchaViewController.m */; };
-		16A40C23182BC4DA0048956C /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = 16A40C21182BC4DA0048956C /* dsym_upload.sh */; };
-		16A40C24182BC4DA0048956C /* libCrittercism_v4_1_2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16A40C22182BC4DA0048956C /* libCrittercism_v4_1_2.a */; };
 		16B86849180DCC6100C3DF5E /* RNFrostedSidebar.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B86848180DCC6100C3DF5E /* RNFrostedSidebar.m */; };
 		16B8684B180DCD9900C3DF5E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B8684A180DCD9900C3DF5E /* Accelerate.framework */; };
 		16B8684D180DCE3E00C3DF5E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16B8684C180DCE3E00C3DF5E /* Images.xcassets */; };
@@ -90,6 +88,9 @@
 		16EF8A5D1749BE5B00368179 /* NewSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EF8A5C1749BE5B00368179 /* NewSettingsViewController.m */; };
 		16F0E36C1818353D002C8E26 /* iPadCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16F0E36B1818353D002C8E26 /* iPadCellNib.xib */; };
 		16F9C3D81811D0AE00B8A527 /* MarksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F9C3D71811D0AE00B8A527 /* MarksViewController.m */; };
+		3533AB33185327490092E2BE /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3533AB31185327490092E2BE /* dsym_upload.sh */; };
+		3533AB34185327490092E2BE /* libCrittercism_v4_3_0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3533AB32185327490092E2BE /* libCrittercism_v4_3_0.a */; };
+		355C628718535B45000003DB /* PulsingHaloLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 355C628618535B45000003DB /* PulsingHaloLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -157,11 +158,6 @@
 		169C0A2F174ADCA8005B16ED /* VITxAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VITxAPI.m; sourceTree = "<group>"; };
 		169C0A31174B125E005B16ED /* CaptchaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptchaViewController.h; sourceTree = "<group>"; };
 		169C0A32174B125E005B16ED /* CaptchaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptchaViewController.m; sourceTree = "<group>"; };
-		16A40C1E182BC4DA0048956C /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
-		16A40C1F182BC4DA0048956C /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
-		16A40C20182BC4DA0048956C /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
-		16A40C21182BC4DA0048956C /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
-		16A40C22182BC4DA0048956C /* libCrittercism_v4_1_2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_1_2.a; sourceTree = "<group>"; };
 		16B139421810F85100EE0763 /* VITacademics-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VITacademics-Prefix.pch"; sourceTree = "<group>"; };
 		16B139441810F90700EE0763 /* VITacademics-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VITacademics-Info.plist"; sourceTree = "<group>"; };
 		16B86847180DCC6100C3DF5E /* RNFrostedSidebar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNFrostedSidebar.h; sourceTree = "<group>"; };
@@ -216,6 +212,13 @@
 		16F0E36B1818353D002C8E26 /* iPadCellNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iPadCellNib.xib; sourceTree = "<group>"; };
 		16F9C3D61811D0AE00B8A527 /* MarksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarksViewController.h; sourceTree = "<group>"; };
 		16F9C3D71811D0AE00B8A527 /* MarksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarksViewController.m; sourceTree = "<group>"; };
+		3533AB2E185327490092E2BE /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
+		3533AB2F185327490092E2BE /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
+		3533AB30185327490092E2BE /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
+		3533AB31185327490092E2BE /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
+		3533AB32185327490092E2BE /* libCrittercism_v4_3_0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_3_0.a; sourceTree = "<group>"; };
+		355C628518535B45000003DB /* PulsingHaloLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PulsingHaloLayer.h; sourceTree = "<group>"; };
+		355C628618535B45000003DB /* PulsingHaloLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PulsingHaloLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +226,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				166DBD87182BD50D00A2D09C /* Parse.framework in Frameworks */,
 				16B8688F180DEA8900C3DF5E /* SystemConfiguration.framework in Frameworks */,
 				166DBD95182BD57900A2D09C /* StoreKit.framework in Frameworks */,
 				166DBD93182BD57100A2D09C /* Security.framework in Frameworks */,
@@ -231,10 +235,8 @@
 				166DBD8D182BD55400A2D09C /* CoreLocation.framework in Frameworks */,
 				166DBD8B182BD54900A2D09C /* CFNetwork.framework in Frameworks */,
 				166DBD89182BD54200A2D09C /* AudioToolbox.framework in Frameworks */,
-				16A40C24182BC4DA0048956C /* libCrittercism_v4_1_2.a in Frameworks */,
 				16B86895180DEAA600C3DF5E /* libz.dylib in Frameworks */,
 				1634B8E2181E7A6500FD4FA2 /* CoreData.framework in Frameworks */,
-				166DBD87182BD50D00A2D09C /* Parse.framework in Frameworks */,
 				16B86893180DEA9F00C3DF5E /* libsqlite3.0.dylib in Frameworks */,
 				16B86891180DEA8D00C3DF5E /* CoreTelephony.framework in Frameworks */,
 				16B8688D180DEA7F00C3DF5E /* CoreText.framework in Frameworks */,
@@ -244,6 +246,7 @@
 				16B8688B180DE9FA00C3DF5E /* libHelpshift.a in Frameworks */,
 				16888CCA173856D700BEEA71 /* Foundation.framework in Frameworks */,
 				16888CCC173856D700BEEA71 /* CoreGraphics.framework in Frameworks */,
+				3533AB34185327490092E2BE /* libCrittercism_v4_3_0.a in Frameworks */,
 				1634B8E0181E7A3100FD4FA2 /* libGoogleAnalyticsServices.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,8 +348,9 @@
 		1677629517FAFCC300727568 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				355C628818535B4B000003DB /* PulsatingHalo */,
+				3533AB351853274D0092E2BE /* Crittercism SDK */,
 				164AEA22182F8B5B00B6D294 /* CSNotificationView */,
-				16A40C25182BC4E10048956C /* Crittercism SDK */,
 				16B8684E180DE9E900C3DF5E /* Helpshift */,
 				1634B8DE181E79F400FD4FA2 /* Google Analytics */,
 				1627657217FB0E3300A18AB2 /* NSDateTimeAgo.bundle */,
@@ -448,18 +452,6 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		16A40C25182BC4E10048956C /* Crittercism SDK */ = {
-			isa = PBXGroup;
-			children = (
-				16A40C1E182BC4DA0048956C /* CRFilter.h */,
-				16A40C1F182BC4DA0048956C /* Crittercism.h */,
-				16A40C20182BC4DA0048956C /* CrittercismDelegate.h */,
-				16A40C21182BC4DA0048956C /* dsym_upload.sh */,
-				16A40C22182BC4DA0048956C /* libCrittercism_v4_1_2.a */,
-			);
-			name = "Crittercism SDK";
-			sourceTree = "<group>";
-		};
 		16B8684E180DE9E900C3DF5E /* Helpshift */ = {
 			isa = PBXGroup;
 			children = (
@@ -506,6 +498,27 @@
 				16B86872180DE9FA00C3DF5E /* HelpshiftConfigDark.plist */,
 			);
 			path = HSThemes;
+			sourceTree = "<group>";
+		};
+		3533AB351853274D0092E2BE /* Crittercism SDK */ = {
+			isa = PBXGroup;
+			children = (
+				3533AB2E185327490092E2BE /* CRFilter.h */,
+				3533AB2F185327490092E2BE /* Crittercism.h */,
+				3533AB30185327490092E2BE /* CrittercismDelegate.h */,
+				3533AB31185327490092E2BE /* dsym_upload.sh */,
+				3533AB32185327490092E2BE /* libCrittercism_v4_3_0.a */,
+			);
+			name = "Crittercism SDK";
+			sourceTree = "<group>";
+		};
+		355C628818535B4B000003DB /* PulsatingHalo */ = {
+			isa = PBXGroup;
+			children = (
+				355C628518535B45000003DB /* PulsingHaloLayer.h */,
+				355C628618535B45000003DB /* PulsingHaloLayer.m */,
+			);
+			name = PulsatingHalo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -578,7 +591,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16A40C23182BC4DA0048956C /* dsym_upload.sh in Resources */,
+				3533AB33185327490092E2BE /* dsym_upload.sh in Resources */,
 				16B8684D180DCE3E00C3DF5E /* Images.xcassets in Resources */,
 				16888CD2173856D700BEEA71 /* InfoPlist.strings in Resources */,
 				16B86885180DE9FA00C3DF5E /* HSTutorial.png in Resources */,
@@ -630,6 +643,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				355C628718535B45000003DB /* PulsingHaloLayer.m in Sources */,
 				16888CD4173856D700BEEA71 /* main.m in Sources */,
 				16888CD8173856D800BEEA71 /* AppDelegate.m in Sources */,
 				16888CE7173856D800BEEA71 /* MasterViewController.m in Sources */,
@@ -761,7 +775,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/Sids/Desktop/VITacademics-for-iOS",
+					"/Users/Siddharth/Desktop/VITacademics-for-iOS",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Test2/VITacademics-Prefix.pch";
@@ -769,8 +783,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/Sids/Downloads/VITacademics-for-iOS/Test2",
-					"/Users/Sids/Desktop/VITacademics-for-iOS/Test2",
+					"/Users/Siddharth/Desktop/VITacademics-for-iOS/Test2",
 				);
 				PRODUCT_NAME = VITacademics;
 				PROVISIONING_PROFILE = "";
@@ -786,7 +799,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/Sids/Desktop/VITacademics-for-iOS",
+					"/Users/Siddharth/Desktop/VITacademics-for-iOS",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Test2/VITacademics-Prefix.pch";
@@ -794,8 +807,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/Sids/Downloads/VITacademics-for-iOS/Test2",
-					"/Users/Sids/Desktop/VITacademics-for-iOS/Test2",
+					"/Users/Siddharth/Desktop/VITacademics-for-iOS/Test2",
 				);
 				PRODUCT_NAME = VITacademics;
 				PROVISIONING_PROFILE = "";

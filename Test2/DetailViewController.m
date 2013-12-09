@@ -12,6 +12,7 @@
 #import "MarksViewController.h"
 #import "MasterViewController.h"
 #import "CSNotificationView.h"
+#import "PulsingHaloLayer.h"
 
 @interface DetailViewController ()
 
@@ -57,6 +58,14 @@
         self.subjectAttended.text = [NSString stringWithFormat:@"%d",_subject.attendedClasses];
         self.subjectConducted.text = [NSString stringWithFormat:@"%d",_subject.conductedClasses];
         
+        PulsingHaloLayer *halo = [PulsingHaloLayer layer];
+        halo.position = self.subjectPercentage.center;
+        UIColor *color = [UIColor colorWithRed:0.21 green:0.72 blue:0.00 alpha:1.0];
+        
+        halo.backgroundColor = color.CGColor;
+        
+        //halo.radius = 240;
+        [self.view.layer insertSublayer:halo below:self.subjectPercentage.layer];
         [self recalculateAttendance];
     }
     
