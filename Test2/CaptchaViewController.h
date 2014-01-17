@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MasterViewController.h"
+#import "CSNotificationView.h"
 
 
 
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *captchaText;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *progressDot;
 @property (weak, nonatomic) IBOutlet UILabel *progressLabel;
+@property CSNotificationView *notificationController;
 
 @property (weak, nonatomic) IBOutlet UIButton *reloadButtonOutlet;
 - (IBAction)reloadButtonAction:(id)sender;

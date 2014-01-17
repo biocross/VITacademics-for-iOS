@@ -17,6 +17,7 @@
 #import "Helpshift.h"
 #import "SubjectDetailsViewController.h"
 #import "MarksViewController.h"
+#import "SVProgressHUD.h"
 
 @interface iPadTableViewController (){
     NSMutableArray *MTheorySubjects;
@@ -93,7 +94,13 @@
         //Show tutorial or open Settings View Controller
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4f * NSEC_PER_SEC));
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            [CSNotificationView showInViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:@"Welcome to VITacademics!" duration:2.5f];
+            if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+                [CSNotificationView showInViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:@"Welcome to VITacademics!" duration:2.5f];
+            }
+            
+            else{
+                [SVProgressHUD showSuccessWithStatus:@"Welcome to VITacademics!"];
+            }
             
             dispatch_time_t popTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.05f * NSEC_PER_SEC));
             dispatch_after(popTime2, dispatch_get_main_queue(), ^(void){
@@ -166,7 +173,13 @@
         
         if(indexOfMatchedSubject < [marksArray count] && indexOfMatchedSubject != -1){
             if([marksArray[indexOfMatchedSubject] count] < 16){
-                [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"PBL/Lab not supported (yet)"];
+                if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+                    [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"PBL/Lab not supported (yet)"];
+                }
+                
+                else{
+                    [SVProgressHUD showErrorWithStatus:@"PBL/Lab not supported (yet)"];
+                }
             }
             else{
                 NSLog(@"Starting Marks view Controller");
@@ -179,12 +192,24 @@
             }
         }
         else{
-            [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"PBL/Lab not supported (yet)"];
+            if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+                [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"PBL/Lab not supported (yet)"];
+            }
+            
+            else{
+                [SVProgressHUD showErrorWithStatus:@"PBL/Lab not supported (yet)"];
+            }
         }
     }
     
     else{
-        [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"PBL/Lab not supported (yet)"];
+        if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+            [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"PBL/Lab not supported (yet)"];
+        }
+        
+        else{
+            [SVProgressHUD showErrorWithStatus:@"PBL/Lab not supported (yet)"];
+        }
     }
     
     
@@ -193,7 +218,13 @@
 -(void)showCaptchaError{
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Incorrect captcha/Credentials"];
+        if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+            [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Incorrect captcha/credentials"];
+        }
+        
+        else{
+            [SVProgressHUD showErrorWithStatus:@"Incorrect captcha/credentials!"];
+        }
     });
     
     
@@ -202,7 +233,13 @@
 -(void)showNetworkError{
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Network Error, Please check your internet connectivity."];
+        if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+            [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Network Error, Please check your internet connectivity."];
+        }
+        
+        else{
+            [SVProgressHUD showErrorWithStatus:@"Network Error, Please check your internet connectivity."];
+        }
     });
 }
 
@@ -260,7 +297,13 @@
     }
     
     else if([title isEqualToString:@"Not Now"]){
-        [CSNotificationView showInViewController:self tintColor:[UIColor blueColor] image:nil message:@"Some other time, then :)" duration:1.8f];
+        if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+            [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Some other time, then :)"];
+        }
+        
+        else{
+            [SVProgressHUD showSuccessWithStatus:@"Some other time, then :)"];
+        }
     }
     
     
@@ -370,6 +413,8 @@
     nav.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:nav animated:YES completion:nil];
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
@@ -377,9 +422,15 @@
 
 - (void)startLoadingAttendance:(id)sender {
     
-    CSNotificationView *notificationController = [CSNotificationView notificationViewWithParentViewController:self tintColor:[UIColor orangeColor] image:nil message:@"Loading Attendance..."];
-    [notificationController setShowingActivity:YES];
-    [notificationController setVisible:YES animated:YES completion:nil];
+    if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+        CSNotificationView *notificationController = [CSNotificationView notificationViewWithParentViewController:self tintColor:[UIColor orangeColor] image:nil message:@"Loading Attendance..."];
+        [notificationController setShowingActivity:YES];
+        [notificationController setVisible:YES animated:YES completion:nil];
+    }
+    
+    else{
+        [SVProgressHUD showWithStatus:@"Loading Attendance..."];
+    }
     
     //getting the regno, dob from preferences.
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
@@ -397,7 +448,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             //update table here!
             //[alert dismissWithClickedButtonIndex:0 animated:YES];
-            [notificationController setVisible:NO animated:YES completion:nil];
+            //[notificationController setVisible:NO animated:YES completion:nil];
             self.attendanceCacheString = result;
             self.marksCacheString = marks;
             
@@ -473,7 +524,13 @@
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                 
-                [CSNotificationView showInViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:cardMessage duration:2.5f];
+                if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+                    [CSNotificationView showInViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:cardMessage duration:2.5f];
+                }
+                
+                else{
+                    [SVProgressHUD showSuccessWithStatus:cardMessage];
+                }
             });
             
             
@@ -560,7 +617,8 @@
     }
     if(index == 4){ //Helpshift
         [sidebar dismissAnimated:YES];
-        [[Helpshift sharedInstance] showSupport:self];
+        //[[Helpshift sharedInstance] showSupport:self];
+        [[Helpshift sharedInstance] showFAQs:self withOptions:nil];
     }
     if(index == 5){ //About
         

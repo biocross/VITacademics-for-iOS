@@ -10,6 +10,7 @@
 #import "CaptchaViewController.h"
 #import "Subjects.h"
 #import "RNFrostedSidebar.h"
+#import "CSNotificationView.h"
 
 
 
@@ -28,6 +29,7 @@
 
 @property NSString *attendanceCacheString;
 @property NSString *marksCacheString;
+@property CSNotificationView *notificationController;
 
 
 @property (nonatomic, strong) Subjects *theorySubjects;

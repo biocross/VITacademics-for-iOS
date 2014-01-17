@@ -17,7 +17,7 @@
 #import "RNFrostedSidebar.h"
 #import "Helpshift.h"
 #import "CSNotificationView.h"
-#import "TimeTable.h"
+#import "SVProgressHUD.h"
 
 
 
@@ -69,15 +69,13 @@ return _subjects;
     
     [super viewDidLoad];
     
-    
-    
-    //TimeTable Testing
-    NSString *sampleTTString = @"valid%[{\"sl_no\": \"1\", \"slot\": \"C1\", \"code\": \"ECE201\", \"ltpc\": \"3 0 0 3\", \"bl\": \"CBL\", \"title\": \"Probability Theory and Random Process\", \"venue\": \"TT631\", \"class_nbr\": \"2203\", \"status\": \"Registered and Approved\", \"faculty\": \"CHRISTOPHER CLEMENT J - SENSE\", \"bill_date\": \"NIL / NIL\"}, {\"sl_no\": \"2\", \"slot\": \"F1\", \"code\": \"ECE202\", \"ltpc\": \"3 0 0 3\", \"bl\": \"CBL\", \"title\": \"Transmission Lines and Fields\", \"venue\": \"TT523\", \"class_nbr\": \"2221\", \"status\": \"Registered and Approved\", \"faculty\": \"LAVANYA N - SENSE\", \"bill_date\": \"NIL / NIL\"}, {\"sl_no\": \"3\", \"slot\": \"E1\", \"code\": \"ECE203\", \"ltpc\": \"3 0 0 3\", \"bl\": \"CBL\", \"title\": \"Modulation Techniques\", \"venue\": \"TT332\", \"class_nbr\": \"2232\", \"status\": \"Registered and Approved\", \"faculty\": \"CHRISTINA JOSEPHINE MALATHI A - SENSE\", \"bill_date\": \"NIL / NIL\"}, {\"sl_no\": \"-\", \"slot\": \"L29+L30\", \"code\": \"ECE203\", \"ltpc\": \"0 0 2 1\", \"bl\": \"LBC\", \"title\": \"Modulation Techniques\", \"venue\": \"TT135\", \"class_nbr\": \"3609\", \"status\": \"Registered and Approved\", \"faculty\": \"VINOTH BABU K - SENSE\", \"bill_date\": \"NIL / NIL\"}, {\"sl_no\": \"4\", \"slot\": \"D1\", \"code\": \"ECE204\", \"ltpc\": \"3 0 0 3\", \"bl\": \"PBL\", \"title\": \"Analog Circuit Design\", \"venue\": \"TT630\", \"class_nbr\": \"2252\", \"status\": \"Registered and Approved\", \"faculty\": \"RAJEEV PANKAJ NELAPATI - SENSE\", \"bill_date\": \"NIL / NIL\"}, {\"sl_no\": \"-\", \"slot\": \"L41+L42\", \"code\": \"ECE204\", \"ltpc\": \"0 0 2 1\", \"bl\": \"LBC\", \"title\": \"Analog Circuit Design\", \"venue\": \"TT238\", \"class_nbr\": \"3668\", \"status\": \"Registered and Approved\", \"faculty\": \"SUCHENDRANATH POPURI - SENSE\", \"bill_date\": \"NIL / NIL\"}, {\"sl_no\": \"5\", \"slot\": \"A2+TA2\", \"code\": \"ECE205\", \"ltpc\": \"3 0 0 3\", \"bl\": \"CBL\", \"title\": \"Electrical and Electronic Measurements\", \"venue\": \"TT716\", \"class_nbr\": \"2341\", \"status\": \"Registered and Approved\", \"faculty\": \"KATHIRVELAN J - SENSE\", \"bill_date\": \"NIL / NIL\"}, {\"sl_no\": \"6\", \"slot\": \"B1\", \"code\": \"ENG102\", \"ltpc\": \"2 0 0 2\", \"bl\": \"CBL\", \"title\": \"English for Engineers - II\", \"venue\": \"SMV122\", \"class_nbr\": \"1832\", \"status\": \"Registered and Approved by Academics\", \"faculty\": \"PREETHA R - SSL\", \"bill_date\": \"72228 / 18-Jan-2013\"}, {\"sl_no\": \"-\", \"slot\": \"L51+L52\", \"code\": \"ENG102\", \"ltpc\": \"0 0 2 1\", \"bl\": \"LBC\", \"title\": \"English for Engineers - II\", \"venue\": \"SJT720\", \"class_nbr\": \"3368\", \"status\": \"Registered and Approved by Academics\", \"faculty\": \"PREETHA R - SSL\", \"bill_date\": \"72228 / 18-Jan-2013\"}, {\"sl_no\": \"7\", \"slot\": \"G2\", \"code\": \"HUM121\", \"ltpc\": \"2 0 0 2\", \"bl\": \"PBL\", \"title\": \"Ethics and Values\", \"venue\": \"TT531\", \"class_nbr\": \"1386\", \"status\": \"Registered and Approved\", \"faculty\": \"RAJA RAJESWARI G - SSL\", \"bill_date\": \"NIL / NIL\"}, {\"sl_no\": \"-\", \"slot\": \"L10+L11\", \"code\": \"HUM121\", \"ltpc\": \"0 0 2 1\", \"bl\": \"LBC\", \"title\": \"Ethics and Values\", \"venue\": \"TT335\", \"class_nbr\": \"3534\", \"status\": \"Registered and Approved\", \"faculty\": \"VIJAYARAJ K - SSL\", \"bill_date\": \"NIL / NIL\"}]";
-    
-    TimeTable *new = [[TimeTable alloc] initWithTTString:sampleTTString];
-    [new printArrays];
-    
-    //END TT
+    if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+       // #import "CSNotificationView.h"
+
+    }
+    else{
+        //#import "SVProgressHUD.h"
+    }
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refreshAttendance:) forControlEvents:UIControlEventValueChanged];
@@ -94,6 +92,7 @@ return _subjects;
     gestureR = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(openMenu:)] ;
     gestureR.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:gestureR];
+    
     
     
     //Load Attendance from cache
@@ -121,7 +120,18 @@ return _subjects;
         //Show tutorial or open Settings View Controller
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4f * NSEC_PER_SEC));
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            [CSNotificationView showInViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:@"Welcome to VITacademics!" duration:2.5f];
+            
+            if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+                [CSNotificationView showInViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:@"Welcome to VITacademics!" duration:2.5f];
+            }
+            
+            else{
+                [SVProgressHUD showSuccessWithStatus:@"Welcome to VITacademics!"];
+            }
+
+            
+            
+            
             
             dispatch_time_t popTime2 = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.05f * NSEC_PER_SEC));
             dispatch_after(popTime2, dispatch_get_main_queue(), ^(void){
@@ -180,7 +190,16 @@ return _subjects;
 -(void)showCaptchaError{
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Incorrect captcha/credentials"];
+        
+        
+        if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+            [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Incorrect captcha/credentials"];
+        }
+        
+        else{
+            [SVProgressHUD showErrorWithStatus:@"Incorrect captcha/credentials!"];
+        }
+        
     });
     
     
@@ -189,7 +208,15 @@ return _subjects;
 -(void)showNetworkError{
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Network Error, Please check your internet connectivity."];
+        
+        
+        if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+            [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Network Error, Please check your internet connectivity."];
+        }
+        
+        else{
+            [SVProgressHUD showErrorWithStatus:@"Network Error, Please check your internet connectivity."];
+        }
     });
 }
 
@@ -236,7 +263,14 @@ return _subjects;
     }
     
     else if([title isEqualToString:@"Not Now"]){
-        [CSNotificationView showInViewController:self tintColor:[UIColor blueColor] image:nil message:@"Some other time, then :)" duration:1.8f];
+        
+        if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+            [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Some other time, then :)"];
+        }
+        
+        else{
+            [SVProgressHUD showSuccessWithStatus:@"Some other time, then :)"];
+        }
     }
     
     
@@ -387,17 +421,20 @@ return _subjects;
         }
         
         detailViewController.subject = self.theorySubjects[selectedRowIndex.row];
+        
         if(indexOfMatchedSubject < [marksArray count] && indexOfMatchedSubject != -1){
             detailViewController.subjectMarks = marksArray[indexOfMatchedSubject];
         }
         else{
             detailViewController.subjectMarks = [[NSArray alloc] init];
         }
+        [detailViewController viewDidLoad];
         
     }
     else{
         detailViewController.subject = self.labSubjects[selectedRowIndex.row];
         detailViewController.subjectMarks = [[NSArray alloc] init];
+        [detailViewController viewDidLoad];
     }
 }
 
@@ -405,15 +442,22 @@ return _subjects;
 
 - (void)startLoadingAttendance:(id)sender {
     
-    CSNotificationView *notificationController = [CSNotificationView notificationViewWithParentViewController:self tintColor:[UIColor orangeColor] image:nil message:@"Loading Attendance..."];
-    [notificationController setShowingActivity:YES];
-    [notificationController setVisible:YES animated:YES completion:nil];
+    
+    
+    if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+        self.notificationController = [CSNotificationView notificationViewWithParentViewController:self tintColor:[UIColor orangeColor] image:nil message:@"Loading Attendance..."];
+        [self.notificationController setShowingActivity:YES];
+        [self.notificationController setVisible:YES animated:YES completion:nil];
+    }
+    
+    else{
+        [SVProgressHUD showWithStatus:@"Loading Attendance..."];
+    }
     
     //getting the regno, dob from preferences.
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     NSString *registrationNumber = [preferences stringForKey:@"registrationNumber"];
     NSString *dateOfBirth = [preferences stringForKey:@"dateOfBirth"];
-    
     
     VITxAPI *attendanceManager = [[VITxAPI alloc] init];
     
@@ -425,7 +469,13 @@ return _subjects;
         dispatch_async(dispatch_get_main_queue(), ^{
            //update table here!
             //[alert dismissWithClickedButtonIndex:0 animated:YES];
-            [notificationController setVisible:NO animated:YES completion:nil];
+            if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+                [self.notificationController setVisible:NO animated:YES completion:nil];
+            }
+            else {
+                [SVProgressHUD dismiss];
+            }
+            
             self.attendanceCacheString = result;
             self.marksCacheString = marks;
         
@@ -487,7 +537,18 @@ return _subjects;
              dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
              dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                  
-                 [CSNotificationView showInViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:cardMessage duration:2.5f];
+                 
+                 
+                 if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+                     [CSNotificationView showInViewController:self tintColor:[UIColor redColor] image:[UIImage imageNamed:@"CSNotificationView_checkmarkIcon"] message:cardMessage duration:2.5f];
+                 }
+                 
+                 else{
+                     [SVProgressHUD showSuccessWithStatus:cardMessage];
+                 }
+
+                 
+                 
              });
              
              
@@ -571,7 +632,8 @@ return _subjects;
     }
     if(index == 4){ //Helpshift
         [sidebar dismissAnimated:YES];
-        [[Helpshift sharedInstance] showSupport:self];
+        //[[Helpshift sharedInstance] showSupport:self];
+        [[Helpshift sharedInstance] showFAQs:self withOptions:nil];
     }
     if(index == 5){ //About
         

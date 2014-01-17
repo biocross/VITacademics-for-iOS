@@ -12,7 +12,7 @@
 #import "MarksViewController.h"
 #import "MasterViewController.h"
 #import "CSNotificationView.h"
-#import "PulsingHaloLayer.h"
+#import "SVProgressHUD.h"
 
 @interface DetailViewController ()
 
@@ -47,8 +47,6 @@
 - (void)configureView
 {
     // Update the user interface for the detail item.
-    
-    
     if (self.subject) {
         self.subjectCode.text = _subject.subjectCode;
         self.title = @"";
@@ -58,14 +56,6 @@
         self.subjectAttended.text = [NSString stringWithFormat:@"%d",_subject.attendedClasses];
         self.subjectConducted.text = [NSString stringWithFormat:@"%d",_subject.conductedClasses];
         
-        PulsingHaloLayer *halo = [PulsingHaloLayer layer];
-        halo.position = self.subjectPercentage.center;
-        UIColor *color = [UIColor colorWithRed:0.21 green:0.72 blue:0.00 alpha:1.0];
-        
-        halo.backgroundColor = color.CGColor;
-        
-        //halo.radius = 240;
-        [self.view.layer insertSublayer:halo below:self.subjectPercentage.layer];
         [self recalculateAttendance];
     }
     
@@ -214,13 +204,23 @@
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:forThisSubject];
     [self presentViewController:nav animated:YES completion:nil];
     [forThisSubject setDetailsArray:_subject.subjectDetails];
+    [forThisSubject viewDidLoad];
 
     
 }
 
 - (IBAction)marksButton:(id)sender {
     if([self.subjectMarks count] < 16){
-        [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"PBL/Lab not supported (yet)"];
+        
+        
+        if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+            [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"PBL/Lab not supported (yet)"];
+        }
+        
+        else{
+            [SVProgressHUD showErrorWithStatus:@"PBL/Lab not supported (yet)"];
+        }
+        
     }
     else{
         MarksViewController *forThisSubject = [[MarksViewController alloc] init];

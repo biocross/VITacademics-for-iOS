@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A598" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="zbS-IV-vaE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="zbS-IV-vaE">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--I Pad Table View Controller - VITacademics-->
@@ -153,22 +154,38 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sdc-pR-gyZ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sdc-pR-gyZ">
                                 <rect key="frame" x="206" y="130" width="130" height="25"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="Oko-Py-FaX"/>
+                                    <constraint firstAttribute="height" constant="25" id="clr-A5-NJl"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Loading captcha..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7B-ca-Jff">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Loading captcha..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7B-ca-Jff">
                                 <rect key="frame" x="225" y="164" width="121" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="121" id="DKU-WM-pUZ"/>
+                                    <constraint firstAttribute="height" constant="17" id="v2R-vV-zYq"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gc7-j7-bIv">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gc7-j7-bIv">
                                 <rect key="frame" x="197" y="163" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="Mks-MB-5KF"/>
+                                    <constraint firstAttribute="height" constant="20" id="h3Y-SP-qzp"/>
+                                </constraints>
                             </activityIndicatorView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G7X-U3-7Po">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G7X-U3-7Po">
                                 <rect key="frame" x="196" y="191" width="150" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="OcH-Di-znC"/>
+                                    <constraint firstAttribute="height" constant="30" id="bX6-nb-Z8f"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no"/>
                                 <connections>
@@ -177,6 +194,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sdc-pR-gyZ" firstAttribute="leading" secondItem="V1e-kx-6o3" secondAttribute="leading" constant="206" id="1s9-Lr-Hbw"/>
+                            <constraint firstItem="E7B-ca-Jff" firstAttribute="top" secondItem="sdc-pR-gyZ" secondAttribute="bottom" constant="9" id="7VG-n3-EvZ"/>
+                            <constraint firstItem="sdc-pR-gyZ" firstAttribute="top" secondItem="teg-4i-Le1" secondAttribute="bottom" constant="66" id="BbU-qZ-RiP"/>
+                            <constraint firstItem="G7X-U3-7Po" firstAttribute="leading" secondItem="V1e-kx-6o3" secondAttribute="leading" constant="196" id="Gj7-BY-tAu"/>
+                            <constraint firstItem="gc7-j7-bIv" firstAttribute="leading" secondItem="V1e-kx-6o3" secondAttribute="leading" constant="197" id="L1x-cg-d8M"/>
+                            <constraint firstItem="G7X-U3-7Po" firstAttribute="top" secondItem="E7B-ca-Jff" secondAttribute="bottom" constant="10" id="Mvc-aw-B9r"/>
+                            <constraint firstItem="gc7-j7-bIv" firstAttribute="top" secondItem="sdc-pR-gyZ" secondAttribute="bottom" constant="8" id="Wj5-6g-lw2"/>
+                            <constraint firstItem="E7B-ca-Jff" firstAttribute="leading" secondItem="gc7-j7-bIv" secondAttribute="trailing" constant="8" id="zvW-u9-lmi"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Captcha" id="8ga-Xs-g2z">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="X94-hi-Nvp">

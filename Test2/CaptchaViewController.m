@@ -10,6 +10,7 @@
 #import "VITxAPI.h"
 #import "MasterViewController.h"
 #import "CSNotificationView.h"
+#import "SVProgressHUD.h"
 
 @interface CaptchaViewController ()
 
@@ -93,9 +94,15 @@
     
     //show progress
     
-    CSNotificationView *notificationController = [CSNotificationView notificationViewWithParentViewController:self tintColor:[UIColor colorWithRed:0.000 green:0.6 blue:1.000 alpha:1] image:nil message:@"Submitting Captcha..."];
-    [notificationController setShowingActivity:YES];
-    [notificationController setVisible:YES animated:YES completion:nil];
+    if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+        self.notificationController = [CSNotificationView notificationViewWithParentViewController:self tintColor:[UIColor orangeColor] image:nil message:@"Submitting Captcha..."];
+        [self.notificationController setShowingActivity:YES];
+        [self.notificationController setVisible:YES animated:YES completion:nil];
+    }
+    
+    else{
+        [SVProgressHUD showWithStatus:@"Submitting Captcha..."];
+    }
     
     
     
@@ -104,7 +111,14 @@
     dispatch_async(downloadQueue, ^{
         NSString *result = [handler verifyCaptchaWithRegistrationNumber:registrationNumber andDateOfBirth:dateOfBirth andCaptcha:_captchaText.text];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [notificationController setVisible:NO animated:YES completion:nil];
+            if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+                [self.notificationController setVisible:NO animated:YES completion:nil];
+            }
+            else{
+                [SVProgressHUD dismiss];
+            }
+            
+            
             if([result rangeOfString:@"timedout"].location != NSNotFound){
 
                 NSString *notificationName = @"captchaError";

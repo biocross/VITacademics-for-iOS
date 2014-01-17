@@ -28,18 +28,24 @@
 #pragma mark - External Library Initializations
     
     //Helpshift
-    [Helpshift installForAppID:@"vitinfo-android_platform_20130524211329481-a3c8d4e32860316" domainName:@"vitinfo-android.helpshift.com" apiKey:@"91ff50eded9d62de7020a839c1e2292e"];
+
+    
+    //[Helpshift installForApiKey:@"vitinfo-android_platform_20130524211329481-a3c8d4e32860316" domainName:@"vitinfo-android.helpshift.com" appID:@"91ff50eded9d62de7020a839c1e2292e"];
+    
+    [Helpshift installForApiKey:@"91ff50eded9d62de7020a839c1e2292e" domainName:@"91ff50eded9d62de7020a839c1e2292e" appID:@"vitinfo-android_platform_20130524211329481-a3c8d4e32860316" withOptions:nil];
+    
+    
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     if([prefs stringForKey:@"registrationNumber"]){
-        [Helpshift setUsername:[prefs stringForKey:@"registrationNumber"]];
+        [Helpshift setName:[prefs stringForKey:@"registrationNumber"] andEmail:nil];
     }
     
-#warning Disable Crittrcism for dev
     //Crittercism
     //[Crittercism enableWithAppID: @"526e47368b2e337b2700000a"];
+    [Crittercism enableWithAppID:@"526e47368b2e337b2700000a" andDelegate:self andURLFilters:nil disableInstrumentation:NO];
     
     //Google Analytics
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    [GAI sharedInstance].trackUncaughtExceptions = NO;
     [GAI sharedInstance].dispatchInterval = 30;
     //[[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
     // Initialize tracker.
