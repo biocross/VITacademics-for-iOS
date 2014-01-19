@@ -19,17 +19,6 @@
 #import "CSNotificationView.h"
 #import "SVProgressHUD.h"
 
-
-
-/* TODO:
- 
- - [DONE] Error Handling for server responses
- - [DONE] Select icons for the sidebar
- - Build the tutorial using CSNotificztions! Oh Sexy!
- - [DONE] Use a custom cell for iPhone instead of TDBadgedCell
- 
-*/
-
 @interface MasterViewController () {
     NSMutableArray *_objects;
     NSMutableArray *MTheorySubjects;

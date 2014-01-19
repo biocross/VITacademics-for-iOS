@@ -14,6 +14,8 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
+				<string>114</string>
+				<string>57</string>
 				<string>120</string>
 			</array>
 		</dict>
@@ -24,6 +26,8 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
+				<string>144</string>
+				<string>72</string>
 				<string>152</string>
 				<string>76</string>
 				<string>120</string>
@@ -50,6 +54,8 @@
 	<array>
 		<string>remote-notification</string>
 	</array>
+	<key>UILaunchImageFile~ipad</key>
+	<string>Default</string>
 	<key>UILaunchImages</key>
 	<array>
 		<dict>

@@ -82,13 +82,16 @@
     }
     
     int length = [_subject.subjectDetails count];
-    if([[_subject.subjectDetails lastObject] isEqualToString:@"Absent"]){
-        [self.lastUpdatedLabel setTextColor:[UIColor redColor]];
+    if(length != 0){
+        if([[_subject.subjectDetails lastObject] isEqualToString:@"Absent"]){
+            [self.lastUpdatedLabel setTextColor:[UIColor redColor]];
+        }
+        else{
+            [self.lastUpdatedLabel setTextColor:[UIColor colorWithRed:0.05 green:0.52 blue:0.99 alpha:1]];
+        }
+        self.lastUpdatedLabel.text = [_subject.subjectDetails objectAtIndex:length - 2];
     }
-    else{
-        [self.lastUpdatedLabel setTextColor:[UIColor colorWithRed:0.05 green:0.52 blue:0.99 alpha:1]];
-    }
-    self.lastUpdatedLabel.text = [_subject.subjectDetails objectAtIndex:length - 2];
+    
     
 }
 
@@ -200,11 +203,25 @@
 }
 
 - (IBAction)subjectDetailsButton:(id)sender {
-    SubjectDetailsViewController *forThisSubject = [[SubjectDetailsViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:forThisSubject];
-    [self presentViewController:nav animated:YES completion:nil];
-    [forThisSubject setDetailsArray:_subject.subjectDetails];
-    [forThisSubject viewDidLoad];
+    
+    if([_subject.subjectDetails count] > 0){
+        SubjectDetailsViewController *forThisSubject = [[SubjectDetailsViewController alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:forThisSubject];
+        [self presentViewController:nav animated:YES completion:nil];
+        [forThisSubject setDetailsArray:_subject.subjectDetails];
+        [forThisSubject viewDidLoad];
+    }
+    else{
+        if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+            [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Not Uploaded Yet"];
+        }
+        
+        else{
+            [SVProgressHUD showErrorWithStatus:@"Not Uploaded Yet"];
+        }
+    }
+    
+    
 
     
 }
