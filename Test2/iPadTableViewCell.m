@@ -79,7 +79,13 @@
     else{
         [self.lastUpdatedLabel setTextColor:[UIColor colorWithRed:0.05 green:0.52 blue:0.99 alpha:1]];
     }
-    self.lastUpdatedLabel.text = [_subject.subjectDetails objectAtIndex:length - 2];
+    if([_subject.subjectDetails count]){
+       self.lastUpdatedLabel.text = [_subject.subjectDetails objectAtIndex:length - 2];
+    }
+    else{
+        self.lastUpdatedLabel.text = @"Not Uploaded";
+    }
+    
     
 }
 

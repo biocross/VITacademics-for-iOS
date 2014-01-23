@@ -409,10 +409,23 @@
         forThisSubject.detailsArray = self.labSubjects[indexPath.row].subjectDetails;
     }
     
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:forThisSubject];
-    nav.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    nav.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentViewController:nav animated:YES completion:nil];
+    if([forThisSubject.detailsArray count]){
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:forThisSubject];
+        nav.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        nav.modalPresentationStyle = UIModalPresentationFormSheet;
+        [self presentViewController:nav animated:YES completion:nil];
+    }
+    else{
+        if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1){
+            [CSNotificationView showInViewController:self style:CSNotificationViewStyleError message:@"Details Not Uploaded"];
+        }
+        
+        else{
+            [SVProgressHUD showWithStatus:@"Details Not Uploaded"];
+        }
+    }
+    
+    
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
