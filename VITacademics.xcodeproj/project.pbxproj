@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1627657317FB0E3300A18AB2 /* NSDateTimeAgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1627657217FB0E3300A18AB2 /* NSDateTimeAgo.bundle */; };
+		1627657317FB0E3300A18AB2 /* NSDateTimeAgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1627657217FB0E3300A18AB2 /* NSDateTimeAgo.bundle */; }
 		162A797A1815B56400BFAA89 /* iPadStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 162A79791815B56400BFAA89 /* iPadStoryboard.storyboard */; };
 		162A797D1815BA3500BFAA89 /* iPadTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 162A797C1815BA3500BFAA89 /* iPadTableViewController.m */; };
 		1634B8E2181E7A6500FD4FA2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1634B8E1181E7A6500FD4FA2 /* CoreData.framework */; };
